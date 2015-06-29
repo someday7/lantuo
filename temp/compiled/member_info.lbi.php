@@ -7,6 +7,6 @@
 </font>
 <?php else: ?>
  <?php echo $this->_var['lang']['welcome']; ?>&nbsp;&nbsp;&nbsp;&nbsp;
- <a href="user.php"><img src="themes/default/images/bnt_log.gif" /></a>
- <a href="user.php?act=register"><img src="themes/default/images/bnt_reg.gif" /></a>
+ <a href="user.php">您好！请登录</a>
+ <a href="user.php?act=register">免费注册</a>
 <?php endif; ?>

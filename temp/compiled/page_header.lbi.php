@@ -83,3 +83,50 @@ if ($this->_foreach['nav_middle_list']['total'] > 0):
    <a href="search.php?act=advanced_search"><?php echo $this->_var['lang']['advanced_search']; ?></a>
    </form>
 </div>
+
+
+<div class="header">
+		<div class="layout">
+			<ul class="fr">
+				<li>
+					<?php echo $this->smarty_insert_scripts(array('files'=>'transport.js,utils.js')); ?>
+					<?php 
+$k = array (
+  'name' => 'member_info',
+);
+echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
+?>
+				</li>
+				<li>
+					<a href="">我的交易单</a>
+				</li>
+				<li>
+					<a href=""><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
+				</li>
+				<li>
+					<a href="">我的关注</a>
+				</li>
+				<li>
+					<a href="">我要吐槽<span class="down_arrow"></span></a>
+				</li>
+				<li class="last_li">
+					<a href="">网站导航</a>
+					<a href=""><span class="wx_icon"></span></a>
+					<a href=""><span class="sina_icon"></span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="layout">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li class="active"><a href="index.html">首页</a></li>
+				<li><a href="index.html">租赁</a></li>
+				<li><a href="index.html">评测</a></li>
+				<li><a href="index.html">数据库</a></li>
+				<li><a href="index.html">维修</a></li>
+				<li class="input"><input placeholder="查询顺丰订单号"/><span class="search">搜索</span></li>
+			</ul>
+		</div>
+	</div>

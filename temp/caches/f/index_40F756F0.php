@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:21:{i:0;s:53:"E:/code/workspace/php/lantuo/themes/default/index.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:60:"E:/code/workspace/php/lantuo/themes/default/library/cart.lbi";i:3;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:4;s:61:"E:/code/workspace/php/lantuo/themes/default/library/top10.lbi";i:5;s:70:"E:/code/workspace/php/lantuo/themes/default/library/promotion_info.lbi";i:6;s:67:"E:/code/workspace/php/lantuo/themes/default/library/order_query.lbi";i:7;s:69:"E:/code/workspace/php/lantuo/themes/default/library/invoice_query.lbi";i:8;s:65:"E:/code/workspace/php/lantuo/themes/default/library/vote_list.lbi";i:9;s:66:"E:/code/workspace/php/lantuo/themes/default/library/email_list.lbi";i:10;s:64:"E:/code/workspace/php/lantuo/themes/default/library/index_ad.lbi";i:11;s:68:"E:/code/workspace/php/lantuo/themes/default/library/new_articles.lbi";i:12;s:75:"E:/code/workspace/php/lantuo/themes/default/library/recommend_promotion.lbi";i:13;s:62:"E:/code/workspace/php/lantuo/themes/default/library/brands.lbi";i:14;s:70:"E:/code/workspace/php/lantuo/themes/default/library/recommend_best.lbi";i:15;s:69:"E:/code/workspace/php/lantuo/themes/default/library/recommend_new.lbi";i:16;s:69:"E:/code/workspace/php/lantuo/themes/default/library/recommend_hot.lbi";i:17;s:63:"E:/code/workspace/php/lantuo/themes/default/library/auction.lbi";i:18;s:65:"E:/code/workspace/php/lantuo/themes/default/library/group_buy.lbi";i:19;s:60:"E:/code/workspace/php/lantuo/themes/default/library/help.lbi";i:20;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1433242519;s:8:"maketime";i:1433238919;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:21:{i:0;s:53:"E:/code/workspace/php/lantuo/themes/default/index.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:60:"E:/code/workspace/php/lantuo/themes/default/library/cart.lbi";i:3;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:4;s:61:"E:/code/workspace/php/lantuo/themes/default/library/top10.lbi";i:5;s:70:"E:/code/workspace/php/lantuo/themes/default/library/promotion_info.lbi";i:6;s:67:"E:/code/workspace/php/lantuo/themes/default/library/order_query.lbi";i:7;s:69:"E:/code/workspace/php/lantuo/themes/default/library/invoice_query.lbi";i:8;s:65:"E:/code/workspace/php/lantuo/themes/default/library/vote_list.lbi";i:9;s:66:"E:/code/workspace/php/lantuo/themes/default/library/email_list.lbi";i:10;s:64:"E:/code/workspace/php/lantuo/themes/default/library/index_ad.lbi";i:11;s:68:"E:/code/workspace/php/lantuo/themes/default/library/new_articles.lbi";i:12;s:75:"E:/code/workspace/php/lantuo/themes/default/library/recommend_promotion.lbi";i:13;s:62:"E:/code/workspace/php/lantuo/themes/default/library/brands.lbi";i:14;s:70:"E:/code/workspace/php/lantuo/themes/default/library/recommend_best.lbi";i:15;s:69:"E:/code/workspace/php/lantuo/themes/default/library/recommend_new.lbi";i:16;s:69:"E:/code/workspace/php/lantuo/themes/default/library/recommend_hot.lbi";i:17;s:63:"E:/code/workspace/php/lantuo/themes/default/library/auction.lbi";i:18;s:65:"E:/code/workspace/php/lantuo/themes/default/library/group_buy.lbi";i:19;s:60:"E:/code/workspace/php/lantuo/themes/default/library/help.lbi";i:20;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1435553727;s:8:"maketime";i:1435550127;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" content="ECSHOP v2.7.3" />
@@ -79,7 +79,44 @@ var process_request = "正在处理您的请求...";
    <a href="search.php?act=advanced_search">高级搜索</a>
    </form>
 </div>
-<div class="blank"></div>
+<div class="header">
+		<div class="layout">
+			<ul class="fr">
+				<li>
+										554fcae493e564ee0dc75bdf2ebf94camember_info|a:1:{s:4:"name";s:11:"member_info";}554fcae493e564ee0dc75bdf2ebf94ca				</li>
+				<li>
+					<a href="">我的交易单</a>
+				</li>
+				<li>
+					<a href=""><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
+				</li>
+				<li>
+					<a href="">我的关注</a>
+				</li>
+				<li>
+					<a href="">我要吐槽<span class="down_arrow"></span></a>
+				</li>
+				<li class="last_li">
+					<a href="">网站导航</a>
+					<a href=""><span class="wx_icon"></span></a>
+					<a href=""><span class="sina_icon"></span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="layout">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li class="active"><a href="index.html">首页</a></li>
+				<li><a href="index.html">租赁</a></li>
+				<li><a href="index.html">评测</a></li>
+				<li><a href="index.html">数据库</a></li>
+				<li><a href="index.html">维修</a></li>
+				<li class="input"><input placeholder="查询顺丰订单号"/><span class="search">搜索</span></li>
+			</ul>
+		</div>
+	</div><div class="blank"></div>
 <div class="block clearfix">
   
   <div class="AreaL">
