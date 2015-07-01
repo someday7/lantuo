@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="styles/general.css" rel="stylesheet" type="text/css" />
 <link href="styles/main.css" rel="stylesheet" type="text/css" />
-<?php echo $this->smarty_insert_scripts(array('files'=>'../js/transport.js,common.js')); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'../js/transport.org.js,common.js')); ?>
 <script language="JavaScript">
 <!--
 // 这里把JS用到的所有语言都赋值到这里

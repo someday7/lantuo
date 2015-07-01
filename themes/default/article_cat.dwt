@@ -11,128 +11,98 @@
 <!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
+<link href="http://res.vmall.com/20150415/css/notice/main.min.css?20141025" rel="stylesheet" type="text/css">
 {* 包含脚本文件 *}
 {insert_scripts files='common.js'}
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<!--当前位置 start-->
-<div class="block box">
- <div id="ur_here">
+  <div class="naver-main">
+	<div class="layout">
+		<!-- 20140823-分类-start -->
+		<div class="category category-index" id="category-block">
+		
+ 	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		</div>
+	</div>
+</div>
+
+<div class="hr-10"></div>
+<div class="g">
+    <!--面包屑 -->
+<div class="breadcrumb-area fcn">
+ 
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
- </div>
+
 </div>
-<!--当前位置 end-->
-<div class="blank"></div>
-<div class="block clearfix">
-  <!--left start-->
-  <div class="AreaL">
-    <!-- TemplateBeginEditable name="左边区域" -->
-<!-- #BeginLibraryItem "/library/cart.lbi" -->
+<div class="hr-10"></div>
+<div class="layout">
 
-{insert_scripts files='transport.js'}
-<div class="cart" id="ECS_CARTINFO">
- {insert name='cart_info'}
-</div>
-<div class="blank5"></div>
-
- <!-- #EndLibraryItem -->
-<!-- #BeginLibraryItem "/library/category_tree.lbi" -->
-
-<div class="box">
- <div class="box_1">
-  <div id="category_tree">
-    <!--{foreach from=$categories item=cat}-->
-     <dl>
-     <dt><a href="{$cat.url}">{$cat.name|escape:html}</a></dt>
-     <!--{foreach from=$cat.children item=child}-->
-     <dd><a href="{$child.url}">{$child.name|escape:html}</a></dd>
-     <!--{/foreach}-->
-     </dl>
-    <!--{/foreach}--> 
-  </div>
- </div>
-</div>
-<div class="blank5"></div>
-
- <!-- #EndLibraryItem -->
-<!-- {if $article_categories} -->
- <!-- #BeginLibraryItem "/library/article_category_tree.lbi" --><!-- #EndLibraryItem -->
-<!-- {/if} -->
- <!-- #BeginLibraryItem "/library/filter_attr.lbi" --><!-- #EndLibraryItem -->
- <!-- #BeginLibraryItem "/library/price_grade.lbi" --><!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->
-<!-- TemplateBeginEditable name="左边广告区域（宽200px）" -->
-<!-- TemplateEndEditable -->
-    <!--AD end-->
-    <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->
-  </div>
-  <!--left end-->
-  <!--right start-->
-  <div class="AreaR">
-   <div class="box">
-   <div class="box_1">
-    <h3><span>{$lang.article_list}</span></h3>
-    <div class="boxCenterList">
-          <form action="{$search_url}" name="search_form" method="post" class="article_search">
-        <input name="keywords" type="text" id="requirement" value="{$search_value}" class="inputBg" />
-        <input name="id" type="hidden" value="{$cat_id}" />
-        <input name="cur_url" id="cur_url" type="hidden" value="" />
-        <input type="submit" value="{$lang.button_search}" class="bnt_blue_1" />
-      </form>
-      <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
-      <tr>
-        <th bgcolor="#ffffff">{$lang.article_title}</th>
-          <th bgcolor="#ffffff">{$lang.article_author}</th>
-          <th bgcolor="#ffffff">{$lang.article_add_time}</th>
-        </tr>
-      <!-- {foreach from=$artciles_list item=article} -->
-      <tr>
-        <td bgcolor="#ffffff"><a href="{$article.url}" title="{$article.title|escape:html}" class="f6">{$article.short_title}</a></td>
-          <td bgcolor="#ffffff">{$article.author}</td>
-          <td bgcolor="#ffffff" align="center">{$article.add_time}</td>
-        </tr>
-      <!-- {/foreach} -->
-    </table>
-    </div>
-   </div>
-  </div>
-  <div class="blank5"></div>
+ 
+    <div class="fr u-4-5">
+    	<!--栏目 -->
+        <div class="part-area clearfix">
+            <div class="fl">
+                <h3 class="ni-title"><span>ss</span></h3>
+            </div>
+           
+        </div>
+        <div class="hr-2"></div>
+        <!--新闻-列表 -->
+        <div class="news-list" id="news-list-ul">
+            <ul class="clearfix">
+			
+			
+			 <!-- {foreach from=$artciles_list item=article} -->
+			 
+			     <li>
+                	<span class="fl"><a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a></span>
+                    <span class="fr">{$article.add_time}</span>
+                </li>
+				
+       <!-- {/foreach} -->
+	  
+                
+            </ul>
+        </div>
+        <div class="hr-25"></div>
+        <!--分页 -->
+        <div class="pager" id="list-pager"><ul>
+		 
   <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+		</ul></div>
+    </div>
+	<div class="fl u-1-5"><!--左边菜单 -->
+<div class="news-menu-area">
+	<div class="h">
+	<s></s>
+	<b></b>
+    </div>
+    <div class="b">
+	<ul class="clearfix">
+			   <!--{foreach from=$article_categories item=cat}-->
+   <li id="menu-media"> <a href="{$cat.url}">{$cat.name|escape:html}</a></li>
+      <!--{foreach from=$cat.children item=child}-->
+    <li id="menu-media">  <a href="{$child.url}" style="background-image:none;">{$child.name|escape:html}</a></li>
+      <!--{/foreach}-->
+    <!--{/foreach}-->
+	</ul>
+    </div>
+</div>
+<div class="hr-15"></div>
+<div class="ad ad179"><p><a title="G520" href="/product/1064.html" target="_blank"><img src="http://res.vmall.com/pimages//sale/2014-07/20140708110119554.jpg" height="403" width="179"></a></p></div>
+</div>
+</div>
+
+
+
   </div>  
   <!--right end-->
-</div>
+ <div class="hr-20"></div>
 <div class="blank5"></div>
-<!--帮助-->
-<div class="block">
-  <div class="box">
-   <div class="helpTitBg clearfix">
-    <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
-   </div>
-  </div>  
-</div>
-<div class="blank"></div>
-<!--帮助-->
-<!--友情链接 start-->
-<!--{if $img_links  or $txt_links }-->
-<div id="bottomNav" class="box">
- <div class="box_1">
-  <div class="links clearfix">
-    <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
-    <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
-    <!--结束图片类型的友情链接{/foreach}-->
-    <!-- {if $txt_links} -->
-    <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
-    [<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>] 
-    <!--结束文字类型的友情链接{/foreach}-->
-    <!-- {/if} -->
-  </div>
- </div>
-</div>
-<!--{/if}-->
-<!--友情链接 end-->
-<div class="blank"></div>
+ 
+ 
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 </body>
 <script type="text/javascript">

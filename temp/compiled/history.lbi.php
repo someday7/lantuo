@@ -1,17 +1,32 @@
-<div class="box" id='history_div'>
- <div class="box_1">
-  <h3><span><?php echo $this->_var['lang']['view_history']; ?></span></h3>
-  <div class="boxCenterList clearfix" id='history_list'>
-    <?php 
+
+<div id="product-history-area" class="rl-area">
+    <div class="h">
+        <h3 class="fl"><span>最近浏览过的商品</span></h3>
+        <span class="fr"><a class="icon-clear" href="javascript:clear_history();"  >清空</a></span>
+    </div>
+    <div class="b">
+        
+        <div class="pro-list">
+            <ul id="product-history-list">
+			   <?php 
 $k = array (
   'name' => 'history',
 );
 echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
 ?>
-  </div>
- </div>
+			 
+			</ul>
+        </div>
+    </div>
+</div>    </div>
 </div>
-<div class="blank5"></div>
+
+
+
+
+ 
+ 
+ 
 <script type="text/javascript">
 if (document.getElementById('history_list').innerHTML.replace(/\s/g,'').length<1)
 {

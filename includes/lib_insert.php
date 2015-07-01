@@ -89,9 +89,12 @@ function insert_history()
             $goods['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
             $goods['shop_price'] = price_format($row['shop_price']);
             $goods['url'] = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
-            $str.='<ul class="clearfix"><li class="goodsimg"><a href="'.$goods['url'].'" target="_blank"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" class="B_blue" /></a></li><li><a href="'.$goods['url'].'" target="_blank" title="'.$goods['goods_name'].'">'.$goods['short_name'].'</a><br />'.$GLOBALS['_LANG']['shop_price'].'<font class="f1">'.$goods['shop_price'].'</font><br /></li></ul>';
+			
+			$str.='<li><div><p class="p-img"><a href="'.$goods['url'].'" title="'.$goods['goods_name'].'"><img src="http://res.vmall.com/pimages//product/101100101219/07/60_60_1.jpg"></a></p><p class="p-name"><a href="'.$goods['url'].'" title="'.$goods['goods_name'].'">'.$goods['short_name'].'</a></p><p class="p-price"><b>'.$goods['shop_price'].'</b></p></div></li>';
+			
+           // $str.='<ul class="clearfix"><li class="goodsimg"><a href="'.$goods['url'].'" target="_blank"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" class="B_blue" /></a></li><li><a href="'.$goods['url'].'" target="_blank" title="'.$goods['goods_name'].'">'.$goods['short_name'].'</a><br />'.$GLOBALS['_LANG']['shop_price'].'<font class="f1">'.$goods['shop_price'].'</font><br /></li></ul>';
         }
-        $str .= '<ul id="clear_history"><a onclick="clear_history()">' . $GLOBALS['_LANG']['clear_history'] . '</a></ul>';
+       // $str .= '<ul id="clear_history"><a onclick="clear_history()">' . $GLOBALS['_LANG']['clear_history'] . '</a></ul>';
     }
     return $str;
 }
@@ -102,9 +105,25 @@ function insert_history()
  * @access  public
  * @return  string
  */
-function insert_cart_info()
+ 
+ function insert_cate_goods($a)
+{	
+	 $goods=get_category_recommend_goods('best',$a[id]);    // 推荐商品
+		 $row='';
+	 	$i=0;
+	 	foreach($goods as $k => $v){
+		if($i<4){
+			$row.='<dd><a href="'.$v['url'].'" target="_blank"><span>'.mb_substr($v['name'],0,8,'utf-8').'</span></a></dd>';
+		 }
+	 	$i++;
+		}
+		return $row.$a[id];
+}
+
+
+function insert_cart_cont()
 {
-    $sql = 'SELECT SUM(goods_number) AS number, SUM(goods_price * goods_number) AS amount' .
+	$sql = 'SELECT SUM(goods_number) AS number, SUM(goods_price * goods_number) AS amount' .
            ' FROM ' . $GLOBALS['ecs']->table('cart') .
            " WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'";
     $row = $GLOBALS['db']->GetRow($sql);
@@ -120,9 +139,66 @@ function insert_cart_info()
         $amount = 0;
     }
 
-    $str = sprintf($GLOBALS['_LANG']['cart_info'], $number, price_format($amount, false));
+     $GLOBALS['smarty']->assign('cat_str',$number);
+	 return $number;
+}
+function insert_cart_info()
+{
+    $sql = 'SELECT c.*,g.goods_thumb FROM ' . $GLOBALS['ecs']->table('cart') .
+           "AS c left join ". $GLOBALS['ecs']->table('goods') ." as g on c.goods_id=g.goods_id  WHERE c.session_id = '" . SESS_ID . "' AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
+    $row = $GLOBALS['db']->GetAll($sql);
+   if($row){
+   
+   		$srt='<div id="minicart-pro-list-block">
+						<ul class="minicart-pro-list" id="minicart-pro-list">';
+	   foreach($row as $key=>$val){
+		$num+=$val['goods_number'];
+		$price+=$val['goods_number']*$val['goods_price'];
+			$srt.='<li class="minicart-pro-item">
+				<div class="pro-info">
+					<div class="p-img"><a href="goods.php?id='.$val['goods_id'].'" title="" target="_blank"><img src="'.$val['goods_thumb'].'" alt="'.$val['goods_name'].'" ></a></div>
+					<div class="p-name"><a href="goods.php?id='.$val['goods_id'].'" title="'.$val['goods_name'].'" target="_blank">'.$val['goods_name'].'&nbsp;<span class="p-slogan">'.$val['goods_name'].'</span><span class="p-promotions hide"></span></a></div>
+					<div class="p-status">
+						<div class="p-price"><b>'.$val['goods_price'].'</b><em>x</em><span>'.$val['goods_number'].'</span></div>
+						 
+					</div>
+					<!--a href="javascript:if (confirm(\'您确实要把该商品移出购物车吗？\')) location.href=\'flow.php?step=drop_goods&id='.$val['goods_id'].'\';" class="icon-minicart-del" title="删除">删除</a-->
+				</div>
+			</li>';
+	      }
+		  $srt.='</ul></div><div class="minicart-pro-settleup" id="minicart-pro-settleup">
+				 <p>共<em id="micro-cart-total">'.$num.'</em>件商品，金额合计<b id="micro-cart-totalPrice">&yen;&nbsp;'.$price.'</b></p>
+					<a class="button-minicart-settleup" href="flow.php?step=checkout">去结算</a></div>';
+		  
+   }else{
+   
+  	 	$srt='<div class="minicart-pro-empty" id="minicart-pro-empty">
+							<span class="icon-minicart">您的购物车是空的，赶紧选购吧！</span>
+						</div>';
+	}					
+	
+	
+	
+	 $sql = 'SELECT SUM(goods_number) AS number, SUM(goods_price * goods_number) AS amount' .
+           ' FROM ' . $GLOBALS['ecs']->table('cart') .
+           " WHERE session_id = '" . SESS_ID . "' AND rec_type = '" . CART_GENERAL_GOODS . "'";
+    $row = $GLOBALS['db']->GetRow($sql);
 
-    return '<a href="flow.php" title="' . $GLOBALS['_LANG']['view_cart'] . '">' . $str . '</a>';
+    if ($row)
+    {
+        $number = intval($row['number']);
+        $amount = floatval($row['amount']);
+    }
+    else
+    {
+        $number = 0;
+        $amount = 0;
+    }
+
+    	$GLOBALS['smarty']->assign('cat_str',$number);
+		
+		
+ 	return $srt;
 }
 
 /**

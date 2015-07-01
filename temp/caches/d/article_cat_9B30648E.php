@@ -1,11 +1,11 @@
-<?php exit;?>a:3:{s:8:"template";a:13:{i:0;s:60:"E:/code/workspace/php/lantuo/themes/default/auction_list.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:63:"E:/code/workspace/php/lantuo/themes/default/library/ur_here.lbi";i:3;s:60:"E:/code/workspace/php/lantuo/themes/default/library/cart.lbi";i:4;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:5;s:69:"E:/code/workspace/php/lantuo/themes/default/library/goods_related.lbi";i:6;s:70:"E:/code/workspace/php/lantuo/themes/default/library/goods_fittings.lbi";i:7;s:69:"E:/code/workspace/php/lantuo/themes/default/library/goods_article.lbi";i:8;s:72:"E:/code/workspace/php/lantuo/themes/default/library/goods_attrlinked.lbi";i:9;s:63:"E:/code/workspace/php/lantuo/themes/default/library/history.lbi";i:10;s:61:"E:/code/workspace/php/lantuo/themes/default/library/pages.lbi";i:11;s:60:"E:/code/workspace/php/lantuo/themes/default/library/help.lbi";i:12;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1433238644;s:8:"maketime";i:1433235044;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:11:{i:0;s:59:"E:/code/workspace/php/lantuo/themes/default/article_cat.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:63:"E:/code/workspace/php/lantuo/themes/default/library/ur_here.lbi";i:3;s:60:"E:/code/workspace/php/lantuo/themes/default/library/cart.lbi";i:4;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:5;s:67:"E:/code/workspace/php/lantuo/themes/default/library/filter_attr.lbi";i:6;s:67:"E:/code/workspace/php/lantuo/themes/default/library/price_grade.lbi";i:7;s:63:"E:/code/workspace/php/lantuo/themes/default/library/history.lbi";i:8;s:61:"E:/code/workspace/php/lantuo/themes/default/library/pages.lbi";i:9;s:60:"E:/code/workspace/php/lantuo/themes/default/library/help.lbi";i:10;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1435633242;s:8:"maketime";i:1435629642;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" content="ECSHOP v2.7.3" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
-<title>拍卖活动_ECSHOP演示站 - Powered by ECShop</title>
+<title>新手上路 _网店帮助分类_系统分类_ECSHOP演示站 - Powered by ECShop</title>
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="themes/default/style.css" rel="stylesheet" type="text/css" />
@@ -36,14 +36,14 @@ var process_request = "正在处理您的请求...";
 </div>
 <div  class="blank"></div>
 <div id="mainNav" class="clearfix">
-  <a href="index.php">首页<span></span></a>
+  <a href="index.php" class="cur">首页<span></span></a>
     <a href="category.php?id=3"  >GSM手机<span></span></a>
    <a href="category.php?id=5"  >双模手机<span></span></a>
    <a href="category.php?id=6"  >手机配件<span></span></a>
    <a href="group_buy.php"  >团购商品<span></span></a>
    <a href="activity.php"  >优惠活动<span></span></a>
    <a href="snatch.php"  >夺宝奇兵<span></span></a>
-   <a href="auction.php"   class="cur">拍卖活动<span></span></a>
+   <a href="auction.php"  >拍卖活动<span></span></a>
    <a href="exchange.php"  >积分商城<span></span></a>
    <a href="message.php"  >留言板<span></span></a>
    <a href="http://bbs.ecshop.com/" target="_blank"  >EC论坛<span></span></a>
@@ -78,19 +78,57 @@ var process_request = "正在处理您的请求...";
    <a href="search.php?act=advanced_search">高级搜索</a>
    </form>
 </div>
+<div class="header">
+		<div class="layout">
+			<ul class="fr">
+				<li>
+										554fcae493e564ee0dc75bdf2ebf94camember_info|a:1:{s:4:"name";s:11:"member_info";}554fcae493e564ee0dc75bdf2ebf94ca				</li>
+				<li>
+					<a href="">我的交易单</a>
+				</li>
+				<li>
+					<a href=""><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
+				</li>
+				<li>
+					<a href="">我的关注</a>
+				</li>
+				<li>
+					<a href="">我要吐槽<span class="down_arrow"></span></a>
+				</li>
+				<li class="last_li">
+					<a href="">网站导航</a>
+					<a href=""><span class="wx_icon"></span></a>
+					<a href=""><span class="sina_icon"></span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="layout">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li class="active"><a href="index.html">首页</a></li>
+				<li><a href="index.html">租赁</a></li>
+				<li><a href="index.html">评测</a></li>
+				<li><a href="index.html">数据库</a></li>
+				<li><a href="index.html">维修</a></li>
+				<li class="input"><input placeholder="查询顺丰订单号"/><span class="search">搜索</span></li>
+			</ul>
+		</div>
+	</div>
 <div class="block box">
  <div id="ur_here">
-  当前位置: <a href=".">首页</a> <code>&gt;</code> <a href="auction.php">拍卖活动</a> </div>
+  当前位置: <a href=".">首页</a> <code>&gt;</code> <a href="article_cat.php?id=1">系统分类</a> <code>&gt;</code> <a href="article_cat.php?id=3">网店帮助分类</a> <code>&gt;</code> <a href="article_cat.php?id=5">新手上路 </a> </div>
 </div>
 <div class="blank"></div>
 <div class="block clearfix">
   
   <div class="AreaL">
     
-    <div class="cart" id="ECS_CARTINFO">
+<div class="cart" id="ECS_CARTINFO">
  554fcae493e564ee0dc75bdf2ebf94cacart_info|a:1:{s:4:"name";s:9:"cart_info";}554fcae493e564ee0dc75bdf2ebf94ca</div>
 <div class="blank5"></div>
-    <div class="box">
+<div class="box">
  <div class="box_1">
   <div id="category_tree">
          <dl>
@@ -121,9 +159,7 @@ var process_request = "正在处理您的请求...";
  </div>
 </div>
 <div class="blank5"></div>
-                    
-    
-    
+  
     
     <div class="box" id='history_div'>
  <div class="box_1">
@@ -154,24 +190,48 @@ document.getElementById('history_list').innerHTML = '您已清空最近浏览过
   
   
   <div class="AreaR">
-	 
-   
-   <div class="blank5"></div>
    <div class="box">
    <div class="box_1">
-    <h3><span>拍卖商品</span></h3>
+    <h3><span>文章列表</span></h3>
     <div class="boxCenterList">
-             <span style="margin:2px 10px; font-size:14px; line-height:36px;">当前没有拍卖活动</span>
-          </div>
+          <form action="" name="search_form" method="post" class="article_search">
+        <input name="keywords" type="text" id="requirement" value="" class="inputBg" />
+        <input name="id" type="hidden" value="5" />
+        <input name="cur_url" id="cur_url" type="hidden" value="" />
+        <input type="submit" value="立即搜索" class="bnt_blue_1" />
+      </form>
+      <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+      <tr>
+        <th bgcolor="#ffffff">文章标题</th>
+          <th bgcolor="#ffffff">作者</th>
+          <th bgcolor="#ffffff">添加日期</th>
+        </tr>
+            <tr>
+        <td bgcolor="#ffffff"><a href="article.php?id=11" title="订购方式" class="f6">订购方式</a></td>
+          <td bgcolor="#ffffff">ECSHOP</td>
+          <td bgcolor="#ffffff" align="center">2009-05-18</td>
+        </tr>
+            <tr>
+        <td bgcolor="#ffffff"><a href="article.php?id=10" title="购物流程" class="f6">购物流程</a></td>
+          <td bgcolor="#ffffff">ECSHOP</td>
+          <td bgcolor="#ffffff" align="center">2009-05-18</td>
+        </tr>
+            <tr>
+        <td bgcolor="#ffffff"><a href="article.php?id=9" title="售后流程" class="f6">售后流程</a></td>
+          <td bgcolor="#ffffff">ECSHOP</td>
+          <td bgcolor="#ffffff" align="center">2009-05-18</td>
+        </tr>
+          </table>
+    </div>
    </div>
   </div>
   <div class="blank5"></div>
-  <form name="selectPageForm" action="/auction.php" method="get">
-<div id="pager">
-  总计  个记录，共  页。 <span> <a href="">第一页</a> <a href="">上一页</a> <a href="">下一页</a> <a href="">最末页</a> </span>
-        <select name="page" id="page" onchange="selectPage(this)">
-        </select>
-</div>
+  
+<form name="selectPageForm" action="/article_cat.php" method="get">
+ <div id="pager" class="pagebar">
+  <span class="f_l f6" style="margin-right:10px;">总计 <b>3</b>  个记录</span>
+      
+      </div>
 </form>
 <script type="Text/Javascript" language="JavaScript">
 <!--
@@ -180,7 +240,8 @@ function selectPage(sel)
   sel.form.submit();
 }
 //-->
-</script>  </div>
+</script>
+  </div>  
   
 </div>
 <div class="blank5"></div>
@@ -224,7 +285,7 @@ function selectPage(sel)
     <dd><a href="article.php?id=26" title="投诉与建议 ">投诉与建议</a></dd>
   </dl>
    </div>
-  </div>
+  </div>  
 </div>
 <div class="blank"></div>
 <div class="blank"></div>
@@ -260,8 +321,11 @@ function selectPage(sel)
     554fcae493e564ee0dc75bdf2ebf94caquery_info|a:1:{s:4:"name";s:10:"query_info";}554fcae493e564ee0dc75bdf2ebf94ca<br />
   <a href="http://www.ecshop.com" target="_blank" style=" font-family:Verdana; font-size:11px;">Powered&nbsp;by&nbsp;<strong><span style="color: #3366FF">ECShop</span>&nbsp;<span style="color: #FF9966">v2.7.3</span></strong></a>&nbsp;<a href="http://www.ecshop.com/license.php?product=ecshop_b2c&url=http%3A%2F%2Flantuo.local%2F" target="_blank"
 >&nbsp;&nbsp;Licensed</a><br />
-        <div align="left"  id="rss"><a href="feed.php?type=auction"><img src="themes/default/images/xml_rss2.gif" alt="rss" /></a></div>
+        <div align="left"  id="rss"><a href="feed.php?type=article_cat5"><img src="themes/default/images/xml_rss2.gif" alt="rss" /></a></div>
  </div>
 </div>
 </body>
+<script type="text/javascript">
+document.getElementById('cur_url').value = window.location.href;
+</script>
 </html>

@@ -144,7 +144,7 @@ body {
   </li>
 <?php endif; ?>
 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-  <script language="JavaScript" src="http://api.ecshop.com/menu_ext.php?charset=<?php echo $this->_var['charset']; ?>&lang=<?php echo $this->_var['help_lang']; ?>"></script>
+  
 </ul>
 </div>
 <div id="help-div" style="display:none">
@@ -152,8 +152,7 @@ body {
 <div id="help-content"></div>
 </div>
 </div>
-<?php echo $this->smarty_insert_scripts(array('files'=>'../js/global.js,../js/utils.js,../js/transport.js')); ?>
-<?php echo $this->smarty_insert_scripts(array('files'=>'./js/menu.js')); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'../js/global.js,../js/utils.js,../js/transport.org.js')); ?>
 <script language="JavaScript">
 <!--
 var collapse_all = "<?php echo $this->_var['lang']['collapse_all']; ?>";
@@ -382,7 +381,7 @@ Object.extend(ToggleHanlder ,{
   {
     if (document.getCookie(this.CookieName) != null)
     {
-      this.SourceObject = t_eval ();
+      this.SourceObject = eval("("+ document.getCookie(this.CookieName) +")");
       var items = document.getElementsByTagName('LI');
       for (var i = 0; i < items.length; i++)
       {

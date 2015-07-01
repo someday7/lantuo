@@ -39,6 +39,7 @@ function goods_sort($goods_a, $goods_b)
  */
 function get_categories_tree($cat_id = 0)
 {
+	$cat_id = 0;
     if ($cat_id > 0)
     {
         $sql = 'SELECT parent_id FROM ' . $GLOBALS['ecs']->table('category') . " WHERE cat_id = '$cat_id'";
@@ -182,7 +183,7 @@ function get_top10($cats = '')
  * @return  array
  */
 function get_recommend_goods($type = '', $cats = '')
-{
+{	
     if (!in_array($type, array('best', 'new', 'hot')))
     {
         return array();
@@ -287,7 +288,7 @@ function get_recommend_goods($type = '', $cats = '')
         }
 
         //取出所有符合条件的商品数据，并将结果存入对应的推荐类型数组中
-        $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.shop_price AS org_price, g.promote_price, ' .
+        $sql = 'SELECT g.goods_id, g.goods_name,g.goods_name2, g.goods_name_style, g.market_price, g.shop_price AS org_price, g.promote_price, g.is_new,g.is_best,g.is_hot,' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                 "promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img, RAND() AS rnd " .
                 'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
@@ -313,6 +314,10 @@ function get_recommend_goods($type = '', $cats = '')
 
             $goods[$idx]['id']           = $row['goods_id'];
             $goods[$idx]['name']         = $row['goods_name'];
+			$goods[$idx]['goods_name2']         = $row['goods_name2'];
+			$goods[$idx]['is_new']             = $row['is_new'];
+			$goods[$idx]['is_best']             = $row['is_best'];
+			$goods[$idx]['is_hot']             = $row['is_hot'];
             $goods[$idx]['brief']        = $row['goods_brief'];
             $goods[$idx]['brand_name']   = isset($goods_data['brand'][$row['goods_id']]) ? $goods_data['brand'][$row['goods_id']] : '';
             $goods[$idx]['goods_style_name']   = add_style($row['goods_name'],$row['goods_name_style']);
@@ -417,6 +422,10 @@ function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =
 
     $price_where = ($min > 0) ? " AND g.shop_price >= $min " : '';
     $price_where .= ($max > 0) ? " AND g.shop_price <= $max " : '';
+	
+	
+ 
+
 
     $sql =  'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.shop_price AS org_price, g.promote_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
@@ -446,7 +455,7 @@ function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =
             $sql .= " AND is_promote = 1 AND promote_start_date <= '$time' AND promote_end_date >= '$time'";
             break;
     }
-
+	//$cats = get_children($cats);
     if (!empty($cats))
     {
         $sql .= " AND (" . $cats . " OR " . get_extension_goods($cats) .")";
@@ -943,18 +952,6 @@ function spec_price($spec)
 {
     if (!empty($spec))
     {
-        if(is_array($spec))
-        {
-            foreach($spec as $key=>$val)
-            {
-                $spec[$key]=addslashes($val);
-            }
-        }
-        else
-        {
-            $spec=addslashes($spec);
-        }
-
         $where = db_create_in($spec, 'goods_attr_id');
 
         $sql = 'SELECT SUM(attr_price) AS attr_price FROM ' . $GLOBALS['ecs']->table('goods_attr') . " WHERE $where";

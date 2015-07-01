@@ -103,7 +103,7 @@
 #menu-div li.fix-spacel{width:30px; border-left:none;}
 #menu-div li.fix-spacer{border-right:none;}
 </style>
-<?php echo $this->smarty_insert_scripts(array('files'=>'../js/transport.js')); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'../js/transport.org.js')); ?>
 <script type="text/javascript">
 onload = function()
 {

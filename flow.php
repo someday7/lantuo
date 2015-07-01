@@ -9,8 +9,8 @@
  * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
  * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
- * $Author: douqinghua $
- * $Id: flow.php 17218 2011-01-24 04:10:41Z douqinghua $
+ * $Author: yehuaixiao $
+ * $Id: flow.php 17218 2011-01-24 04:10:41Z yehuaixiao $
  */
 
 define('IN_ECS', true);
@@ -133,13 +133,6 @@ if ($_REQUEST['step'] == 'add_to_cart')
     /* 更新：购物车 */
     else
     {
-        if(!empty($goods->spec))
-        {
-            foreach ($goods->spec as  $key=>$val )
-            {
-                $goods->spec[$key]=intval($val);
-            }
-        }
         // 更新：添加到购物车
         if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent))
         {
@@ -241,7 +234,6 @@ elseif ($_REQUEST['step'] == 'login')
                 }
             }
 
-            $_POST['password']=isset($_POST['password']) ? trim($_POST['password']) : '';
             if ($user->login($_POST['username'], $_POST['password'],isset($_POST['remember'])))
             {
                 update_user_info();  //更新用户信息
@@ -379,19 +371,19 @@ elseif ($_REQUEST['step'] == 'consignee')
          * 保存收货人信息
          */
         $consignee = array(
-            'address_id'    => empty($_POST['address_id']) ? 0  :   intval($_POST['address_id']),
-            'consignee'     => empty($_POST['consignee'])  ? '' :   compile_str(trim($_POST['consignee'])),
-            'country'       => empty($_POST['country'])    ? '' :   intval($_POST['country']),
-            'province'      => empty($_POST['province'])   ? '' :   intval($_POST['province']),
-            'city'          => empty($_POST['city'])       ? '' :   intval($_POST['city']),
-            'district'      => empty($_POST['district'])   ? '' :   intval($_POST['district']),
-            'email'         => empty($_POST['email'])      ? '' :   compile_str($_POST['email']),
-            'address'       => empty($_POST['address'])    ? '' :   compile_str($_POST['address']),
-            'zipcode'       => empty($_POST['zipcode'])    ? '' :   compile_str(make_semiangle(trim($_POST['zipcode']))),
-            'tel'           => empty($_POST['tel'])        ? '' :   compile_str(make_semiangle(trim($_POST['tel']))),
-            'mobile'        => empty($_POST['mobile'])     ? '' :   compile_str(make_semiangle(trim($_POST['mobile']))),
-            'sign_building' => empty($_POST['sign_building']) ? '' :compile_str($_POST['sign_building']),
-            'best_time'     => empty($_POST['best_time'])  ? '' :   compile_str($_POST['best_time']),
+            'address_id'    => empty($_POST['address_id']) ? 0  : intval($_POST['address_id']),
+            'consignee'     => empty($_POST['consignee'])  ? '' : trim($_POST['consignee']),
+            'country'       => empty($_POST['country'])    ? '' : $_POST['country'],
+            'province'      => empty($_POST['province'])   ? '' : $_POST['province'],
+            'city'          => empty($_POST['city'])       ? '' : $_POST['city'],
+            'district'      => empty($_POST['district'])   ? '' : $_POST['district'],
+            'email'         => empty($_POST['email'])      ? '' : $_POST['email'],
+            'address'       => empty($_POST['address'])    ? '' : $_POST['address'],
+            'zipcode'       => empty($_POST['zipcode'])    ? '' : make_semiangle(trim($_POST['zipcode'])),
+            'tel'           => empty($_POST['tel'])        ? '' : make_semiangle(trim($_POST['tel'])),
+            'mobile'        => empty($_POST['mobile'])     ? '' : make_semiangle(trim($_POST['mobile'])),
+            'sign_building' => empty($_POST['sign_building']) ? '' : $_POST['sign_building'],
+            'best_time'     => empty($_POST['best_time'])  ? '' : $_POST['best_time'],
         );
 
         if ($_SESSION['user_id'] > 0)
@@ -1372,11 +1364,11 @@ elseif ($_REQUEST['step'] == 'done')
     }
 
     $_POST['how_oos'] = isset($_POST['how_oos']) ? intval($_POST['how_oos']) : 0;
-    $_POST['card_message'] = isset($_POST['card_message']) ? compile_str($_POST['card_message']) : '';
-    $_POST['inv_type'] = !empty($_POST['inv_type']) ? compile_str($_POST['inv_type']) : '';
-    $_POST['inv_payee'] = isset($_POST['inv_payee']) ? compile_str($_POST['inv_payee']) : '';
-    $_POST['inv_content'] = isset($_POST['inv_content']) ? compile_str($_POST['inv_content']) : '';
-    $_POST['postscript'] = isset($_POST['postscript']) ? compile_str($_POST['postscript']) : '';
+    $_POST['card_message'] = isset($_POST['card_message']) ? htmlspecialchars($_POST['card_message']) : '';
+    $_POST['inv_type'] = !empty($_POST['inv_type']) ? htmlspecialchars($_POST['inv_type']) : '';
+    $_POST['inv_payee'] = isset($_POST['inv_payee']) ? htmlspecialchars($_POST['inv_payee']) : '';
+    $_POST['inv_content'] = isset($_POST['inv_content']) ? htmlspecialchars($_POST['inv_content']) : '';
+    $_POST['postscript'] = isset($_POST['postscript']) ? htmlspecialchars($_POST['postscript']) : '';
 
     $order = array(
         'shipping_id'     => intval($_POST['shipping']),
@@ -1812,10 +1804,38 @@ elseif ($_REQUEST['step'] == 'update_cart')
     {
         flow_update_cart($_POST['goods_number']);
     }
-
-    show_message($_LANG['update_cart_notice'], $_LANG['back_to_cart'], 'flow.php');
+	ecs_header("Location: flow.php\n");
+  //  show_message($_LANG['update_cart_notice'], $_LANG['back_to_cart'], 'flow.php');
     exit;
 }
+
+elseif ($_REQUEST['step'] == 'ajax_update_cart')
+{
+   include_once('includes/cls_json.php');
+    $result = array('error' => '', 'content' => '', 'fanliy_number' => '0', 'rec_id' => '');
+	 $json = new JSON();
+	 /* AJAX修改购物车 */
+	 $rec_id   = $_REQUEST['rec_id']; //购物车ID
+	 $goods_number   = $_REQUEST['goods_number'];//
+	 
+	   
+	 /* 判断库存 */
+	 $num = $db -> getOne("select g.goods_number from ".$ecs->table('goods')." g ,".$ecs->table('cart')." c where c.rec_id = '$rec_id' and g.goods_id = c.goods_id ");
+	 if($goods_number > $num){
+	  $goods_number = $num;
+	  $result['error']  = 1;
+	  $result['fanliy_number']= $num;
+	  $result['rec_id']       = $rec_id;
+	  $result['content']  = '该商品库存不足'.$goods_number." 件,只有".$num."件";
+	  die($json->encode($result));
+	 }
+
+	 /* 修改商品购物车 */
+	 $sql = "update ".$ecs->table('cart')." set goods_number = '".$goods_number."' where rec_id = '".$rec_id."' and session_id = '" . SESS_ID . "' ";
+	 $db -> query($sql);
+     exit;
+}
+
 
 /*------------------------------------------------------ */
 //-- 删除购物车中的商品
@@ -2191,7 +2211,7 @@ function flow_update_cart($arr)
     foreach ($arr AS $key => $val)
     {
         $val = intval(make_semiangle($val));
-        if ($val <= 0 || !is_numeric($key))
+        if ($val <= 0 && !is_numeric($key))
         {
             continue;
         }
@@ -2325,7 +2345,7 @@ function flow_cart_stock($arr)
     foreach ($arr AS $key => $val)
     {
         $val = intval(make_semiangle($val));
-        if ($val <= 0 || !is_numeric($key))
+        if ($val <= 0)
         {
             continue;
         }

@@ -445,7 +445,7 @@ function category_get_goods($children, $brand, $min, $max, $ext, $size, $page, $
     }
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name2, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
@@ -501,6 +501,10 @@ function category_get_goods($children, $brand, $min, $max, $ext, $size, $page, $
             $arr[$row['goods_id']]['goods_name']       = $row['goods_name'];
         }
         $arr[$row['goods_id']]['name']             = $row['goods_name'];
+		 $arr[$row['goods_id']]['goods_name2']             = $row['goods_name2'];
+		 $arr[$row['goods_id']]['is_new']             = $row['is_new'];
+		 $arr[$row['goods_id']]['is_best']             = $row['is_best'];
+		 $arr[$row['goods_id']]['is_hot']             = $row['is_hot'];
         $arr[$row['goods_id']]['goods_brief']      = $row['goods_brief'];
         $arr[$row['goods_id']]['goods_style_name'] = add_style($row['goods_name'],$row['goods_name_style']);
         $arr[$row['goods_id']]['market_price']     = price_format($row['market_price']);

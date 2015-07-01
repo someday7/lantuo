@@ -13,9 +13,31 @@ var alertedSurplus   = false;
 var groupBuyShipping = null;
 var groupBuyPayment  = null;
 
-/* *
+
+ 
+ 
+function submit_update_cart(rec_id){
+	 var goods_number = document.getElementById("goods_number_"+rec_id).value;
+	 Ajax.call('flow.php?step=ajax_update_cart', 'goods_number=' + goods_number+'&rec_id='+rec_id, submit_update_cartResponse_cart, 'GET', 'JSON');
+ }
+ 
+ 
+function submit_update_cartResponse_cart(result){
+    
+ if(result.error == '1'){
+  document.getElementById("goods_number_"+result.rec_id).value = result.fanliy_number;
+  alert(result.content)
+ }else{
+  var layer = document.getElementById("xianshi_price");
+       
+  layer.innerHTML = (typeof result == "object") ? result.content : result;
+ }
+ }
+ 
+ /* *
  * 改变配送方式
  */
+ 
 function selectShipping(obj)
 {
   if (selectedShipping == obj)

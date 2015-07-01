@@ -574,10 +574,9 @@ if ($_REQUEST['act'] == 'install')
 
 if ($_REQUEST['act'] == 'backup')
 {
-    check_authz_json('backup_setting');
     include_once('includes/cls_phpzip.php');
-    $tpl= $_CFG['template'];
-    //$tpl = trim($_REQUEST['tpl_name']);
+
+    $tpl = trim($_REQUEST['tpl_name']);
 
     $filename = '../temp/backup/' . $tpl . '_' . date('Ymd') . '.zip';
 
@@ -637,7 +636,6 @@ if ($_REQUEST['act'] == 'update_library')
 /*------------------------------------------------------ */
 if ($_REQUEST['act'] == 'restore_library')
 {
-    admin_priv('backup_setting');
     $lib_name   = trim($_GET['lib']);
     $lib_file   = '../themes/' . $_CFG['template'] . '/library/' . $lib_name . '.lbi';
     $lib_file   = str_replace("0xa", '', $lib_file); // 过滤 0xa 非法字符

@@ -20,7 +20,7 @@ if (!defined('IN_ECS'))
 
 define('ECS_ADMIN', true);
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+error_reporting(E_ALL);
 
 if (__FILE__ == '')
 {
@@ -323,8 +323,6 @@ if ((!isset($_SESSION['admin_id']) || intval($_SESSION['admin_id']) <= 0) &&
     }
 }
 
-$smarty->assign('token', $_CFG['token']);
-
 if ($_REQUEST['act'] != 'login' && $_REQUEST['act'] != 'signin' &&
     $_REQUEST['act'] != 'forget_pwd' && $_REQUEST['act'] != 'reset_pwd' && $_REQUEST['act'] != 'check_order')
 {
@@ -362,11 +360,11 @@ header('Pragma: no-cache');
 
 if ((DEBUG_MODE & 1) == 1)
 {
-    error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+    error_reporting(E_ALL);
 }
 else
 {
-    error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+    error_reporting(E_ALL ^ E_NOTICE);
 }
 if ((DEBUG_MODE & 4) == 4)
 {

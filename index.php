@@ -88,11 +88,12 @@ if ($act == 'cat_rec')
     $result['content'] = $smarty->fetch('library/recommend_' . $rec_array[$rec_type] . '.lbi');
     die($json->encode($result));
 }
-
+$smarty->assign('index',       'index'); 
 /*------------------------------------------------------ */
 //-- 判断是否存在缓存，如果存在则调用缓存，反之读取相应内容
 /*------------------------------------------------------ */
 /* 缓存编号 */
+
 $cache_id = sprintf('%X', crc32($_SESSION['user_rank'] . '-' . $_CFG['lang']));
 
 if (!$smarty->is_cached('index.dwt', $cache_id))
@@ -114,9 +115,23 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('helps',           get_shop_help());       // 网店帮助
     $smarty->assign('top_goods',       get_top10());           // 销售排行
 
+
+
+	$smarty->assign('hot_goods_1',      get_cat_goods(1,7));    // 推荐商品
+	$smarty->assign('hot_goods_2',      get_cat_goods(1,7));    // 推荐商品
+	$smarty->assign('hot_goods_3',      get_cat_goods(1,7));    // 推荐商品
+	$smarty->assign('hot_goods_4',      get_cat_goods(1,23));    // 推荐商品
+	
+	$smarty->assign('cate1',      get_child_tree(1)); // 分类树
+	$smarty->assign('cate2',      get_child_tree(1)); // 分类树
+	$smarty->assign('cate3',      get_child_tree(1)); // 分类树
+	$smarty->assign('cate4',      get_child_tree(1)); // 分类树
+	
+	
+	
     $smarty->assign('best_goods',      get_recommend_goods('best'));    // 推荐商品
     $smarty->assign('new_goods',       get_recommend_goods('new'));     // 最新商品
-    $smarty->assign('hot_goods',       get_recommend_goods('hot'));     // 热点文章
+    $smarty->assign('hot_goods',       get_recommend_goods('hot'),4);     // 热点文章
     $smarty->assign('promotion_goods', get_promote_goods()); // 特价商品
     $smarty->assign('brand_list',      get_brands());
     $smarty->assign('promotion_info',  get_promotion_info()); // 增加一个动态显示所有促销信息的标签栏
@@ -355,6 +370,138 @@ function index_get_links()
     }
 
     return $links;
+}
+
+
+function get_flash_xml()
+{
+    $flashdb = array();
+    if (file_exists(ROOT_PATH . DATA_DIR . '/flash_data.xml'))
+    {
+
+        // 兼容v2.7.0及以前版本
+        if (!preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"\ssort="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER))
+        {
+            preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER);
+        }
+
+        if (!empty($t))
+        {
+            foreach ($t as $key => $val)
+            {
+                $val[4] = isset($val[4]) ? $val[4] : 0;
+                $flashdb[] = array('src'=>$val[1],'url'=>$val[2],'text'=>$val[3],'sort'=>$val[4]);
+            }
+        }
+    }
+    return $flashdb;
+}
+
+
+/**
+ * 获得分类下的商品
+ *
+ * @access  public
+ * @param   string  $children
+ * @return  array
+ */
+function get_cat_goods($cat = '', $size=0, $brand = 0, $min = 0, $max = 0, $ext = '', $sort='', $order='')
+{
+	$children=get_children($cat);
+    $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND ".
+            "g.is_delete = 0 AND ($children OR " . get_extension_goods($children) . ')';
+
+    if ($brand > 0)
+    {
+        $where .=  "AND g.brand_id=$brand ";
+    }
+
+    if ($min > 0)
+    {
+        $where .= " AND g.shop_price >= $min ";
+    }
+
+    if ($max > 0)
+    {
+        $where .= " AND g.shop_price <= $max ";
+    }
+
+    /* 获得商品列表 */
+    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name2, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+                "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
+                'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
+            'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
+            'LEFT JOIN ' . $GLOBALS['ecs']->table('member_price') . ' AS mp ' .
+                "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
+            "WHERE $where $ext ORDER BY $sort $order g.sort_order, g.last_update DESC";
+			
+    $res = $GLOBALS['db']->selectLimit($sql, $size);
+
+
+    $arr = array();
+    while ($row = $GLOBALS['db']->fetchRow($res))
+    {
+        if ($row['promote_price'] > 0)
+        {
+            $promote_price = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);
+        }
+        else
+        {
+            $promote_price = 0;
+        }
+
+        /* 处理商品水印图片 */
+        $watermark_img = '';
+
+        if ($promote_price != 0)
+        {
+            $watermark_img = "watermark_promote_small";
+        }
+        elseif ($row['is_new'] != 0)
+        {
+            $watermark_img = "watermark_new_small";
+        }
+        elseif ($row['is_best'] != 0)
+        {
+            $watermark_img = "watermark_best_small";
+        }
+        elseif ($row['is_hot'] != 0)
+        {
+            $watermark_img = 'watermark_hot_small';
+        }
+
+        if ($watermark_img != '')
+        {
+            $arr[$row['goods_id']]['watermark_img'] =  $watermark_img;
+        }
+
+        $arr[$row['goods_id']]['id']         = $row['goods_id'];
+        $arr[$row['goods_id']]['name']       = $row['goods_name'];
+		
+		$arr[$row['goods_id']]['com_count']       = 0;
+		
+        $arr[$row['goods_id']]['brief']      = $row['goods_brief'];
+		$arr[$row['goods_id']]['goods_name2']      = $row['goods_name2'];
+		 $arr[$row['goods_id']]['is_new']             = $row['is_new'];
+		 $arr[$row['goods_id']]['is_best']             = $row['is_best'];
+		 $arr[$row['goods_id']]['is_hot']             = $row['is_hot'];
+        $arr[$row['goods_id']]['style_name'] = add_style($row['goods_name'],$row['goods_name_style']);
+        $arr[$row['goods_id']]['market_price']     = price_format($row['market_price']);
+        $arr[$row['goods_id']]['shop_price']       = price_format($row['shop_price']);
+        $arr[$row['goods_id']]['type']             = $row['goods_type'];
+        $arr[$row['goods_id']]['promote_price']    = ($promote_price > 0) ? price_format($promote_price) : '';
+        $arr[$row['goods_id']]['thumb']      = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+		
+		$arr[$row['goods_id']]['goods_img']      = get_image_path($row['goods_id'], $row['goods_img'], true);
+		
+        $arr[$row['goods_id']]['img']        = get_image_path($row['goods_id'], $row['goods_img']);
+        $arr[$row['goods_id']]['url']              = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
+		$arr[$row['goods_id']]['short_name'] = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+		$arr[$row['goods_id']]['short_style_name'] = add_style($arr[$row['goods_id']]['short_name'],$row['goods_name_style']);
+
+    }
+
+    return $arr;
 }
 
 ?>

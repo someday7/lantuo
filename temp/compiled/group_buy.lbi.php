@@ -4,13 +4,13 @@
   <h3><span><?php echo $this->_var['lang']['group_buy_goods']; ?></span><a href="group_buy.php"><img src="themes/default/images/more.gif"></a></h3>
     <div class="centerPadd">
     <div class="clearfix goodsBox" style="border:none;">
-      <?php $_from = $this->_var['group_buy_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_14955500_1435550127');if (count($_from)):
-    foreach ($_from AS $this->_var['goods_0_14955500_1435550127']):
+      <?php $_from = $this->_var['group_buy_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_70067100_1435738268');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_0_70067100_1435738268']):
 ?>
       <div class="goodsItem">
-           <a href="<?php echo $this->_var['goods_0_14955500_1435550127']['url']; ?>"><img src="<?php echo $this->_var['goods_0_14955500_1435550127']['thumb']; ?>" alt="<?php echo htmlspecialchars($this->_var['goods_0_14955500_1435550127']['goods_name']); ?>" class="goodsimg" /></a><br />
-					 <p><a href="<?php echo $this->_var['goods_0_14955500_1435550127']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['goods_0_14955500_1435550127']['goods_name']); ?>"><?php echo htmlspecialchars($this->_var['goods_0_14955500_1435550127']['short_style_name']); ?></a></p>
-           <font class="shop_s"><?php echo $this->_var['goods_0_14955500_1435550127']['last_price']; ?></font>
+           <a href="<?php echo $this->_var['goods_0_70067100_1435738268']['url']; ?>"><img src="<?php echo $this->_var['goods_0_70067100_1435738268']['thumb']; ?>" alt="<?php echo htmlspecialchars($this->_var['goods_0_70067100_1435738268']['goods_name']); ?>" class="goodsimg" /></a><br />
+					 <p><a href="<?php echo $this->_var['goods_0_70067100_1435738268']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['goods_0_70067100_1435738268']['goods_name']); ?>"><?php echo htmlspecialchars($this->_var['goods_0_70067100_1435738268']['short_style_name']); ?></a></p>
+           <font class="shop_s"><?php echo $this->_var['goods_0_70067100_1435738268']['last_price']; ?></font>
         </div>
       <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
     </div>

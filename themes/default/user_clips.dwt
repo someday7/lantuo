@@ -10,19 +10,34 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
 {* 包含脚本文件 *}
 {insert_scripts files='transport.js,common.js,user.js'}
 </head>
-<body>
+<body class="wide">
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<!--当前位置 start-->
-<div class="block box">
- <div id="ur_here">
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
- </div>
+  <div class="naver-main">
+	<div class="layout">
+		<!-- 20140823-分类-start -->
+		<div class="category category-index" id="category-block">
+		
+ 	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		</div>
+	</div>
 </div>
-<!--当前位置 end-->
-<div class="blank"></div>
+
+<div class="hr-10"></div>
+<div class="g">
+    <!--面包屑 -->
+<div class="breadcrumb-area fcn">
+ 
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+
+</div>
+<div class="hr-10"></div><div class="layout">
+
+ 
 <div class="block clearfix">
   <!--left start-->
   <div class="AreaL">

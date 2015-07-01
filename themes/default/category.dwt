@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="{$keywords}" />
@@ -9,190 +9,209 @@
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
-<!-- {if $cat_style} -->
-<link href="{$cat_style}" rel="stylesheet" type="text/css" />
-<!-- {/if} -->
-{* 包含脚本文件 *}
-{insert_scripts files='common.js,global.js,compare.js'}
+<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
+ 
 </head>
-<body>
+<body class="wide">
+
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<!--当前位置 start-->
-<div class="block box">
- <div id="ur_here">
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
- </div>
-</div>
-<!--当前位置 end-->
-<div class="blank"></div>
-<div class="block clearfix">
-  <!--left start-->
-  <div class="AreaL">
-    <!-- TemplateBeginEditable name="左边区域" -->
-<!-- #BeginLibraryItem "/library/cart.lbi" -->
-
-{insert_scripts files='transport.js'}
-<div class="cart" id="ECS_CARTINFO">
- {insert name='cart_info'}
-</div>
-<div class="blank5"></div>
-
- <!-- #EndLibraryItem -->
-<!-- #BeginLibraryItem "/library/category_tree.lbi" -->
-
-<div class="box">
- <div class="box_1">
-  <div id="category_tree">
-    <!--{foreach from=$categories item=cat}-->
-     <dl>
-     <dt><a href="{$cat.url}">{$cat.name|escape:html}</a></dt>
-     <!--{foreach from=$cat.children item=child}-->
-     <dd><a href="{$child.url}">{$child.name|escape:html}</a></dd>
-     <!--{/foreach}-->
-     </dl>
-    <!--{/foreach}--> 
-  </div>
- </div>
-</div>
-<div class="blank5"></div>
-
- <!-- #EndLibraryItem -->
- <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->
-<!-- TemplateBeginEditable name="左边广告区域（宽200px）" -->
-<!-- TemplateEndEditable -->
-    <!--AD end-->
-  </div>
-  <!--left end-->
-  <!--right start-->
-  <div class="AreaR">
-	 <!--组合搜索 开始-->
-	  <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->
-	  <div class="box">
-		 <div class="box_1">
-			<h3><span>{$lang.goods_filter}</span></h3>
-			<!--{if $brands.1}-->
-			<div class="screeBox">
-			  <strong>{$lang.brand}：</strong>
-				<!--{foreach from=$brands item=brand}-->
-					<!-- {if $brand.selected} -->
-					<span>{$brand.brand_name}</span>
-					<!-- {else} -->
-					<a href="{$brand.url}">{$brand.brand_name}</a>&nbsp;
-					<!-- {/if} -->
-				<!--{/foreach}-->
-			</div>
-			<!--{/if}-->
-			<!--{if $price_grade.1}-->
-			<div class="screeBox">
-			<strong>{$lang.price}：</strong>
-			<!--{foreach from=$price_grade item=grade}-->
-				<!-- {if $grade.selected} -->
-				<span>{$grade.price_range}</span>
-				<!-- {else} -->
-				<a href="{$grade.url}">{$grade.price_range}</a>&nbsp;
-				<!-- {/if} -->
-			<!--{/foreach}-->
-			</div>
-			<!--{/if}-->
-			<!--{foreach from=$filter_attr_list item=filter_attr}-->
-      <div class="screeBox">
-			<strong>{$filter_attr.filter_attr_name|escape:html} :</strong>
-			<!--{foreach from=$filter_attr.attr_list item=attr}-->
-				<!-- {if $attr.selected} -->
-				<span>{$attr.attr_value}</span>
-				<!-- {else} -->
-				<a href="{$attr.url}">{$attr.attr_value}</a>&nbsp;
-				<!-- {/if} -->
-			<!--{/foreach}-->
-			</div>
-      <!--{/foreach}-->
-		 </div>
+ <div class="naver-main">
+	<div class="layout">
+		<!-- 20140823-分类-start -->
+		<div class="category category-index" id="category-block">
+		<!-- 20140823-分类-start -->
+ 	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		
+	 
 		</div>
-		<div class="blank5"></div>
-	  <!-- {/if} -->
+	</div>
+</div>
+<script>
+(function () {
+	//所有分类显示隐藏控制
+	var isIndex =  false,
+		categoryBlock = gid('category-block');
+		
+	if(isIndex) return;
+	
+	$("#category-block").hover(function(){
+		$(this).addClass("category-hover");
+	},function(){
+		$(this).removeClass("category-hover");
+	});
+	
+	/*categoryBlock.onmouseover = function () {
+		categoryBlock.className = 'category category-hover';
+	};
+	categoryBlock.onmouseout = function () {
+		categoryBlock.className = 'category';
+	};*/
+	
+}());
+
+/**
+*功能：给鼠标移动到category-list li上面的时候，记得给他多添加一个hover类样式
+*目的是兼容ie6,以及调整二级分类的弹出框的位置。
+
+*/
+$(function(){
+	$(".category-item").hover(function(){
+		$(this).addClass("hover");
+		//1.二级分类的top值
+		var childrenTop = $(this).offset().top;
+		//2.一级分类的top值
+		var parentTop = $(".category-list").offset().top;
+		//3.二级分类到一级分类顶部的距离
+		var top = childrenTop - parentTop;
+		//4.二级分类的弹出层的高度
+		var childrenHeight = $(this).find(".category-panels").innerHeight();
+		//5.一级分类容器的总高度
+		var totalHeight = $(".category-list").height();
+		//6.如果二级分类.category-panels的内容高度大于总容量totalHeight,那么.category-panels置顶，然后多余的自动往下延续
+		//如果二级分类childrenHeight内容高度(childrenHeight + top )大于totalHeight,那么.category-panels往上移动childrenHeight + top -totalHeight
+		if((top + childrenHeight) > totalHeight)
+		{
+			if(childrenHeight > totalHeight)
+			{
+				$(this).find(".category-panels").css("top",-top);
+			}else{
+				//上移动
+				var topX = (childrenHeight+top) - totalHeight;
+				$(this).find(".category-panels").css("top",-topX);
+				
+			}
+			
+		}
+		
+	},function(){
+		$(this).removeClass("hover");
+	});
+});
+
+</script>
+
+
+<div class="hr-10"></div>
+<div class="g">
+    <!--面包屑 -->
+<div class="breadcrumb-area fcn">
+ 
+  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+
+</div>
+<div class="hr-10"></div><div class="layout">
+	<!-- 20140726-商品类别-start -->
+	<div class="pro-cate-area">
+		<!-- 20140726-商品类别-属性-start -->
+	 
+			 <!--组合搜索 开始-->
+	  <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->
+	 <!--{if $brands.1}-->
+	 <div class="pro-cate-attr clearfix">
+			<div class="p-title">{$lang.brand}：</div>
+		 
+			
+			<!-- 二级虚拟分类 -->
+			<div class="p-values">
+				<div class="p-operate" style="display: none;">
+					<!-- 追加ClassName： more-expand more-drop -->
+					<a href="javascript:;" onclick="ec.product.more(this)" class="more more-expand">更多<s></s></a>
+				</div>
+				<!-- 一行的高度为30px,显示n行，p-expand的高度为nx30 -->
+				<div class="p-expand">
+					<ul class="clearfix">	
+					
+						<!--{foreach from=$brands item=brand}-->
+					<!-- {if $brand.selected} -->
+				<li>	<span>{$brand.brand_name}</span></li>
+					<!-- {else} -->
+					<li ><a href="{$brand.url}">{$brand.brand_name}</a></li>
+					<!-- {/if} -->
+				<!--{/foreach}-->				
+	                  
+					</ul>
+				</div>
+			</div>
+			
+		</div><!-- 20140726-商品类别-属性-end -->
+	 
+	 
+	 		<!--{/if}-->
+	 
+	 <!--{if $price_grade.1}-->
+	 
+	 <div id="pro-cate-attr-102436" class="pro-cate-attr clearfix">
+			    <div class="p-title">{$lang.price}：</div>
+			   
+				
+			    <div class="p-values">
+					<div class="p-operate" style="display: none;">
+					    <!-- 追加ClassName： more-expand more-drop -->
+					    <a href="javascript:;" onclick="ec.product.more(this)" class="more more-expand">更多<s></s></a>
+				    </div>
+				    <div class="p-expand">
+					    <ul class="clearfix">
+						 	<!--{foreach from=$price_grade item=grade}-->
+				<!-- {if $grade.selected} -->
+				<li><span>{$grade.price_range}</span></li>
+				<!-- {else} -->
+				<li><a href="{$grade.url}">{$grade.price_range}</a></li>
+				<!-- {/if} -->
+			<!--{/foreach}-->
+					    </ul>
+				    </div>
+			    </div>
+		    </div>
+	 
+	 		<!-- {/if} -->
+	 
+	 	<!--{foreach from=$filter_attr_list item=filter_attr}-->
+			 
+		 	<div id="pro-cate-attr-100113" class="pro-cate-attr clearfix">
+			    <div class="p-title">{$filter_attr.filter_attr_name|escape:html} ：</div>
+			     
+				
+			    <div class="p-values">
+					<div class="p-operate" style="display: none;">
+					    <!-- 追加ClassName： more-expand more-drop -->
+					    <a href="javascript:;" onclick="ec.product.more(this)" class="more more-expand">更多<s></s></a>
+				    </div>
+				    <div class="p-expand">
+					    <ul class="clearfix">
+						<!--{foreach from=$filter_attr.attr_list item=attr}-->
+						<!-- {if $attr.selected} -->
+				<li><span>{$attr.attr_value}</span></li>
+				<!-- {else} -->
+			<li><a href="{$attr.url}">{$attr.attr_value}</a></li>
+				<!-- {/if} -->
+			<!--{/foreach}-->
+					 
+					    </ul>
+				    </div>
+			    </div>
+		    </div>
+	
+			    <!--{/foreach}-->
+		 
+				<!-- {/if} -->
+  
 	 <!--组合搜索 结束-->
-   <!-- TemplateBeginEditable name="右边区域" -->
-<!-- #BeginLibraryItem "/library/recommend_best.lbi" -->
+        <!-- 20140726-商品类别-属性-end -->		
+		   <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+		
+		<!-- 20140727-商品列表-end -->
+		<!-- 分页-start -->
+		
+		
+	<div id="list-pager-36" class="pager" style="width: 630px;"><ul>
+	 <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
 
-<!-- {if $best_goods} -->
-<!-- {if $cat_rec_sign neq 1} -->
-<div class="box">
-<div class="box_2 centerPadd">
-  <div class="itemTit" id="itemBest">
-      {if $cat_rec[1]}
-      <h2><a href="javascript:void(0)" onclick="change_tab_style('itemBest', 'h2', this);get_cat_recommend(1, 0);">{$lang.all_goods}</a></h2>
-      {foreach from=$cat_rec[1] item=rec_data}
-      <h2 class="h2bg"><a href="javascript:void(0)" onclick="change_tab_style('itemBest', 'h2', this);get_cat_recommend(1, {$rec_data.cat_id})">{$rec_data.cat_name}</a></h2>
-      {/foreach}
-      {/if}
-  </div>
-  <div id="show_best_area" class="clearfix goodsBox">
-  <!-- {/if} -->
-  <!--{foreach from=$best_goods item=goods}-->
-  <div class="goodsItem">
-         <span class="best"></span>
-           <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
-           <a href="#"><img src="images/bnt_buy.gif" /></a> <a href="#"><img src="images/bnt_coll.gif" /></a>
-           <p><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
-           <font class="f1">
-           <!-- {if $goods.promote_price neq ""} -->
-          {$goods.promote_price}
-          <!-- {else}-->
-          {$goods.shop_price}
-          <!--{/if}-->
-           </font>
-        </div>
-  <!--{/foreach}-->
-  <div class="more"><a href="../search.php?intro=best"><img src="images/more.gif" /></a></div>
-  <!-- {if $cat_rec_sign neq 1} -->
-  </div>
-</div>
-</div>
-<div class="blank5"></div>
-  <!-- {/if} -->
-<!-- {/if} -->
-
- <!-- #EndLibraryItem -->
-  <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
-  <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
-<!-- TemplateEndEditable -->
-
-
-  </div>  
-  <!--right end-->
-</div>
-<div class="blank5"></div>
-<!--帮助-->
-<div class="block">
-  <div class="box">
-   <div class="helpTitBg clearfix">
-    <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem -->
-   </div>
-  </div>  
-</div>
-<div class="blank"></div>
-<!--帮助-->
-<!--友情链接 start-->
-<!--{if $img_links  or $txt_links }-->
-<div id="bottomNav" class="box">
- <div class="box_1">
-  <div class="links clearfix">
-    <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
-    <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
-    <!--结束图片类型的友情链接{/foreach}-->
-    <!-- {if $txt_links} -->
-    <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
-    [<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>] 
-    <!--结束文字类型的友情链接{/foreach}-->
-    <!-- {/if} -->
-  </div>
- </div>
-</div>
-<!--{/if}-->
-<!--友情链接 end-->
-<div class="blank"></div>
+	</ul>
+		<div class="hr-20"></div>
+	</div><!-- 20140726-频道-列表-end -->
+ 	
+ 
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 </body>
 </html>
