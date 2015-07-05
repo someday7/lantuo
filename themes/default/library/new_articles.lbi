@@ -1,33 +1,13 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-	<!-- 新闻公告-start -->
-		<div class="ecnews-area">
-			<div class="h">
-				<div class="h-tab">
-					<ul>
-						<li class="current" id="tab-notice"><a href="article_cat.php?id=8">公告</a></li>
-						<li id="tab-news"><a href="article_cat.php?id=10">新闻</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="b">
-				<ul id="tab-notice-content">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">		
+<div class="tips">
+		<div class="layout ul_msg">
+			<span class="tip_msg_icon"></span>
+				<ul>
 				<!--{foreach from=$new_articles item=article}-->
-  <li>
-	<a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title|truncate:10:"...":true}</a>
-	</li>
-<!--{/foreach}-->
+					<li><a href="{$article.url}">{$article.title|escape:html}</a></li>
+				<!--{/foreach}-->
 				</ul>
-				<ul id="tab-news-content" class="hide">
-	 <!--{foreach from=$new_articles item=article}-->
-  <li>
-	[<a href="{$article.cat_url}">{$article.cat_name}</a>] <a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title|truncate:10:"...":true}</a>
-	</li>
-<!--{/foreach}-->
-				</ul>
-				
-			</div>
-		</div><!-- 新闻公告-end -->
-		
+		</div>
+</div>		
 		
  

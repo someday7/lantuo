@@ -154,7 +154,7 @@ function assign_ur_here($cat = 0, $str = '')
 
     /* 初始化“页面标题”和“当前位置” */
     $page_title = $GLOBALS['_CFG']['shop_title'] . ' - ' . 'Powered by ECShop';
-    $ur_here    = '<a href=".">' . $GLOBALS['_LANG']['home'] . '</a>';
+    $ur_here    = '<a href="."><span class="link-text"><span class="home_icon"></span>' . $GLOBALS['_LANG']['home'] . '</span></a>';
 
     /* 根据文件名分别处理中间的部分 */
     if ($filename != 'index')
@@ -1326,7 +1326,8 @@ function get_tags($goods_id = 0, $user_id = 0)
  */
 function get_dyna_libs($theme, $tmp)
 {
-    $ext = end(explode('.', $tmp));
+	$ext_arr = explode('.', $tmp);
+    $ext = end($ext_arr);
     $tmp = basename($tmp,".$ext");
     $sql = 'SELECT region, library, sort_order, id, number, type' .
             ' FROM ' . $GLOBALS['ecs']->table('template') .

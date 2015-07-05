@@ -59,7 +59,7 @@ function get_categories_tree($cat_id = 0)
     if ($GLOBALS['db']->getOne($sql) || $parent_id == 0)
     {
         /* 获取当前分类及其子分类 */
-        $sql = 'SELECT cat_id,cat_name ,parent_id,is_show ' .
+        $sql = 'SELECT cat_id,cat_name ,parent_id,is_show,cat_desc ' .
                 'FROM ' . $GLOBALS['ecs']->table('category') .
                 "WHERE parent_id = '$parent_id' AND is_show = 1 ORDER BY sort_order ASC, cat_id ASC";
 
@@ -72,6 +72,7 @@ function get_categories_tree($cat_id = 0)
                 $cat_arr[$row['cat_id']]['id']   = $row['cat_id'];
                 $cat_arr[$row['cat_id']]['name'] = $row['cat_name'];
                 $cat_arr[$row['cat_id']]['url']  = build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']);
+                $cat_arr[$row['cat_id']]['desc'] = $row['cat_desc'];
 
                 if (isset($row['cat_id']) != NULL)
                 {
@@ -92,7 +93,7 @@ function get_child_tree($tree_id = 0)
     $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = '$tree_id' AND is_show = 1 ";
     if ($GLOBALS['db']->getOne($sql) || $tree_id == 0)
     {
-        $child_sql = 'SELECT cat_id, cat_name, parent_id, is_show ' .
+        $child_sql = 'SELECT cat_id, cat_name, parent_id, is_show,cat_desc ' .
                 'FROM ' . $GLOBALS['ecs']->table('category') .
                 "WHERE parent_id = '$tree_id' AND is_show = 1 ORDER BY sort_order ASC, cat_id ASC";
         $res = $GLOBALS['db']->getAll($child_sql);
@@ -103,6 +104,7 @@ function get_child_tree($tree_id = 0)
                $three_arr[$row['cat_id']]['id']   = $row['cat_id'];
                $three_arr[$row['cat_id']]['name'] = $row['cat_name'];
                $three_arr[$row['cat_id']]['url']  = build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']);
+               $three_arr[$row['cat_id']]['desc'] = $row['cat_desc'];
 
                if (isset($row['cat_id']) != NULL)
                    {
@@ -288,7 +290,7 @@ function get_recommend_goods($type = '', $cats = '')
         }
 
         //取出所有符合条件的商品数据，并将结果存入对应的推荐类型数组中
-        $sql = 'SELECT g.goods_id, g.goods_name,g.goods_name2, g.goods_name_style, g.market_price, g.shop_price AS org_price, g.promote_price, g.is_new,g.is_best,g.is_hot,' .
+        $sql = 'SELECT g.goods_id, g.cat_id, g.goods_name,g.goods_name2, g.goods_name_style, g.market_price, g.shop_price AS org_price, g.promote_price, g.is_new,g.is_best,g.is_hot,' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                 "promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img, RAND() AS rnd " .
                 'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
@@ -314,6 +316,7 @@ function get_recommend_goods($type = '', $cats = '')
 
             $goods[$idx]['id']           = $row['goods_id'];
             $goods[$idx]['name']         = $row['goods_name'];
+            $goods[$idx]['cat_id']         = $row['cat_id'];
 			$goods[$idx]['goods_name2']         = $row['goods_name2'];
 			$goods[$idx]['is_new']             = $row['is_new'];
 			$goods[$idx]['is_best']             = $row['is_best'];

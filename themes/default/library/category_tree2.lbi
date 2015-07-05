@@ -1,0 +1,37 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">		
+<div class="side_bar">
+	<div class="topbar">
+		返回所有分类
+		<div class="arrow_con"></div>
+	</div>
+	<div>
+		<ul>
+			<!--{foreach from=$categories item=cat}--> 
+			<li class="head">
+				<div class="tit"><span class="caret"></span>{$cat.name|escape:html}</div>
+				<div class="child-p">
+					<!--{foreach from=$cat.cat_id item=child key=key name=child}-->
+					<p onclick="window.location.href='{$child.url}';">{$child.name|escape:html}</p>
+					<!--{/foreach}-->
+				</div>
+			</li>
+			<!--{/foreach}-->
+		</ul>
+	</div>
+</div>			
+<script>
+	$(function() {
+		$("li.head").delegate(".tit", 'click', function() {
+			var This = this;
+			$(this).next().slideToggle("fast", function() {
+				$(This).toggleClass("up");
+			});
+		});
+		$(".checkbox").bind('click', function() {
+			$(this).toggleClass("checked");
+		});
+		$(".hide-me").bind('click',function(){
+			$("#pop-compare").hide();
+		});
+	});
+</script>
