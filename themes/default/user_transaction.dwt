@@ -12,6 +12,7 @@
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,user.js'}
 </head>
