@@ -1,85 +1,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- 			<!-- 20140822-分类-start -->
- <style type="text/css">
-.category .b{display:none}
-.category:hover .b{display:block}
-</style>
-
-			<!-- 20140822-分类-start -->
- 
-	<div class="h">
-		<h2>全部商品</h2>
-		<i class="icon-category"></i>
-	</div>
-	<div class="b" >
-		<ol class="category-list">
-			<!-- 鼠标悬停增加ClassName： hover -->
-			
-			
-			 <!--{foreach from=$categories item=cat}--> 
-		 	<li class="category-item ">
-					<div class="category-info">
-						<h3>
-						<a href="{$cat.url}"><span>{$cat.name|escape:html}</span></a></h3>
-						
-			 <!--{foreach from=$cat.cat_id item=child key=key}-->
-			 {if $child.key lt 2}
-				<a href="{$child.url}"><span>{$child.name|escape:html}</span></a> 
-			  {/if}
-			  <!--{/foreach}--> 
-							
-							 
-					</div>
-						<div class="category-panels">
-							<ul class="subcate-list">
-							
-							 <!--{foreach from=$cat.cat_id item=child name=catchild}-->
- 						 
-							<li class="subcate-item">
-						<a href="{$child.url}"><span>{$child.name|escape:html}</span></a> 
-						 	</li>
-					 	
-     		  	   		 <!--{/foreach}--> 
-										
-								 
-							</ul>
-								<dl class="category-banner">
-									<dt>推荐商品 </dt>
-							 
-							 {insert name='cate_goods' id=$cat.id}
-								</dl>
-						</div>
-						<i class="icon-cate-arrow"></i>
+			<ul class="menu">
+			<!--{foreach from=$categories item=cat}--> 
+				<li>
+					<h3>{$cat.name|escape:html}<span class="tab-icon"></span></h3>
+					<p>{$cat.desc|escape:html}</p>
+					<dl>
+						<dt class="first"><span class="pp_name">{$cat.name|escape:html}</span><span class="pp_text">{$cat.desc|escape:html}</span><a class="fr" href="{$cat.url}">更多<span class="tab-icon"></span></a></dt>
+						<dd>
+						<!--{foreach from=$cat.cat_id item=child key=key name=child}-->
+							{if $smarty.foreach.child.index == 7}
+							</dd><dd>
+							{/if}
+							<a href="{$child.url}"{if $smarty.foreach.child.index == 0 || $smarty.foreach.child.index == 7} class="first_a"{/if}>{$child.name|escape:html}</a>
+						<!--{/foreach}-->
+						</dd>
+					</dl>
 				</li>
-				
-				  <!--{/foreach}-->
-			 
-		
-		</ol>
-	</div>
-</div>
-
-
-
-	<!-- 20130909-导航-start -->
-		<nav class="naver">
-				<ul id="naver-list" style="width:980px;">
-				
-			 <li {if $navigator_list.config.index eq 1} class="index"{/if}><a href="../index.php"{if $navigator_list.config.index eq 1} class="current"{/if}><span>首 页</span></a></li>
-      <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
-	  
-	 
-      <li class="cherry"><a href="{$nav.url}" {if $nav.opennew eq 1}  {/if} {if $nav.active eq 1} class="current"{/if}><span>{$nav.name}	
- 	  {if $nav.opennew eq 1}
-	  <s><img src="images/hot.png" alt="new" /></s>
-	    {/if}
-	  </span> </a></li>
-	
-   <!-- {/foreach} -->
- 
-	  	</ul>
-				
-		 
-
- 
-<!-- 20130909-导航-end --> </nav>
+			<!--{/foreach}-->
+			</ul>
+			

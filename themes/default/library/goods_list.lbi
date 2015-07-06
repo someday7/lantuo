@@ -1,40 +1,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
  <a name='goods_list'></a>
   <form method="GET" class="sort" name="listform">
- 
-
 <!-- 20140726-商品类别-排序-start -->
-		<div class="pro-cate-sort clearfix">
-			<div class="p-title">排序：</div>
-			<!--div class="p-default">
-				<ul>
-					<li id="sort-default"><a href="javascript:;" onclick="ec.product.sort('default')">默认</a></li>
-				</ul>
-			</div-->
-			<div class="p-values">
-				<div class="p-expand">					
-					<ul class="clearfix">
-					    <!-- 升序选择（从低到高）： sort-asc selected   降序选择（从高到低）： sort-desc selected -->
-					<li id="sort-registterTime">	  <a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/goods_id_<!-- {if $pager.sort == 'goods_id'} -->{$pager.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.goods_id}"></a></li>
-<li id="sort-price">  <a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list"><img src="images/shop_price_<!-- {if $pager.sort == 'shop_price'} -->{$pager.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.shop_price}"></a></li>
- <li id="sort-registterTime"> <a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/last_update_<!-- {if $pager.sort == 'last_update'} -->{$pager.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.last_update}"></a></li>
-  
-  
-				 
-					</ul>
-				</div>
-			</div>
+		<div class="sort-nav">
+			<ul>
+				<li><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/goods_id_<!-- {if $pager.sort == 'goods_id'} -->{$pager.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.goods_id}"></a></li>
+				<li><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list"><img src="images/shop_price_<!-- {if $pager.sort == 'shop_price'} -->{$pager.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.shop_price}"></a></li>
+				<li><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><img src="images/last_update_<!-- {if $pager.sort == 'last_update'} -->{$pager.order}<!-- {else} -->default<!-- {/if} -->.gif" alt="{$lang.sort.last_update}"></a></li>
+				
+			</ul>
 		</div><!-- 20140726-商品类别-排序-end -->
-		
- 
-		
-	</div><!-- 20140726-商品类别-end -->
-	<div class="hr-20"></div>
-</div>				
 
-
-	
-	
   <input type="hidden" name="category" value="{$category}" />
   <input type="hidden" name="display" value="{$pager.display}" id="display" />
   <input type="hidden" name="brand" value="{$brand_id}" />
@@ -51,48 +27,27 @@
     <!-- {if $category > 0} -->
   <form name="compareForm" action="compare.php" method="post" onSubmit="return compareGoods(this);">
     <!-- {/if} -->
- 
 	
- 
- 
-
 	<!-- 20140726-频道-列表-start -->
-    <div class="channel-list">
+    <div class="zulin-list">
         <!-- 20140727-商品列表-start -->
-		<div class="pro-list clearfix">
-			<ul>
-			
+		<ul>
 			 <!--{foreach from=$goods_list item=goods}-->
     <!-- {if $goods.goods_id} -->
-             <li>
-					<div class="pro-panels">
-						<p class="p-img">
-			  <a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" width="218" height="218" /></a>
- 						<p class="p-name">
- 						<a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.goods_name}&nbsp;<span class="red">{$goods.goods_name2}</span></a>
-						</p>
-						<p class="p-price"><b> <!--{if $goods.promote_price neq "" } -->
-            {$goods.promote_price}
-            <!--{else}-->
-           {$goods.shop_price}
-            <!--{/if}--></b></p>
-						<div class="p-button clearfix">
-							<table colspan="0" border="0" rowspan="0">
-								<tbody>
-									<tr>
-										<td><a href="{$goods.url}"  class="p-button-an"><span>立即购买</span></a></td>
-									   <td><label class="p-button-score"><span>117人评价</span></label></a></td> 
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						{if $goods.is_best}
-						<s class="p-tag"><img src="images/1382593860805.png"/></s>
-						{elseif $goods.is_new}
-						<s class="p-tag"><img src="images/1382542518162.png"/></s>
-						{elseif $goods.is_hot}
-						<s class="p-tag"><img src="images/1382542488099.png"/></s>
-						{/if}
+				<li>
+					<div class="img">
+						<img src="{$goods.goods_thumb}" alt="{$goods.goods_name}"  onclick="window.location.href='{$goods.url}';" />
+					</div>
+					<div class="price-div"><span class="price">
+					<!--{if $goods.promote_price neq "" } -->
+					{$goods.promote_price}
+					<!--{else}-->
+				   {$goods.shop_price}
+					<!--{/if}-->
+					</span>
+					</div>
+					<div class="desc">{$goods.goods_name}</div>
+					<div class="check-div"><span class="checkbox" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"html"}','{$goods.type}')"></span><span>选中</span>
 					</div>
 				</li>
 			 
@@ -106,7 +61,10 @@
   </form>
   <!-- {/if} -->
 
- 
+{* 包含脚本文件 *}
+<!--
+{insert_scripts files='common.js,global.js,compare.js'} 
+-->
 <script type="Text/Javascript" language="JavaScript">
 <!--
 {literal}

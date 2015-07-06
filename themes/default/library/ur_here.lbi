@@ -1,2 +1,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<span id="bread-pro-name">{$lang.ur_here} {$ur_here} </span>
+<div class="links">
+	{$ur_here}
+</div>

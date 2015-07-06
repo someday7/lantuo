@@ -75,7 +75,7 @@ setcookie('ECS[display]', $display, gmtime() + 86400 * 7);
 $cache_id = sprintf('%X', crc32($cat_id . '-' . $display . '-' . $sort  .'-' . $order  .'-' . $page . '-' . $size . '-' . $_SESSION['user_rank'] . '-' .
     $_CFG['lang'] .'-'. $brand. '-' . $price_max . '-' .$price_min . '-' . $filter_attr_str));
 
-if (!$smarty->is_cached('category.dwt', $cache_id))
+if (!$smarty->is_cached('category.dwt', $cache_id) || true)
 {
     /* 如果页面没有被缓存则重新获取页面的内容 */
 
@@ -212,7 +212,7 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         $smarty->assign('price_grade',     $price_grade);
 
     }
-
+//     print_r($price_grade);exit;
 
     /* 品牌筛选 */
 
@@ -323,11 +323,11 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
                 }
             }
         }
-    }
+    }//print_r($all_attr_list);exit;
 
     assign_template('c', array($cat_id));
 
-    $position = assign_ur_here($cat_id, $brand_name);
+    $position = assign_ur_here($cat_id, $brand_name);//echo "<pre>";echo $position['ur_here'];echo "</pre>";exit;
     $smarty->assign('page_title',       $position['title']);    // 页面标题
     $smarty->assign('ur_here',          $position['ur_here']);  // 当前位置
 

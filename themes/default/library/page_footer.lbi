@@ -1,38 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-
-<!--口号-20121025 -->
-<div class="slogan">
-	<ul>
-		<li class="s1"><i></i>500强企业&nbsp;品质保证</li>
-		<li class="s2"><i></i>7天退货&nbsp;15天换货</li>
-		<li class="s3"><i></i>100元起免运费</li>
-		<li class="s4"><i></i>448家维修网点&nbsp;全国联保</li>
-	</ul>
-</div><!--口号-end -->
-<!--服务-20121025 -->
-<div class="service">
-{assign var="fi" value=1}
- <!-- {foreach from=$helps item=help_cat name=hel} -->
-
-     <dl class="s{$smarty.foreach.hel.iteration}">
-			<dt><i></i><a href='{$help_cat.cat_id}' title="{$help_cat.cat_name}">{$help_cat.cat_name}</a></dt>
-			<ol>
-      <!-- {foreach from=$help_cat.article item=item} -->
-        <li><a href="help.php?id={$item.article_id}" title="{$item.title|escape:html}">{$item.short_title}</a></li>
-      <!-- {/foreach} -->
-     	</ol>
-			</dd>
-		</dl>
- {$fi=fi+1}
-  <!-- {/foreach} -->
-  
-  
-  
-		 
-</div>
-<!--服务-end -->
-
 <!--确认对话框-->
 <div id="ec_ui_confirm" class="popup-area popup-define-area hide">
     <div class="b">
@@ -57,19 +24,13 @@
 	<a id="tools-nav-survery" title="意见反馈" class="hungBar-feedback hide" href="javascript:;" onclick="ec.survery.open();">意见反馈</a>		
 	<a id="tools-nav-service-qq" title="QQ客服" class="hungBar-olcs-qq hide" href="http://wpa.qq.com/msgrd?V=1&Uin=4000886888" target="_blank">QQ客服</a>
 	<a id="tools-nav-service-robotim" href="javascript:;" title="在线客服" class="hungBar-olcs-web hide" target="_blank">在线客服</a>
-
- 
- 
-	
 </div>
  
 <!--底部 -->
 
-<footer class="footer">
-    <!-- 20130902-底部-友情链接-start -->
-	<div class="footer-otherLink">
-		<p style="text-align:left;">友情链接： | <a href="http://www.uc.cn/" target="_blank" style="line-height:1.5;">UC浏览器</a><span style="line-height:1.5;"> </span><span style="line-height:1.5;">| <a href="http://www.vmall.com/product/1896.html" target="_blank">华为P8</a> | </span></span><a href="http://www.vmall.com/links" target="_blank" style="line-height:1.5;color:#ff0000;">申请链接 &gt;&gt;</a></p><p style="text-align:left;"><span style="line-height:1.5;"></span></p>
+<div class="footer">
+	<div class="site-link">
+		<a href="article.php?id=5">关于印象魔方</a><a href="article.php?id=23">相机常识</a><a href="article.php?id=24">大师推荐</a><a href="article.php?id=25">魔方白条</a><a href="article.php?id=4">联系我们</a><a href="article.php?id=1" class="f-last-a">免责声明</a>
 	</div>
-	<div class="footer-warrant-area"><p>Copyright © 2011-2015  华为软件技术有限公司  版权所有  保留一切权利  苏B2-20130048号 | 苏ICP备09062682号-9            </p><p><a target="_blank" href="http://res.vmall.com/certificate/wwwz.jpg">网络文化经营许可证苏网文[2012]0401-019号</a></p><p class="footer-warrant-img">   <a href="http://www.jsgsj.gov.cn:60101/keyLicense/verifKey.jsp?serial=320000163820121128100000009284&amp;signData=tKF9g6Yf7p//TW/BjIXYIO1fDMQDgFsgmvcjGo2Vzir3W+3Hd74noc/9DH8Zx/3hyqTmXsHrqfNbGOntjHMuyzIpLzED20nbW6LQQ6s5ExW2iJ1RdFhmaDXEKIf6OI0MyI/x6Z1poQMxoa4kqu343ZQbzVcdq6h/2otRHHRCxTQ=" rel="nofollow" target="_blank"><img title="经营性网站" alt="经营性网站" src="http://res.vmall.com/images/echannel/signature/certificate_01_112_40.png" /></a> <a title="诚信网站" href="https://ss.knet.cn/verifyseal.dll?sn=e13010932010038497pwz6000000&amp;trustKey=dn&amp;trustValue=vmall.com" rel="nofollow" target="_blank"><img alt="诚信网站" src="http://res.vmall.com/images/echannel/signature/certificate_02_112_40.png" /></a> <a title="诚信网站" href="https://search.szfw.org/cert/l/CX20121017001773002082" rel="nofollow" target="_blank"><img alt="诚信网站" src="http://res.vmall.com/images/echannel/signature/certificate_03_112_40.png" /></a></p></div><!--授权结束 --> 
-</footer>
- 
+	<div class="copyright">Copyright © 2004-2015 印象魔方 版权所有|投资有风险，购买需谨慎</div>
+</div>

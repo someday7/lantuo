@@ -96,7 +96,7 @@ $smarty->assign('index',       'index');
 
 $cache_id = sprintf('%X', crc32($_SESSION['user_rank'] . '-' . $_CFG['lang']));
 
-if (!$smarty->is_cached('index.dwt', $cache_id))
+if (!$smarty->is_cached('index.dwt', $cache_id) || true)
 {
     assign_template();
 
@@ -158,21 +158,29 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('data_dir',        DATA_DIR);       // 数据目录
 
     /* 首页推荐分类 */
-    $cat_recommend_res = $db->getAll("SELECT c.cat_id, c.cat_name, cr.recommend_type FROM " . $ecs->table("cat_recommend") . " AS cr INNER JOIN " . $ecs->table("category") . " AS c ON cr.cat_id=c.cat_id");
+    $cat_recommend_res = $db->getAll("SELECT c.cat_id, c.cat_name,c.parent_id, cr.recommend_type FROM " . $ecs->table("cat_recommend") . " AS cr INNER JOIN " . $ecs->table("category") . " AS c ON cr.cat_id=c.cat_id where c.parent_id=0");
     if (!empty($cat_recommend_res))
     {
         $cat_rec_array = array();
         foreach($cat_recommend_res as $cat_recommend_data)
         {
-            $cat_rec[$cat_recommend_data['recommend_type']][] = array('cat_id' => $cat_recommend_data['cat_id'], 'cat_name' => $cat_recommend_data['cat_name']);
+           $a_cat = array('cat_id' => $cat_recommend_data['cat_id'], 'cat_name' => $cat_recommend_data['cat_name'] ,'parent_id' => $cat_recommend_data['parent_id']);
+            /* 子分类 */
+            $cat_recommend_res_children = $db->getAll("SELECT c.cat_id, c.cat_name,c.parent_id, cr.recommend_type FROM " . $ecs->table("cat_recommend") . " AS cr INNER JOIN " . $ecs->table("category") . " AS c ON cr.cat_id=c.cat_id where c.parent_id=".$cat_recommend_data['cat_id']);
+            foreach($cat_recommend_res_children as $cat_recommend_data_child)
+            {
+            	$a_cat['children'][] = array('cat_id' => $cat_recommend_data_child['cat_id'], 'cat_name' => $cat_recommend_data_child['cat_name'] ,'parent_id' => $cat_recommend_data_child['parent_id']);
+            	
+            }
+            $cat_rec[$cat_recommend_data['recommend_type']][] = $a_cat;
         }
+        
         $smarty->assign('cat_rec', $cat_rec);
     }
-
     /* 页面中的动态内容 */
     assign_dynamic('index');
 }
-
+//echo "<pre>";print_r(get_recommend_goods('best'));echo "</pre>";
 $smarty->display('index.dwt', $cache_id);
 
 /*------------------------------------------------------ */
