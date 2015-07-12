@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="{$keywords}" />
-<meta name="Description" content="{$description}" />
-<!-- TemplateBeginEditable name="doctitle" -->
-<title>{$page_title}</title>
-<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<meta name="Keywords" content="<?php echo $this->_var['keywords']; ?>" />
+<meta name="Description" content="<?php echo $this->_var['description']; ?>" />
+
+<title><?php echo $this->_var['page_title']; ?></title>
+
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
@@ -15,68 +16,76 @@
 </head>
 <body>
 
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/page_header.lbi'); ?>
 <div class="zulin-main">
 	<div class="banner2">
-		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		<?php echo $this->fetch('library/category_tree.lbi'); ?>
 	</div>
 	<div class="main_con">
-    <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-	<!-- 20140726-商品类别-start -->
+    <?php echo $this->fetch('library/ur_here.lbi'); ?>
+	
 	<div class="slect-nav">
-		<!-- 20140726-商品类别-属性-start -->
+		
 	 
-			 <!--组合搜索 开始-->
-	  <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->	 
+			 
+	  <?php if ($this->_var['brands']['1'] || $this->_var['price_grade']['1'] || $this->_var['filter_attr_list']): ?>	 
 	 <div class="selct-layout">
-			<!-- 二级虚拟分类 -->
-			<!--{if $brands.1}-->
+			
+			<?php if ($this->_var['brands']['1']): ?>
 			<div class="name">
-			<label>{$lang.brand}：</label>
-				<!--{foreach from=$brands item=brand}-->
-					<!-- {if $brand.selected} -->
-					<a href="{$brand.url}" class="selected">{$brand.brand_name}</a>
-					<!-- {else} -->
-					<a href="{$brand.url}">{$brand.brand_name}</a>
-					<!-- {/if} -->
-				<!--{/foreach}-->
+			<label><?php echo $this->_var['lang']['brand']; ?>：</label>
+				<?php $_from = $this->_var['brands']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'brand');if (count($_from)):
+    foreach ($_from AS $this->_var['brand']):
+?>
+					<?php if ($this->_var['brand']['selected']): ?>
+					<a href="<?php echo $this->_var['brand']['url']; ?>" class="selected"><?php echo $this->_var['brand']['brand_name']; ?></a>
+					<?php else: ?>
+					<a href="<?php echo $this->_var['brand']['url']; ?>"><?php echo $this->_var['brand']['brand_name']; ?></a>
+					<?php endif; ?>
+				<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 			</div>
-	 		<!--{/if}-->
+	 		<?php endif; ?>
 	 
-			 <!--{if $price_grade.1}-->
+			 <?php if ($this->_var['price_grade']['1']): ?>
 			 <div class="price">
-			   <label>{$lang.price}：</label>
-			   <!--{foreach from=$price_grade item=grade}-->
-				<!-- {if $grade.selected} -->
-				<a href="{$grade.url}"  class="selected">{$grade.price_range}</a>
-				<!-- {else} -->
-				<a href="{$grade.url}">{$grade.price_range}</a>
-				<!-- {/if} -->
-			<!--{/foreach}-->					   
+			   <label><?php echo $this->_var['lang']['price']; ?>：</label>
+			   <?php $_from = $this->_var['price_grade']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'grade');if (count($_from)):
+    foreach ($_from AS $this->_var['grade']):
+?>
+				<?php if ($this->_var['grade']['selected']): ?>
+				<a href="<?php echo $this->_var['grade']['url']; ?>"  class="selected"><?php echo $this->_var['grade']['price_range']; ?></a>
+				<?php else: ?>
+				<a href="<?php echo $this->_var['grade']['url']; ?>"><?php echo $this->_var['grade']['price_range']; ?></a>
+				<?php endif; ?>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>					   
 		    </div>
-	 		<!-- {/if} -->
+	 		<?php endif; ?>
 	 
-	 	<!--{foreach from=$filter_attr_list item=filter_attr}-->
+	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_82306800_1436602977');if (count($_from)):
+    foreach ($_from AS $this->_var['filter_attr_0_82306800_1436602977']):
+?>
 			 
 		 	<div class="type">
-			<label>{$filter_attr.filter_attr_name|escape:html} ：</label>
-						<!--{foreach from=$filter_attr.attr_list item=attr}-->
-						<!-- {if $attr.selected} -->
-				<a href="{$attr.url}"  class="selected">{$attr.attr_value}</a>
-				<!-- {else} -->
-			<a href="{$attr.url}">{$attr.attr_value}</a>
-				<!-- {/if} -->
-			<!--{/foreach}-->
+			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_82306800_1436602977']['filter_attr_name']); ?> ：</label>
+						<?php $_from = $this->_var['filter_attr_0_82306800_1436602977']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
+    foreach ($_from AS $this->_var['attr']):
+?>
+						<?php if ($this->_var['attr']['selected']): ?>
+				<a href="<?php echo $this->_var['attr']['url']; ?>"  class="selected"><?php echo $this->_var['attr']['attr_value']; ?></a>
+				<?php else: ?>
+			<a href="<?php echo $this->_var['attr']['url']; ?>"><?php echo $this->_var['attr']['attr_value']; ?></a>
+				<?php endif; ?>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 		    </div>
-			    <!--{/foreach}-->
+			    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 		</div>
-				<!-- {/if} -->
-	 <!--组合搜索 结束-->
-        <!-- 20140726-商品类别-属性-end -->	
+				<?php endif; ?>
+	 
+        	
 	</div>
-	<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+	<?php echo $this->fetch('library/goods_list.lbi'); ?>
 		
-	<!-- 20140727-商品列表-end -->
+	
 	<div id="pop-compare" class="pop-compare">
 		<div class="pop-wrap">
 			<p class="pop-compare-tips">对比栏已满，您可以删除不需要的栏内商品再继续添加哦！</p>
@@ -152,17 +161,17 @@
 			</div>
 		</div>
 	</div>
-		<!-- 分页-start -->
+		
 	
-	 <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+	 <?php echo $this->fetch('library/pages.lbi'); ?>
 
-	<!-- 20140726-频道-列表-end -->
+	
 	</div>
 	<div class="clear"></div>
 </div>
 	
  	
  
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/page_footer.lbi'); ?>
 </body>
 </html>

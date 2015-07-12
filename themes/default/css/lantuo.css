@@ -418,6 +418,64 @@ em{
 .banner ul.menu li:hover p {
 	color: #78aee5;
 }
+.banner ul.menu li:hover dl {
+	display: inline-block;
+}
+
+.banner2 {
+	width: 240px;
+	border-radius: 5px;
+	background: #FBFBFB;
+	float: left;
+}
+.banner2 ul.menu {
+	width: 210px;
+	margin-top: 11px;
+	background: #fff;
+	display: inline-block;
+	*float: left;
+}
+.banner2 ul.menu li {
+	list-style: none;
+	height: 49px;
+	margin: 0 15px;
+	border-bottom: 1px solid #e5e5e5;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 15px 0;
+	position: relative;
+}
+.banner2 ul.menu li h3 {
+	font: 18px "microsoft yahei";
+	color: #343434;
+	margin-bottom: 8px;
+	position: relative;
+}
+.banner2 ul.menu li h3 .tab-icon {
+	display: none;
+	color: #e4e4e4;
+	right: 10px;
+	top: 5px;
+}
+.banner2 ul.menu li p {
+	font: 14px "microsoft yahei";
+	color: #a5a5a5;
+}
+.banner2 ul.menu li:hover {
+	padding: 15px;
+	margin: 0;
+}
+.banner2 ul.menu li:hover .tab-icon {
+	display: block;
+}
+.banner2 ul.menu li:hover h3,
+.banner2 ul.menu li:hover p {
+	color: #78aee5;
+}
+.banner2 ul.menu li:hover dl {
+	display: inline-block;
+}
+
 ul.menu dl {
 	position: absolute;
 	margin: 0;
@@ -433,9 +491,7 @@ ul.menu dl {
 ul.menu dl:hover {
 	cursor: default;
 }
-.banner ul.menu li:hover dl {
-	display: inline-block;
-}
+
 ul.menu dl dt,
 ul.menu dl dd {
 	white-space: nowrap;

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="{$keywords}" />
-<meta name="Description" content="{$description}" />
-<!-- TemplateBeginEditable name="doctitle" -->
-<title>{$page_title}</title>
-<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<meta name="Keywords" content="<?php echo $this->_var['keywords']; ?>" />
+<meta name="Description" content="<?php echo $this->_var['description']; ?>" />
+
+<title><?php echo $this->_var['page_title']; ?></title>
+
 <link rel="shortcut icon" href="favicon.ico" />
  <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
@@ -16,37 +17,39 @@
 <body>
 
  
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-{* 包含脚本文件 *}
-{insert_scripts files='common.js'}
+<?php echo $this->fetch('library/page_header.lbi'); ?>
+
+<?php echo $this->smarty_insert_scripts(array('files'=>'common.js')); ?>
  
-{insert_scripts files='transport.js,utils.js,jquery.json.js'}
+<?php echo $this->smarty_insert_scripts(array('files'=>'transport.js,utils.js,jquery.json.js')); ?>
  <div class="pingce-main">
-		<!-- 20140823-分类-start -->
+		
  	<div class="banner2">
-		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		<?php echo $this->fetch('library/category_tree.lbi'); ?>
 	</div>
  	  
 
 <div class="main_con"> 
-<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-	<!--商品简介 -->
- <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+<?php echo $this->fetch('library/ur_here.lbi'); ?>
+	
+ <form action="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
 	<div class="pd-pic-area">
 					<div class="pic-img"  id="preview">
-						<img src="{$goods.goods_img}" jqimg="{$goods.goods_img}" height="350px" />
+						<img src="<?php echo $this->_var['goods']['goods_img']; ?>" jqimg="<?php echo $this->_var['goods']['goods_img']; ?>" height="350px" />
 					</div>
 					<div class="thumb-imgs">
 						<div class="arrow a_left"></div>
 						<div class="arrow a_right"></div>
 						<div class="ul-con">
 							<ul>
-								<!-- {foreach from=$pictures item=picture key=key}-->
-								<li{if $key==0} class="active"{/if}>
-										<img bimg="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" data-src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" onmousemove="preview(this);" >
+								<?php $_from = $this->_var['pictures']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'picture');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['picture']):
+?>
+								<li<?php if ($this->_var['key'] == 0): ?> class="active"<?php endif; ?>>
+										<img bimg="<?php if ($this->_var['picture']['thumb_url']): ?><?php echo $this->_var['picture']['thumb_url']; ?><?php else: ?><?php echo $this->_var['picture']['img_url']; ?><?php endif; ?>" data-src="<?php if ($this->_var['picture']['thumb_url']): ?><?php echo $this->_var['picture']['thumb_url']; ?><?php else: ?><?php echo $this->_var['picture']['img_url']; ?><?php endif; ?>" src="<?php if ($this->_var['picture']['thumb_url']): ?><?php echo $this->_var['picture']['thumb_url']; ?><?php else: ?><?php echo $this->_var['picture']['img_url']; ?><?php endif; ?>" onmousemove="preview(this);" >
 									
 								</li>
-								<!--{/foreach}-->
+								<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 							</ul>
 						</div>
 
@@ -79,7 +82,7 @@
 				此处点击鼠标左键，任意划取部分文字信息，即可显示划词分享图标可显示划词分享图
 			</div>
 			<div class="pay-btns">
-				<span class="pay-btn taobao">淘宝交易</span><span class="pay-btn online" onclick="javascript:addToCart({$goods.goods_id})">直接付款</span>
+				<span class="pay-btn taobao">淘宝交易</span><span class="pay-btn online" onclick="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)">直接付款</span>
 			</div>
 		</div>
 			<div class="bshare-custom">
@@ -109,7 +112,7 @@
 				</ul>
 			</div>
 			<div class="pd-page page-0">
-				{$goods.goods_desc}
+				<?php echo $this->_var['goods']['goods_desc']; ?>
 			</div>
 			<div class="pd-page page-1">
 				
@@ -170,7 +173,7 @@
  </form>
 
  
-<!--弹出层-成功添加到购物车 -->
+
 <div id="cart-tips" class="pro-popup-area hide">
      <div class="h">
 	<a href="javascript:;" onclick="$('#cart-tips').hide()" class="pro-popup-close" title="关闭"><span>关闭</span></a>
@@ -190,15 +193,15 @@
     </div>
 </div>
 
-<!--弹出层-提示信息 -->
+
  
 </div>
 
 
-<!-- {if $fittings} -->
+<?php if ($this->_var['fittings']): ?>
 <script type="text/javascript">
 function check(){
-var result='{$goods.goods_id},';
+var result='<?php echo $this->_var['goods']['goods_id']; ?>,';
 var fid = document.getElementById('boxOne');
 var box = fid.getElementsByTagName('input');
 for(var i = 0; i < box.length; i++){
@@ -216,14 +219,14 @@ document.documentElement.scrollTop=0;
    计算合计金额，by 517ld.com Joe
 */
 function totalPrice(){
-//var result=Math.round({$goods.shop_price});
+//var result=Math.round(<?php echo $this->_var['goods']['shop_price']; ?>);
 var re = /[￥元]/g;
-<!--{if $goods.is_promote and $goods.gmt_end_time } 促销价格-->
-  var result='{$goods.promote_price}';
+<?php if ($this->_var['goods']['is_promote'] && $this->_var['goods']['gmt_end_time']): ?>
+  var result='<?php echo $this->_var['goods']['promote_price']; ?>';
   result=result.replace(re,'');
-<!--{else}-->
-  var result={$goods.shop_price};
-<!--{/if}-->
+<?php else: ?>
+  var result=<?php echo $this->_var['goods']['shop_price']; ?>;
+<?php endif; ?>
 //alert(result);
 var fid = document.getElementById('boxOne');
 var box = fid.getElementsByTagName('input');
@@ -242,7 +245,7 @@ document.getElementById("totalPrice").innerHTML=result_format;
 document.getElementById("totalNum").innerHTML=j;
 }
 </script>
-<!-- {/if} -->
+<?php endif; ?>
  <script type="text/javascript">
 
 
@@ -281,7 +284,7 @@ $(function(){
 .demopage h2{font-size:14px;text-align:center;}
 /* tabbox */
 .tabbox{width:432px;margin:20px auto;position:relative;height:171px;overflow:hidden;}
-.tabbox .tabbtn{height:30px;background:url(images/tabbg.gif) repeat-x;border-left:solid 1px #ddd;border-right:solid 1px #ddd;}
+.tabbox .tabbtn{height:30px;background:url(themes/default/images/tabbg.gif) repeat-x;border-left:solid 1px #ddd;border-right:solid 1px #ddd;}
 .tabbox .tabbtn li{float:left;position:relative;margin:0 0 0 -1px;}
 .tabbox .tabbtn li a,.tabbox .tabbtn li span{display:block;float:left;height:30px;line-height:30px;overflow:hidden;width:108px;text-align:center;font-size:12px;cursor:pointer;}
 .tabbox .tabbtn li.current{border-left:solid 1px #d5d5d5;border-right:solid 1px #d5d5d5;border-top:solid 1px #c5c5c5;}
@@ -322,23 +325,25 @@ if(virId > 0) {
  </script>
 
  
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/page_footer.lbi'); ?>
 </body>
 <script type="text/javascript">
-var goods_id = {$goods_id};
-var goodsattr_style = {$cfg.goodsattr_style|default:1};
-var gmt_end_time = {$promote_end_time|default:0};
-{foreach from=$lang.goods_js item=item key=key}
-var {$key} = "{$item}";
-{/foreach}
-var goodsId = {$goods_id};
-var now_time = {$now_time};
+var goods_id = <?php echo $this->_var['goods_id']; ?>;
+var goodsattr_style = <?php echo empty($this->_var['cfg']['goodsattr_style']) ? '1' : $this->_var['cfg']['goodsattr_style']; ?>;
+var gmt_end_time = <?php echo empty($this->_var['promote_end_time']) ? '0' : $this->_var['promote_end_time']; ?>;
+<?php $_from = $this->_var['lang']['goods_js']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item']):
+?>
+var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item']; ?>";
+<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+var goodsId = <?php echo $this->_var['goods_id']; ?>;
+var now_time = <?php echo $this->_var['now_time']; ?>;
 
-<!-- {literal} -->
+
 onload = function(){
   changePrice();
   fixpng();
-  try { onload_leftTime(); }
+  try {onload_leftTime();}
   catch (e) {}
 }
 
@@ -433,6 +438,6 @@ $(function() {
 	});
 });
 
-<!-- {/literal} -->
+
 </script>
 </html>

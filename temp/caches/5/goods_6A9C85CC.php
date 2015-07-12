@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:53:"E:/code/workspace/php/lantuo/themes/default/goods.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:3;s:63:"E:/code/workspace/php/lantuo/themes/default/library/ur_here.lbi";i:4;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1436614341;s:8:"maketime";i:1436610741;}<!DOCTYPE html>
 <html>
 <head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="{$keywords}" />
-<meta name="Description" content="{$description}" />
-<!-- TemplateBeginEditable name="doctitle" -->
-<title>{$page_title}</title>
-<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<meta name="Keywords" content="入门级" />
+<meta name="Description" content="" />
+<title>三星GALAXY Note4（N9109w）16GB四核5.7英寸	电信4G智能手机_拍立得_佳能_ECSHOP演示站 - Powered by ECShop</title>
 <link rel="shortcut icon" href="favicon.ico" />
  <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
@@ -14,45 +13,140 @@
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
  
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-{* 包含脚本文件 *}
-{insert_scripts files='common.js'}
- 
-{insert_scripts files='transport.js,utils.js,jquery.json.js'}
- <div class="pingce-main">
-		<!-- 20140823-分类-start -->
- 	<div class="banner2">
-		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript">
+var process_request = "正在处理您的请求...";
+</script>
+<div class="header">
+	<div class="layout">
+		<ul class="fr">
+			<li>
+				<script type="text/javascript" src="js/transport.js"></script><script type="text/javascript" src="js/utils.js"></script>				<font id="ECS_MEMBERZONE">554fcae493e564ee0dc75bdf2ebf94camember_info|a:1:{s:4:"name";s:11:"member_info";}554fcae493e564ee0dc75bdf2ebf94ca </font>
+			</li>
+			<li>
+				<a href="user.php?act=order_list">我的交易单</a>
+			</li>
+			<li>
+				<a href=""><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
+			</li>
+			<li>
+				<a href="">我的关注</a>
+			</li>
+			<li>
+				<a href="">我要吐槽<span class="down_arrow"></span></a>
+			</li>
+			<li class="last_li">
+				<a href="javascript:;">网站导航</a>
+				<a href=""><span class="wx_icon"></span></a>
+				<a href=""><span class="sina_icon"></span></a>
+			</li>
+		</ul>
 	</div>
+</div>
+<div class="nav">
+	<div class="layout">
+		<ul>
+			<li><span class="logo"></span></li>
+			<li ><a href="index.php">首页</a></li>
+			<li><a href="index.html">租赁</a></li>
+			<li><a href="index.html">评测</a></li>
+			<li><a href="index.html">数据库</a></li>
+			<li><a href="index.html">维修</a></li>
+			<li class="input">
+				<form id="searchForm" name="searchForm" method="get" action="http://www.sf-express.com" />
+					<input placeholder="查询顺丰订单号" name="sf_sn" id="sf_sn" /><span class="search" id="searchBtn">搜索</span>
+				</form>
+			</li>
+		</ul>
+	</div>
+</div>
+<script src="themes/default/js/jsapi.js?20141025" namespace="ec"></script>
+<script type="text/javascript" src="themes/default/js/jquery-1.9.1.js"></script>
+<script src="themes/default/js/ec.core.js?20141025"></script> 
+<script src="http://res.vmall.com/20150415/js/common/jsapi.js?20141025" namespace="ec"></script>
+<script src="themes/default/js/ec.business.js?20150420"></script> 
+<script type="text/javascript" src="themes/default/js/scrollbox.js" ></script>
+<script type="text/javascript" src="themes/default/js/jquery.jqzoom.js"></script>
+ <script type="text/javascript" src="themes/default/js/base.js"></script>
+<script type="text/javascript">
+		$(function() {
+			window.__Object_toJSONString = Object.prototype.toJSONString;
+			delete Object.prototype.toJSONString;
+		});
+	$(document).ready(function(){		
+		$("#searchBtn").click(function(){
+			$("form#searchForm").submit();
+		});
+	})
+</script>
+<script type="text/javascript" src="js/common.js"></script> 
+<script type="text/javascript" src="js/jquery.json.js"></script> <div class="pingce-main">
+		
+ 	<div class="banner2">
+					<ul class="menu">
+			 
+				<li>
+					<h3>佳能<span class="tab-icon"></span></h3>
+					<p>捕捉不一样的瞬间 佳能好</p>
+					<dl>
+						<dt class="first"><span class="pp_name">佳能</span><span class="pp_text">捕捉不一样的瞬间 佳能好</span><a class="fr" href="category.php?id=7">更多<span class="tab-icon"></span></a></dt>
+						<dd>
+																				<a href="category.php?id=10" class="first_a">数码相机</a>
+																				<a href="category.php?id=11">单电</a>
+																				<a href="category.php?id=12">微单相机</a>
+																				<a href="category.php?id=13">单反相机</a>
+																				<a href="category.php?id=14">拍立得</a>
+												</dd>
+					</dl>
+				</li>
+			 
+				<li>
+					<h3>尼康<span class="tab-icon"></span></h3>
+					<p>捕捉不一样的瞬间 尼康好</p>
+					<dl>
+						<dt class="first"><span class="pp_name">尼康</span><span class="pp_text">捕捉不一样的瞬间 尼康好</span><a class="fr" href="category.php?id=8">更多<span class="tab-icon"></span></a></dt>
+						<dd>
+												</dd>
+					</dl>
+				</li>
+			 
+				<li>
+					<h3>索尼<span class="tab-icon"></span></h3>
+					<p>捕捉不一样的瞬间 索尼好</p>
+					<dl>
+						<dt class="first"><span class="pp_name">索尼</span><span class="pp_text">捕捉不一样的瞬间 索尼好</span><a class="fr" href="category.php?id=9">更多<span class="tab-icon"></span></a></dt>
+						<dd>
+												</dd>
+					</dl>
+				</li>
+						</ul>
+				</div>
  	  
-
 <div class="main_con"> 
-<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-	<!--商品简介 -->
- <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+<div class="links">
+	<a href="."><span class="link-text"><span class="home_icon"></span>首页</span></a> <code>&gt;</code> <a href="category.php?id=7">佳能</a> <code>&gt;</code> <a href="category.php?id=14">拍立得</a> <code>&gt;</code> 三星GALAXY Note4（N9109w）16GB四核5.7英寸	电信4G智能手机</div>	
+ <form action="javascript:addToCart(2394)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
 	<div class="pd-pic-area">
 					<div class="pic-img"  id="preview">
-						<img src="{$goods.goods_img}" jqimg="{$goods.goods_img}" height="350px" />
+						<img src="images/201507/goods_img/2394_G_1436087437864.jpg" jqimg="images/201507/goods_img/2394_G_1436087437864.jpg" height="350px" />
 					</div>
 					<div class="thumb-imgs">
 						<div class="arrow a_left"></div>
 						<div class="arrow a_right"></div>
 						<div class="ul-con">
 							<ul>
-								<!-- {foreach from=$pictures item=picture key=key}-->
-								<li{if $key==0} class="active"{/if}>
-										<img bimg="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" data-src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" onmousemove="preview(this);" >
+																<li class="active">
+										<img bimg="images/201507/thumb_img/2394_thumb_P_1436087437280.jpg" data-src="images/201507/thumb_img/2394_thumb_P_1436087437280.jpg" src="images/201507/thumb_img/2394_thumb_P_1436087437280.jpg" onmousemove="preview(this);" >
 									
 								</li>
-								<!--{/foreach}-->
-							</ul>
+																<li>
+										<img bimg="images/201507/thumb_img/2394_thumb_P_1436087437280.jpg" data-src="images/201507/thumb_img/2394_thumb_P_1436087437280.jpg" src="images/201507/thumb_img/2394_thumb_P_1436087437280.jpg" onmousemove="preview(this);" >
+									
+								</li>
+															</ul>
 						</div>
-
 					</div>
 				</div>
-
 	<div class="pd-side">
 		<div class="section1">
 			<label class="label">咨询客服：</label>
@@ -79,7 +173,7 @@
 				此处点击鼠标左键，任意划取部分文字信息，即可显示划词分享图标可显示划词分享图
 			</div>
 			<div class="pay-btns">
-				<span class="pay-btn taobao">淘宝交易</span><span class="pay-btn online" onclick="javascript:addToCart({$goods.goods_id})">直接付款</span>
+				<span class="pay-btn taobao">淘宝交易</span><span class="pay-btn online" onclick="javascript:addToCart(2394)">直接付款</span>
 			</div>
 		</div>
 			<div class="bshare-custom">
@@ -109,8 +203,7 @@
 				</ul>
 			</div>
 			<div class="pd-page page-0">
-				{$goods.goods_desc}
-			</div>
+				<p>不错的商品，赶快买吧</p>			</div>
 			<div class="pd-page page-1">
 				
 			</div>
@@ -168,9 +261,7 @@
 			});
 			</script>
  </form>
-
  
-<!--弹出层-成功添加到购物车 -->
 <div id="cart-tips" class="pro-popup-area hide">
      <div class="h">
 	<a href="javascript:;" onclick="$('#cart-tips').hide()" class="pro-popup-close" title="关闭"><span>关闭</span></a>
@@ -189,73 +280,17 @@
 		</div>
     </div>
 </div>
-
-<!--弹出层-提示信息 -->
  
 </div>
-
-
-<!-- {if $fittings} -->
-<script type="text/javascript">
-function check(){
-var result='{$goods.goods_id},';
-var fid = document.getElementById('boxOne');
-var box = fid.getElementsByTagName('input');
-for(var i = 0; i < box.length; i++){
-           if(box[i].type == 'checkbox' && box[i].checked){
-                result = result + box[i].value + ',';
-           }
-        }
-//alert(result);
-//return false;
-        //在Common.js文件中添加了addToCartNums方法
-        addToCartNums(result);
-document.documentElement.scrollTop=0;
-}
-/*
-   计算合计金额，by 517ld.com Joe
-*/
-function totalPrice(){
-//var result=Math.round({$goods.shop_price});
-var re = /[￥元]/g;
-<!--{if $goods.is_promote and $goods.gmt_end_time } 促销价格-->
-  var result='{$goods.promote_price}';
-  result=result.replace(re,'');
-<!--{else}-->
-  var result={$goods.shop_price};
-<!--{/if}-->
-//alert(result);
-var fid = document.getElementById('boxOne');
-var box = fid.getElementsByTagName('input');
-var j=1;
-for(var i = 0; i < box.length; i++){
-    if(box[i].type == 'checkbox' && box[i].checked){
-  var a = box[i].name;
-     result =  Number(result) +  Number(a.replace(re, ''));
-     j+=1;
-    }
-}
-result_format='￥%s元';
-re_re=/\%s/g;
-result_format=result_format.replace(re_re, result);
-document.getElementById("totalPrice").innerHTML=result_format;
-document.getElementById("totalNum").innerHTML=j;
-}
-</script>
-<!-- {/if} -->
  <script type="text/javascript">
-
-
 //tab plugins 插件
 $(function(){
 	
-
 	//选项卡鼠标滑过事件
 	$('#clicktab .tabbtn li').click(function(){
 		TabSelect("#clicktab .tabbtn li", ".tabcon", "current", $(this))
 	});
 	$('#clicktab .tabbtn li').eq(0).trigger("click");
-
 	function TabSelect(tab,con,addClass,obj){
 		var $_self = obj;
 		var $_nav = $(tab);
@@ -274,14 +309,13 @@ $(function(){
 	$('#clicktab2 .tabbtn2 li').eq(0).trigger("click");
 });
 </script>
-
 <style type="text/css">
  
 .demopage{width:760px;margin:0 auto;}
 .demopage h2{font-size:14px;text-align:center;}
 /* tabbox */
 .tabbox{width:432px;margin:20px auto;position:relative;height:171px;overflow:hidden;}
-.tabbox .tabbtn{height:30px;background:url(images/tabbg.gif) repeat-x;border-left:solid 1px #ddd;border-right:solid 1px #ddd;}
+.tabbox .tabbtn{height:30px;background:url(themes/default/images/tabbg.gif) repeat-x;border-left:solid 1px #ddd;border-right:solid 1px #ddd;}
 .tabbox .tabbtn li{float:left;position:relative;margin:0 0 0 -1px;}
 .tabbox .tabbtn li a,.tabbox .tabbtn li span{display:block;float:left;height:30px;line-height:30px;overflow:hidden;width:108px;text-align:center;font-size:12px;cursor:pointer;}
 .tabbox .tabbtn li.current{border-left:solid 1px #d5d5d5;border-right:solid 1px #d5d5d5;border-top:solid 1px #c5c5c5;}
@@ -291,20 +325,16 @@ $(function(){
 .tabbox .tabcon li{height:24px;line-height:24px;overflow:hidden;}
 .tabbox .tabcon li span{margin:0 10px 0 0;font-family:"宋体";font-size:12px;font-weight:400;color:#ddd;}
 </style>
-
 </div>
 <script>
 (function(){
 var hash = location.hash, skuId = 0, virId = 0,
 	cateList = [];
-
-
 if(hash.length > 1) {
 	var skuInfo = hash.split('#', 2)[1];
 	skuId = (skuInfo.length > 1) ? (parseInt(skuInfo.split(',', 2)[0], 10) || 0) : 0;
 	virId = (skuInfo.length > 1) ? (parseInt(skuInfo.split(',', 2)[1], 10) || 0) : 0;
 } 
-
 if(virId > 0) {
 	$.get('/category.json', {}, function (json) {
 		if(!json.success) return;
@@ -317,31 +347,53 @@ if(virId > 0) {
 	}, 'json');
 	
 }
-
   }); 
  </script>
-
  
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
-</body>
+<div id="ec_ui_confirm" class="popup-area popup-define-area hide">
+    <div class="b">
+        <p id="ec_ui_confirm_msg"></p>
+        <div class="popup-button-area"><a id="ec_ui_confirm_yes" href="javascript:;" class="button-action-yes" title="是"><span>是</span></a><a id="ec_ui_confirm_no" href="javascript:;" class="button-action-no" title="否"><span>否</span></a></div>
+    </div>
+    <div class="f"><s class="icon-arrow-down"></s></div>
+</div>
+<div id="ec_ui_tips" class="popup-area popup-define-area hide">
+    <div class="b">
+        <p id="ec_ui_tips_msg" class="tac"></p>
+        <div class="popup-button-area tac"><a id="ec_ui_tips_yes" href="javascript:;" class="button-action-yes" title="确定"><span>确定</span></a></div>
+    </div>
+    <div class="f"><s class="icon-arrow-down"></s></div>
+</div>
+<div class="hungBar" id="tools-nav">
+	<a title="返回顶部" class="hungBar-top" href="#" id="hungBar-top">返回顶部</a>
+	<a id="tools-nav-survery" title="意见反馈" class="hungBar-feedback hide" href="javascript:;" onclick="ec.survery.open();">意见反馈</a>		
+	<a id="tools-nav-service-qq" title="QQ客服" class="hungBar-olcs-qq hide" href="http://wpa.qq.com/msgrd?V=1&Uin=4000886888" target="_blank">QQ客服</a>
+	<a id="tools-nav-service-robotim" href="javascript:;" title="在线客服" class="hungBar-olcs-web hide" target="_blank">在线客服</a>
+</div>
+ 
+<div class="footer">
+	<div class="site-link">
+		<a href="article.php?id=5">关于印象魔方</a><a href="article.php?id=23">相机常识</a><a href="article.php?id=24">大师推荐</a><a href="article.php?id=25">魔方白条</a><a href="article.php?id=4">联系我们</a><a href="article.php?id=1" class="f-last-a">免责声明</a>
+	</div>
+	<div class="copyright">Copyright © 2004-2015 印象魔方 版权所有|投资有风险，购买需谨慎</div>
+</div></body>
 <script type="text/javascript">
-var goods_id = {$goods_id};
-var goodsattr_style = {$cfg.goodsattr_style|default:1};
-var gmt_end_time = {$promote_end_time|default:0};
-{foreach from=$lang.goods_js item=item key=key}
-var {$key} = "{$item}";
-{/foreach}
-var goodsId = {$goods_id};
-var now_time = {$now_time};
-
-<!-- {literal} -->
+var goods_id = 2394;
+var goodsattr_style = 1;
+var gmt_end_time = 0;
+var day = "天";
+var hour = "小时";
+var minute = "分钟";
+var second = "秒";
+var end = "结束";
+var goodsId = 2394;
+var now_time = 1436610741;
 onload = function(){
   changePrice();
   fixpng();
-  try { onload_leftTime(); }
+  try {onload_leftTime();}
   catch (e) {}
 }
-
 /**
  * 点选可选属性或改变数量时修改商品价格的函数
  */
@@ -349,10 +401,8 @@ function changePrice()
 {
   var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
   var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
-
   Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
 }
-
 /**
  * 接收返回的信息
  */
@@ -365,12 +415,10 @@ function changePriceResponse(res)
   else
   {
     document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
-
     if (document.getElementById('ECS_GOODS_AMOUNT'))
       document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
   }
 }
-
 $(function() {
 	$(".ul-con ul").width($(".ul-con ul li").length*97);
 	var currentPage=0;
@@ -428,11 +476,8 @@ $(function() {
 			}else{
 				$(".pd-page:eq("+index+")").css("margin-left","700px").show().animate({"marginLeft":"0px"},"fast");
 			}
-
 		}
 	});
 });
-
-<!-- {/literal} -->
 </script>
 </html>
