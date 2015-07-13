@@ -23,63 +23,112 @@
 {insert_scripts files='transport.js,utils.js,jquery.json.js'}
  <div class="pingce-main">
 		<!-- 20140823-分类-start -->
- 	<!-- #BeginLibraryItem "/library/category_tree2.lbi" --><!-- #EndLibraryItem -->
+ 	<div class="banner2">
+		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+	</div>
+ 	  
 
- <!-- 20130909-导航-end -->
- <!-- 20140823-分类-start -->
- 	  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-
-<div class="layout"> 
+<div class="main_con"> 
+<!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
 	<!--商品简介 -->
  <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
-	<div class="pro-summary-area clearfix"> 
-    	<div class="right-area"> 
-        	<!--商品简介-属性 -->
-        	<div class="pro-property-area clearfix">
-                <div class="pro-meta-area">
-                	<h1 id="pro-name">{$goods.goods_style_name}</h1>
-            	
-                	<!-- 插入 商品简介-广告语-->
-                	<div class="pro-slogan" id="skuPromWord">
-					{$goods.goods_brief}
-					</div>			
-                	<div class="hr-10"></div>
-					<div class="line"></div>
-                
-                    <div class="pro-price">
-							 <s id="pro-price-old"  class="hide"><label>本&nbsp;店&nbsp;&nbsp;价：</label>&yen;&nbsp; </s>
-							 <span id="pro-price"><label>本&nbsp;店&nbsp;&nbsp;价：</label><b>{$goods.shop_price_formated}</b></span>
-                    </div>
-                    
-                    <!--  促销和赠品合并-->
-                    <!--商品简介-促销规则 -->
-                    <div id="pro-promotions-area" class="pro-promotions-area">
-                       <dl class="clearfix">
-                            <dt>优惠信息：</dt>
-                            <dd>
-                                <ul id="pro-promotions-list">
-                                
-                                </ul>
-                                <ul id="pro-gift-list" >
-                                    		<li><span>赠送&nbsp</span> <a href="/product/1508.html#2677" title="华为 荣耀畅玩4X 屏幕保护膜（高透）" target="_blank" >华为 荣耀畅玩4X 屏幕保护膜（高透）</a> </li>
-                                    		<li><span>赠送&nbsp</span> <a href="/product/1540.html#2787" title="华为 荣耀畅玩4X 智能皮质保护套（玉兰白）" target="_blank" >华为 荣耀畅玩4X 智能皮质保护套（玉兰白）</a> </li>
-                                    		<li><span>赠送&nbsp</span> <a href="/product/833.html#2820" title="华为 荣耀  Color Cube 立体声蓝牙音箱（晴空蓝）" target="_blank" >华为 荣耀  Color Cube 立体声蓝牙音箱（晴空蓝）</a> </li>
-                                </ul> 
-                            </dd>
-                        </dl>
-                    </div>
-                    
-        <div class="pro-coding"><label>商品编码：</label><span id="pro-sku-code">{$goods.goods_sn}</span></div>
-                    <div class="pro-evaluate"><label>商品评分：</label><span class="pro-star"><span class="starRating-area"><s id="prd-remark-scoreAverage" style="width:100%"></s></span></span>&nbsp;（<a id="prd-remark-jmptoremark" href="#pro-tab-evaluate" onclick="ec.product.jmptoRemark()"   title="共&nbsp;0&nbsp;条评论">共&nbsp;0&nbsp;条评论</a>）</div>
-			<div class="pro-freight"><label>运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费：</label>满&nbsp;100&nbsp;免运费</div>
-			<div class="pro-service"><label>服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</label>由本商城负责发货，并提供售后服务</div>
-				 	
-		    <div class="hr-10"></div>
-		    <div class="line"></div>
-		    <div class="hr-15"></div>
-					
-          <!--商品简介-SKU -->
-					
+	<div class="pd-pic-area">
+					<div class="pic-img"  id="preview">
+						<img src="{$goods.goods_img}" jqimg="{$goods.goods_img}" height="350px" />
+					</div>
+					<div class="thumb-imgs">
+						<div class="arrow a_left"></div>
+						<div class="arrow a_right"></div>
+						<div class="ul-con">
+							<ul>
+								<!-- {foreach from=$pictures item=picture key=key}-->
+								<li{if $key==0} class="active"{/if}>
+										<img bimg="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" data-src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" onmousemove="preview(this);" >
+									
+								</li>
+								<!--{/foreach}-->
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+	<div class="pd-side">
+		<div class="section1">
+			<label class="label">咨询客服：</label>
+			<span class="contact"></span>
+		</div>
+		<div class="section1">
+			<div class="time">
+				<label>收到日期：</label>
+				<input class="Wdate" placeholder="请选择日期" type="text" id="d233" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+			</div>
+			<div class="time">
+				<label>寄回日期：</label>
+				<input class="Wdate" placeholder="请选择日期" type="text" id="d233" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+			</div>
+			<div class="calculate">计算租金</div>
+			<div class="section-text">
+				<label>租金：</label>
+				<label class="cost">5天￥330，之后每天45元</label>
+			</div>
+		</div>
+		<div class="section1">
+			<label class="label">促销信息：</label>
+			<div class="pro-div">
+				此处点击鼠标左键，任意划取部分文字信息，即可显示划词分享图标可显示划词分享图
+			</div>
+			<div class="pay-btns">
+				<span class="pay-btn taobao">淘宝交易</span><span class="pay-btn online" onclick="javascript:addToCart({$goods.goods_id})">直接付款</span>
+			</div>
+		</div>
+			<div class="bshare-custom">
+				<div class="bsPromo bsPromo2"></div>
+				<span class="share-text">分享到</span>
+				<a title="分享到QQ空间" class="bshare-qzone"></a>
+				<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+				<a title="分享到人人网" class="bshare-renren"></a>
+				<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+				<a title="分享到网易微博" class="bshare-neteasemb"></a>
+				<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+			</div>
+			<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
+			<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="pd-container">
+			<div class="tabbar">
+				<ul>
+					<li class="active">概述</li>
+					<li>详细参数</li>
+					<li>样片</li>
+					<li>租赁标准配件</li>
+					<li>选配配件</li>
+					<li>资源</li>
+				</ul>
+			</div>
+			<div class="pd-page page-0">
+				{$goods.goods_desc}
+			</div>
+			<div class="pd-page page-1">
+				
+			</div>
+			<div class="pd-page page-2">
+				
+			</div>
+			<div class="pd-page page-3">
+			</div>
+			<div class="pd-page page-4">
+				
+			</div>
+			<div class="pd-page page-5">
+				
+			</div>
+		</div>
+	
+	<div class="clear"></div>
+										
 		<script language="javascript">
 		  function changeAtt(t,src,key) {
 			
@@ -99,114 +148,7 @@
  			t.className = "cattsel";
 			changePrice();
 		}
-		</script>					
-							
-		 	 <style type="text/css">
-	  <!--
-			  /*--------------颜色选择器CSS添加-------------*/
-		.propertySelect{padding: 10px 0 10px 0px; }
-		.propertySelect strong{float:left;font-weight:normal; text-align:left; line-height:35px;}
-		.propertySelect .catt {height:auto;overflow:hidden; min-height:35px;}
-		
-		.propertySelect .catt a{border: #c8c9cd 1px solid;text-align: ; margin-top:3px;center;background-color: #fff;display: block;white-space: nowrap;color: #666;text-decoration: none;float:left; margin-left:2px; margin-right:2px; position:relative}
-		.propertySelect .catt a p{border: #fff 1px solid; padding:2px 5px;background-color: #fff;}
-		.propertySelect .catt a p.padd{ padding:0px;}
-		.propertySelect .catt a:hover {border:#e01d20 1px solid;}
-		.propertySelect .catt a:hover p{border: #e01d20 1px solid;}
-		.propertySelect .catt a:focus {outline-style:none;}
-		
-		.propertySelect .catt .cattsel {background:#ff6701;border: #e01d20 1px solid;}
-		.propertySelect .catt .cattsel a:hover {border: #e01d20 1px solid;}
-		.propertySelect .catt .cattsel p{border: #e01d20 1px solid;}
-		.propertySelect .catt em{font-style:normal}
-		.propertySelect .catt .cattsel i{background:url(images/test.png) no-repeat scroll right bottom transparent;bottom:0;height:16px;position:absolute;right:0;width:16px;}
-		.propertySelect .catt .cattsel a:hover i{background:url(images/test.png) no-repeat scroll right bottom transparent;}
-		.propertySelect img{ width:50px; height:50px;}
-		-->
-		</style>
-
-
-           {if $specification}
-		  <div id="pro-skus" class="pro-sku-area">
-            <div class="propertySelect clearfix" id="propertySelect">
-            <!-- {foreach from=$specification item=spec key=spec_key} -->
-              <strong>{$spec.name}：</strong>
-              <div class="catt" id="catt_{$spec_key}">
-              <!-- {* 判断属性是复选还是单选 *} -->
-              <!-- {if $spec.attr_type eq 1} -->
-              <!-- {if $cfg.goodsattr_style eq 1} -->
-              <!-- {foreach from=$spec.values item=value key=key} -->
-               <a class='hover {if $key eq 0}cattsel{/if}{if $value.thumb_url} colorImg{/if}' {if $value.thumb_url} rev={$value.img_original} rel=goodsPic {else}href="#"{/if} title="{$value.label}" style="cursor:pointer" name="spec_a_{$value.id}" onclick="changeAtt(this,{$value.id},{$spec_key})">
-               <p {if $value.thumb_url}class="padd"{elseif $value.hex_color neq ''}style="background:#{$value.hex_color}; height:45px; width:45px"{/if}>
-              {if $value.thumb_url}
-              <img src="{$value.thumb_url}" width="50" height="50" alt="{$value.label}">
-              {elseif $value.hex_color}
-              {else}
-               <em>{$value.label}</em>
-              {/if}
-              <i></i>
-              </p>
-             <input style="display:none" id="spec_value_{$value.id}" type="radio" name="spec_{$spec_key}" value="{$value.id}" {if $key eq 0}checked{/if} />
-              </a>
-              <!-- {/foreach} -->
-              <input type="hidden" name="spec_list" value="{$key}" />
-              <!-- {else} -->
-              <select name="spec_{$spec_key}">
-              <!-- {foreach from=$spec.values item=value key=key} -->
-              <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
-              <!-- {/foreach} -->
-              </select>
-              <input type="hidden" name="spec_list" value="{$key}" />
-              <!-- {/if} -->
-              <!-- {else} -->
-              <!-- {foreach from=$spec.values item=value key=key} -->
-              <label for="spec_value_{$value.id}">
-              <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
-              {$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}] </label>
-              <br />
-              <!-- {/foreach} -->
-              <input type="hidden" name="spec_list" value="{$key}" />
-              <!-- {/if} -->
-            </div>
-            <div class="blank"></div>
-            <!-- {/foreach} -->
-         </div>   </div>
-         {/if}
-     <!-- 关联商品 -->	
-	 
-
- 
- 
-
-  {foreach from=$attribute_linked item=linked}
-				
-					<div class="pro-sku-area" id="relPrdList">
-						<dl class="pro-sku-text clearfix">
-							<dt>关联商品：{$linked.title}</dt>
-							<dd>
-								<ol>
-			   <!-- {foreach from=$linked.goods item=linked_goods_data} -->
-		 	<li data-id="1494"><div class="sku"> <a href="{$linked_goods_data.url}" target="_blank" title="{$goods.linked_goods_data_name|escape:html}">{$linked_goods_data.short_name|escape:html}</a><s></s></div></li>
-				  <!-- {/foreach} -->
- 
-								</ol>
-							</dd>
-						</dl>
-					</div>
-                    
-	   {/foreach}
-                    <!-- 20131215-商品简介-购买数量-start -->
-					<div id="pro-quantity-area"  class="pro-stock-area">
-						<dl class="clearfix">
-							<dt>购买数量：</dt>
-							<dd>
-							 <span class="stock-area">
-							 
-			   <a id="jian" onblur="changePrice()"  class="icon-minus-2 vam"/></a>
-              	 <input name="number" type="text" id="number" value="1" size="4" onblur="changePrice()" class="vam text" autocomplete="off" />
-              <a  id="add" value=""  onblur="changePrice()"  class="icon-plus-2 vam"/></a>
-			   </span>
-						
+		</script>		
 		   <script>
 			$(document).ready(function(){
 			$("#add").click(function(){
@@ -225,24 +167,7 @@
 			  });
 			});
 			</script>
-   						    
-							</dd>
-						</dl>
-					</div> 
-					
-                </div><!--end pro-meta-area-->
-              
- 
-       
-     <div class="pro-selected">{$lang.amount}<span><b id="ECS_GOODS_AMOUNT"></b></span></div>
-     <div id="pro-operation" class="pro-action-area" style="visibility: visible;"><a href="javascript:addToCart({$goods.goods_id})" class="button-add-cart button-style-1" title="加入购物车"><span>加入购物车</span></a></div>
-		<!--商品简介-提交操作 -->
- 		<!--延保单独购买提交form -->
-                 
  </form>
-
-<!--商品简介-提交操作 -->
-<div id="pro-operation" class="pro-action-area"></div>
 
  
 <!--弹出层-成功添加到购物车 -->
@@ -267,33 +192,6 @@
 
 <!--弹出层-提示信息 -->
  
-    </div>
-    </div>
-   
-      
-		
-		 <div class="pro-gallery-area" style="margin:0px;"> 
-      
-      <div class="fdj_left">
-        <div id="preview"> <span class="jqzoom"><img src="{$goods.goods_img}" jqimg="{$goods.goods_img}" width="500" height="500"/></span>
-         
-        <div class="spec-scroll"> <a class="prev">&lt;</a> <a class="next">&gt;</a>
-        <div class="items">
-          <ul>
-		    <!-- {foreach from=$pictures item=picture}-->
-                       <li><a href="gallery.php?id={$id}&amp;img={$picture.img_id}" target="_blank"><img  bimg="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" onmousemove="preview(this);"  width="55" ></a></li>
-					       
-                       <!--{/foreach}-->
-					
-					  </ul>
-        </div>
-      </div>
-  </div>
- 	<!--商品简介-图片画廊 -->
-        	 
-      
-        
-    </div>
 </div>
 
 
@@ -344,88 +242,7 @@ document.getElementById("totalPrice").innerHTML=result_format;
 document.getElementById("totalNum").innerHTML=j;
 }
 </script>
- 
-
-
-<div id="group-area" class="layout">
-<div class="hr-20"></div>
-	    <!--商品详情-优惠套装 -->
-	    <div id="tab-bundle" class="pro-suit-area">
-		<div class="h">
-		    <h3>优惠套装</h3>
-		    <div class="h-tab" id="bundle-tab">
-			<ul id="bundle-list-3151" data-size="1" class="hide clearfix">
-				<li class="current" data-id="493">
-					<a href="javascript:;" title="套餐"><span>套餐</span></a>
-				</li>
-			</ul>
-		    </div>
-		</div>
-		<div class="b clearfix">
-		    <div class="pro-main">
- 					<div  id="boxOne" class="pro-suit-parts-list">
-					    <!-- pro-suit-parts-area宽度等于159*li的N数 -->
-					    <div class="pro-suit-parts-area fitting_middle"  style="width:900px;">
-						<ul class="clearfix ">
-						
-						 <li >
-						<div class="suit-area">
-						 <p class="p-img"><img src="{$goods.goods_thumb}" alt="{$goods.goods_style_name|escape:html}" width="110"  height="110"/></p>
-   						 <p class="p-name"><a href="#" target="_blank" title="{$goods.goods_style_name|escape:html}">{$goods.goods_style_name|escape:html}</a></p>
-						 <!--{if $goods.is_promote and $goods.gmt_end_time } 促销价格-->
-						 <b class="f1">{$goods.promote_price}</b>
-						 <!--{else}-->
-						 <b class="f1">{$goods.shop_price_formated}</b>
-						 <!--{/if}-->
-						  <i class="and"></i>
-							</div>
-						    </li>
-	 
-						 <!--{foreach from=$fittings item=goods}-->
- 
-   	
-						    <li >
-							<div class="suit-area">
-							    <p class="p-img"><a href="{$goods.url}" title="{$goods.goods_name|escape:html}" target="_blank"><img src="{$goods.goods_thumb}" width="110"  height="110"/></a></p>
-							    <p class="p-name">     <a href="{$goods.url}" target="_blank" title="{$goods.goods_name|escape:html}">{$goods.short_name|escape:html}</a></p>
-								    <input type="checkbox" name="{$goods.fittings_price}" value="{$goods.goods_id}"  onClick="totalPrice()" checked=checked /><b class="f1">{$goods.fittings_price}</b>
-							    <i class="and"></i>
-							</div>
-						    </li>
-						  <!--{/foreach}-->
-						 
- 						</ul>
-					    </div>
-					</div>
-
-		    </div>
-			<div class="pro-sub">
-				<div class="pro-suit-cost-area">
-									<div id="bundle-price-493">
- 							 
- 								    <p><s>已选择：&yen;<span id="totalNum" style="color:red;"></span>个商品</s></p>
-								    <p><b>搭配价：<span id="totalPrice" style="color:red;font-weight:bold;"></span></b></p>
- 								    <p class="pro-suit-cost-button" ><a href="javascript:;" class="button-add-cart-2 button-style-1" title="加入购物车" onclick="check()"><span>加入购物车</span></a></p>
-									</div>
-		    	</div>
-		    </div>
-		</div>
-	    </div>
- 	    <!--商品详情-优惠套装 end -->
-<script>totalPrice();</script>
-	 <!-- {/if} -->
-</div>
-</div>
-
-
-<div class="hr-20"></div>
-<div class="layout"> 
-	<div class="fr u-3-4">
-	<!-- 20131220-商品详情-start -->
-		<div class="pro-detail-area clearfix">
-		<div class="tool-fixed-holder"></div>
-		<div id="pro-tab-all" class="pro-detail-tool">
-			
+<!-- {/if} -->
  <script type="text/javascript">
 
 
@@ -475,323 +292,6 @@ $(function(){
 .tabbox .tabcon li span{margin:0 10px 0 0;font-family:"宋体";font-size:12px;font-weight:400;color:#ddd;}
 </style>
 
-
-
-		<!--商品详情-书签 --> 
-        <div id="clicktab" class="pro-detail-tab clearfix">
-        	<div class="pro-detail-tab-nav" >
-            <ul class="tabbtn">
-                <li id="pro-tab-feature" class="current"><a href="javascript:;" title="商品详情"><span>商品详情</span></a></li>
-                <li id="pro-tab-evaluate"><a href="javascript:;" title="用户评价"><span id="prd-remark-span-tab-evaluate">用户评价<em>（0）</em></span></a></li>
-                <li id="pro-tab-parameter" data-skulist="3151,3325,3328,3329,3424,3433,3625"><a href="javascript:;" title="规格参数"><span>规格参数</span></a></li>
-                <li id="pro-tab-package"><a href="javascript:;" title="包装清单"><span>包装清单</span></a></li>
-				<li id="pro-tab-software"><a href="javascript:;" title="软件下载"><span>软件下载</span></a></li>
-                <li id="pro-tab-service"><a href="javascript:;" title="售后服务"><span>售后服务</span></a></li>
-              
-            </ul>
-            </div>
-            
-            <div  class="pro-detail-tab-button"><a id="tab-addcart-button" href="javascript:;" class="button-style-1 button-add-cart-3" onclick="ec.product.buyComb();return false;">加入购物车</a><a href="javascript:;" id="tab-notice-button" class="button-style-2 button-notice-arrival-2"  onclick="ec.product.arrival();return false;">到货通知</a></div>
-        </div>
-        </div>
-
-        <!--商品详情-->
-        <div class="pro-detail-area">
-            <!--产品特征 -->
-<div class="pro-detail-tab-area pro-parameter-area tabcon" >
-
-<div id="pro-tab-feature-content-3151"  >
-<p>
-{$goods.goods_desc}
-</p>
-</div>
-
- 
-<div class="hr-20"></div>
-<div class="pro-disclaimer-area">
-<p>※本网站尽可能地提供准确的信息。本网站内所涉及的产品图片与实物可能有细微区别，效果演示图和示意图仅供参考（图片为合成图、模拟演示图），有关产品的外观（包括但不限于颜色）请以实物为准。</p>
-<p>※限于篇幅，本网站中所包含的信息（包括但不限于产品规格、功能说明等）可能不完整，请以有关产品使用说明书的具体信息为准。</p>
-</div>
-</div>
-<!--规格参数 -->
-<div class="pro-detail-tab-area pro-parameter-area tabcon"><div>正在加载中...</div></div>
-<!--包装清单 -->
-<div id="pro-tab-package-content-3151"  class="pro-detail-tab-area pro-parameter-area tabcon">
-<p>手机 x 1，充电器 x 1，USB线 x 1，快速指南 x 1，三包凭证 x 1<br /></p>
-
-
-</div>
-<!--售后服务 -->
-<div id="pro-tab-service-content" class="pro-detail-tab-area pro-parameter-area tabcon">
-<div id="pro-tab-service-content-3151" class="hide">
-<p>本产品全国联保，享受三包服务，质保期为：一年质保<br />如因质量问题或故障，凭厂商维修中心或特约维修点的质量检测证明，享受7天内退货，15日内换货，15日以上在质保期内享受免费保修等三包服务！<br />售后服务电话：400-830-8300<br /><span>华为消费者BG官网： <a href="http://consumer.huawei.com/cn/">http://consumer.huawei.com/cn/</a></span><br /></p>
-</div>
-
-</div>
-<div id="pro-tab-software-content" class="pro-detail-tab-area pro-parameter-area tabcon">
-<iframe id="pro_software_iframe" name="pro_software_iframe" width="100%" height="300" frameborder="0" src="about:blank" data-src="http://app.hicloud.com/vmall/applist.action?divid=pro_software_iframe&itemid=101100101203" scrolling="no"></iframe>
-</div>	    <div id="remarkLoading"></div>
-            <!--用户评价 -->
-            <div id="pro-tab-evaluate-content" class="pro-detail-tab-area pro-evaluate-area  tabcon hide">
-                <!--用户评分 -->
-                <div class="pro-score-area clearfix">
-                	<div class="pro-score-average">
-						<span><b id="pro-evaluate-avgSorce"></b>%</span>
-						<em>好评度</em>
-					</div>
-					
-					
-					<div class="pro-score-percent">
-						<dl>
-							<dt>好评<em id="pro-score-percent-high"></em></dt>
-							<dd><s id="pro-score-draw-high" style="width:0%"></s></dd>
-						</dl>
-						<dl>
-							<dt>中评<em id="pro-score-percent-mid"></em></dt>
-							<dd><s id="pro-score-draw-mid" style="width:0%"></s></dd>
-						</dl>
-						<dl>
-							<dt>差评<em id="pro-score-percent-low"></em></dt>
-							<dd><s id="pro-score-draw-low"  style="width:0%"></s></dd>
-						</dl>
-					</div>
-					
-                  <div id="pro-score-impress"  class="pro-score-impress"></div>
-                  
-                   <div class="pro-score-button"><a href="/member/order/" class="button-style-4 button-comment">发表评价</a></div>
-                </div>
-                
-                <!-- 20131220-商品详情-用户评论-书签-start -->
-				<div class="pro-evaluate-tab clearfix" >
-					<div class="pro-evaluate-tab-nav">
-						<ul id="pro-evaluate-click-type">
-							<li id="pro-evaluate-click-all" class="current"><a href="javascript:;"><span>全部评价<em id="pro-evaluate-number-all">(</em></span></a></li>
-							<li id="pro-evaluate-click-high"><a  href="javascript:;"><span>好评<em id="pro-evaluate-number-high" >(100)</em></span></a></li>
-							<li id="pro-evaluate-click-mid" ><a href="javascript:;"><span  >中评<em id="pro-evaluate-number-mid"></em></span></a></li>
-							<li id="pro-evaluate-click-low"><a href="javascript:;"><span  >差评<em id="pro-evaluate-number-low"></em></span></a></li>
-						</ul>
-					</div>
-					
-					<!--分页 -->
-                <div class="pro-evaluate-page">
-					<!-- 20131220-分页-start -->
-					<div id="pro-msg-pagerup" class="pager">
-					</div><!-- 20131220-分页-end -->
-				</div>
-					
-				</div><!-- 20131220-商品详情-用户评价-书签-end -->
-				
-                <!--用户留言 -->
-                <!-- 20131222-商品详情-用户评价-start -->
-				<div id="pro-msg-list"  class="pro-comment-list">
-				</div><!-- 20131222-商品详情-用户评价-end -->
-				
-               
-                <!--分页 -->
-                <div class="pro-evaluate-page">
-					<!-- 20131220-分页-start -->
-					<div id="pro-msg-pager" class="pager">
-						
-					</div><!-- 20131220-分页-end -->
-					 	<div class="hr-15"></div>
-					</div>
-            	</div>
-        	</div>
-    	</div>
-    	<!--咨询-->
-    <div class="pro-detail-area clearfix"  id="clicktab2"  style="display:none;">
-			<div class="pro-detail-tool">
-				<!-- 20140624-商品详情-书签-start -->
-				<div class="pro-detail-tab clearfix">
-					<div class="pro-detail-tab-nav">
-						<ul class="tabbtn2">
-							<li class="current" id="prd_detail_counsel_1"><a href="javascript:;" onclick="ec.product.divchange(1)"><span>全部咨询</span></a></li>
-							<li id="prd_detail_counsel_2"><a href="javascript:;" onclick="ec.product.divchange(2)"><span>商品咨询</span></a></li>
-							<li id="prd_detail_counsel_3"><a href="javascript:;" onclick="ec.product.divchange(3)"><span>支付</span></a></li>
-							<li id="prd_detail_counsel_4"><a href="javascript:;" onclick="ec.product.divchange(4)"><span>配送</span></a></li>
-							<li id="prd_detail_counsel_5"><a href="javascript:;" onclick="ec.product.divchange(5)"><span>售后</span></a></li>
-							<li id="prd_detail_counsel_6"><a href="javascript:;" onclick="ec.product.divchange(6)"><span>常见问题</span></a></li>
-						</ul>
-					</div>
-					<div class="pro-detail-tab-link"><a href="#inquire-form" onclick="ec.product.loginCheckBefCoun();">发表咨询&gt;&gt;</a></div>
-				</div><!-- 20140624-商品详情-书签-end -->
-			</div>
-
-			<!-- 20140624-商品详情-全部咨询-start -->
-			<div class="pro-detail-tab-area pro-inquire-area tabcon2 " id="prddetail_counsel_all">
-				<!-- 20140624-商品详情-咨询提示-start -->
-				<div class="pro-inquire-tips">
-					<label>温馨提示：</label>因产线可能更改商品包装、产地、附配件等未及时通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不便还请谅解，谢谢！
-				</div><!-- 20140624-商品详情-咨询提示-end -->
-				<div class="pro-inquire-list" id="all_prd_counsel_content">
-				
-					
-					<div class="pro-inquire-item clearfix">
-						<div class="pro-inquire-user">
-							<label>网友：</label><span>13306*****</span><s><i class="icon-vip-level-0"></i></s><em>2015-05-09 18:46:16</em>
-						</div>
-						<div class="pro-inquire-question">
-							<label>咨询内容：</label><span>订单号：7240285960 什么时候发货，5月7号下的单，都9号了一点动静都没有，如果没发货，我可以换款别的吗？</span>
-						</div>
-						<div class="pro-inquire-answer">
-							<label>回复：</label><span>您好，经查询商城已经发货了，请注意查收哦。感谢您的支持。</span>
-							<em>2015-05-11 17:55:52</em>
-						</div>
-					</div>
-					<div class="pro-inquire-item clearfix">
-						<div class="pro-inquire-user">
-							<label>网友：</label><span>13786*****</span><s><i class="icon-vip-level-0"></i></s><em>2015-05-09 18:28:25</em>
-						</div>
-						<div class="pro-inquire-question">
-							<label>咨询内容：</label><span>订单号：1190238120，请问这个订单什么时候发货啊，用什么快递呢？谢谢</span>
-						</div>
-						<div class="pro-inquire-answer">
-							<label>回复：</label><span>您好，已经发货了，发的圆通快递，单号：802176329028，请注意查收哦。</span>
-							<em>2015-05-11 17:55:17</em>
-						</div>
-					</div>
-				</div>
-				<div class="pro-inquire-page clearfix">
-					<div class="pro-inquire-record">共<em>168</em>条</div>
-					<!-- 20131220-分页-start -->
-					<div class="pager" id="all_prd_counsel">
-					</div><!-- 20131220-分页-end -->
-				</div>
-			</div><!-- 20140624-商品详情-全部咨询-end -->
-
-			<!-- 20140624-商品详情-商品咨询-start -->
-			<div class="pro-detail-tab-area pro-inquire-area " id="prddetail_counsel_prd" style="display:none;">
-				<!-- 20140624-商品详情-咨询提示-start -->
-				<div class="pro-inquire-tips">
-					<label>温馨提示：</label>因产线可能更改商品包装、产地、附配件等未及时通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不便还请谅解，谢谢！
-				</div><!-- 20140624-商品详情-咨询提示-end -->
-				<div class="pro-inquire-list" id="prd_prd_counsel_content">
-				</div>
-				<div class="pro-inquire-page clearfix" id="prddetail_counsel_prd_total">
-					<div class="pro-inquire-record">共<em></em>条</div>
-					<!-- 20131220-分页-start -->
-					<div class="pager" id="prd_prd_counsel">
-					</div><!-- 20131220-分页-end -->
-				</div>
-			</div><!-- 20140624-商品详情-商品咨询-end -->
-
-			<!-- 20140624-商品-支付咨询-start -->
-			<div class="pro-detail-tab-area pro-inquire-area " id="prddetail_counsel_pay" style="display:none;">
-				<!-- 20140624-商品详情-咨询提示-start -->
-				<div class="pro-inquire-tips" >
-					<label>温馨提示：</label>因产线可能更改商品包装、产地、附配件等未及时通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不便还请谅解，谢谢！
-				</div><!-- 20140624-商品-咨询提示-end -->
-				<div class="pro-inquire-list" id="pay_prd_counsel_content">
-				</div>
-				<div class="pro-inquire-page clearfix" id="prddetail_counsel_pay_total">
-					<div class="pro-inquire-record">共<em></em>条</div>
-					<!-- 20131220-分页-start -->
-					<div class="pager" id="pay_prd_counsel_page">
-					</div><!-- 20131220-分页-end -->
-				</div>
-			</div><!-- 20140624-商品-支付咨询-end -->
-
-			<!-- 20140624-商品-配送咨询-start -->
-			<div class="pro-detail-tab-area pro-inquire-area " id="prddetail_counsel_trans" style="display:none;">
-				<!-- 20140624-商品详情-咨询提示-start -->
-				<div class="pro-inquire-tips">
-					<label>温馨提示：</label>因产线可能更改商品包装、产地、附配件等未及时通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不便还请谅解，谢谢！
-				</div><!-- 20140624-商品详情-咨询提示-end -->
-				<div class="pro-inquire-list" id="trans_prd_counsel_content">
-				</div>
-				<!--分页判断-->
-				<div class="pro-inquire-page clearfix" id="prddetail_counsel_trans_total">
-					<div class="pro-inquire-record" >共<em></em>条</div>
-					<!-- 20131220-分页-start -->
-					<div class="pager" id="trans_prd_counsel_page" >
-					</div>
-					<!-- 20131220-分页-end -->
-				</div>
-			</div><!-- 20140624-商品-配送咨询-end -->
-
-			<!-- 20140624-商品-售后咨询-start -->
-			<div class="pro-detail-tab-area pro-inquire-area " id="prddetail_counsel_service" style="display:none;">
-				<!-- 20140624-商品详情-咨询提示-start -->
-				<div class="pro-inquire-tips">
-					<label>温馨提示：</label>因产线可能更改商品包装、产地、附配件等未及时通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不便还请谅解，谢谢！
-				</div><!-- 20140624-商品详情-咨询提示-end -->
-				<div class="pro-inquire-list" id="ser_prd_counsel_content">
-				</div>
-				<div class="pro-inquire-page clearfix" id="prddetail_counsel_serv_total">
-					<div class="pro-inquire-record">共<em></em>条</div>
-					<!-- 20131220-分页-start -->
-					<div class="pager" id="ser_prd_counsel_page">
-					</div><!-- 20131220-分页-end -->
-				</div>
-			</div><!-- 20140624-商品-售后咨询-end -->
-
-			<!-- 20140624-商品-常见问题-start -->
-			<div class="pro-detail-tab-area pro-faq-area " id="prddetail_counsel_ques" style="display:none;">
-				<!-- 20140624-商品详情-常见问题提示-start -->
-				<div class="pro-faq-tips">
-					<label>温馨提示：</label> 因商城随时可能更新商品版本、价格、附配件、赠品等信息未及时通知，且每位顾客的购买情况等也不同，为此以下常见问题答复仅供参考，具体请以下单页面显示为准！若给您带来的不便还请谅解，谢谢！
-				</div><!-- 20140624-商品详情-咨询提示-end -->
-				<div class="pro-faq-list" id="ques_prd_counsel_content">
-							
-							
-							<dl class="pro-faq-item">
-								<dt>荣耀4x主副卡可以切换吗？怎么切换？</dt>
-								<dd>您好，全网通版可以自由切换。在“设置->SIM卡管理”中设定。</dd>
-							</dl>
-							<dl class="pro-faq-item">
-								<dt>荣耀畅玩4X电信版和全网通版有什么区别？</dt>
-								<dd>您好，主要区别有：1、电信版是电信定制机，全网通版不是。2、制式不同：电信版卡—电信4G、电信3G、移动2G / 联通2G（GSM）/ 电信2G；全网通4G版—
-卡1：移动4G/3G/2G、联通4G/3G/2G、电信4G/3G/2G；卡2：移动4G/3G/2G、联通4G/3G/2G。3、数据限制：电信版只能使用电信卡上网，且电信卡只能放在卡槽1；全网通4G版2G、3G、4G均可以使用数据业务。</dd>
-							</dl>
-				</div>
-					<div class="pro-faq-page clearfix" id="prddetail_counsel_ques_total">
-						<div class="pro-faq-record">共<em>10</em>条</div>
-						<!-- 20131220-分页-start -->
-						<div class="pager" id="ques_prd_counsel_page">
-						</div><!-- 20131220-分页-end -->
-					</div>
-			</div><!-- 20140624-商品详情-全部咨询-end -->
-
-			<!-- 20140624-商品详情-咨询表单-start -->
-			<div id="inquire-form" class="pro-inquire-form-area">
-				<div class="h">
-					<h3>发表咨询</h3>
-					<p>声明：您可在购买前对产品包装、颜色、套餐、运输、支付等方面进行咨询，我们有专人进行回复！因产线可能会更改一些产品的包装、颜色、产地等参数，所以该回复仅在当时对提问者有效，其他网友仅供参考！咨询回复的工作时间为：周一至周五，9:00至18:00，请耐心等待工作人员回复。</p>
-				</div>
-				<div class="b">
-					<div class="form-edit-area">
-						<form autocomplete="off"  id="counsel_content_form">
-							<div class="form-edit-table">
-								<p>
-									<b>咨询类型：</b>
-									<input type="radio" class="radio vam" value="1" name="type" checked ><label class="vam" for="">商品咨询</label>
-									<input type="radio" class="radio vam" value="2" name="type"><label class="vam" for="">支付</label>
-									<input type="radio" class="radio vam" value="3" name="type"><label class="vam" for="">配送</label>
-									<input type="radio" class="radio vam" value="4" name="type"><label class="vam" for="">售后</label>
-								</p>
-								<p><textarea placeholder=""  onfocus="ec.product.loginCheckBefCoun();" class="textarea" name="question" id="counseltextid"  maxlength="100"></textarea></p>
-							</div>
-							<div class="form-edit-action">
-								<input type="button" class="button-style-4 button-inquire-sumbit" value="提交" onclick="ec.product.submitCounsel();">
-								&nbsp;&nbsp;<span class="vam error" id="error-span" style="display:none"></span>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div><!-- 20140624-商品详情-咨询表单-end -->
-
-		</div>
-    </div>
-    <div class="fl u-1-4">
- 
-
- <!-- #BeginLibraryItem "/Library/top10.lbi" --><!-- #EndLibraryItem -->
-
-<!-- 最近浏览过的商品  -->
- <!-- #BeginLibraryItem "/Library/history.lbi" --><!-- #EndLibraryItem -->
-
-<div class="hr-60"></div>
-</div>
 </div>
 <script>
 (function(){
@@ -871,7 +371,67 @@ function changePriceResponse(res)
   }
 }
 
+$(function() {
+	$(".ul-con ul").width($(".ul-con ul li").length*97);
+	var currentPage=0;
+	$(".ul-con ul").delegate("li", 'click', function() {
+		if($(this).hasClass("active")){
+			return;
+		}else{
+			$(this).addClass("active").siblings().removeClass("active");
+			//$(".ul-con ul").animate({"marginLeft":-97*$(this).index()});
+			$(".pic-img img").attr("src",$(this).find("img").attr("data-src"));
+		}
+	});
+	
+	$(".thumb-imgs .arrow").bind('click',function(){
+		var left=parseInt($(".ul-con ul").css("margin-left"));
+		if($(this).hasClass("a_left")){
+			if(currentPage==0){
+				return;
+			}else{
+				$(".a_right").removeClass("disable");
+				$(".ul-con ul").animate({"marginLeft":-$(".ul-con").width()*(currentPage-1)},"fast",function(){
+					$(".ul-con ul li:eq("+((currentPage-1)*5)+")").addClass("active").siblings().removeClass("active");
+					currentPage--;
+					if(currentPage==0){
+						$(".a_left").addClass("disable");
+					}
+				});
+			}
+		}else{
+			if(currentPage==Math.ceil($(".ul-con ul li").length/5)-1){
+				return;
+			}else{
+				$(".a_left").removeClass("disable");
+				$(".ul-con ul").animate({"marginLeft":-$(".ul-con").width()*(currentPage+1)},"fast",function(){
+					$(".ul-con ul li:eq("+((currentPage+1)*5)+")").addClass("active").siblings().removeClass("active");
+					currentPage++;
+					if(currentPage==Math.ceil($(".ul-con ul li").length/5)-1){
+						$(".a_right").addClass("disable");
+					}
+				});
+			}
+		}
+	});
+	
+	$(".tabbar ul").delegate('li','click',function(){
+		if($(this).hasClass("active")){
+			return;
+		}else{
+			var lindex=$(".tabbar li.active").index();
+			var index=$(this).index();
+			$(this).addClass("active").siblings().removeClass("active");
+			$(".pd-page:eq("+lindex+")").hide();
+			if(lindex>index){
+				$(".pd-page:eq("+index+")").css("margin-left","-500px").show().animate({"marginLeft":"0px"},"fast");
+			}else{
+				$(".pd-page:eq("+index+")").css("margin-left","700px").show().animate({"marginLeft":"0px"},"fast");
+			}
 
+		}
+	});
+});
 
 <!-- {/literal} -->
 </script>

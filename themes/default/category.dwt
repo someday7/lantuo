@@ -17,7 +17,9 @@
 
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <div class="zulin-main">
- 	<!-- #BeginLibraryItem "/library/category_tree2.lbi" --><!-- #EndLibraryItem -->
+	<div class="banner2">
+		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+	</div>
 	<div class="main_con">
     <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
 	<!-- 20140726-商品类别-start -->
