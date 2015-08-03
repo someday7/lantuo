@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:53:"E:/code/workspace/php/lantuo/themes/default/goods.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:3;s:63:"E:/code/workspace/php/lantuo/themes/default/library/ur_here.lbi";i:4;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1436614341;s:8:"maketime";i:1436610741;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:53:"E:/code/workspace/php/lantuo/themes/default/goods.dwt";i:1;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_header.lbi";i:2;s:69:"E:/code/workspace/php/lantuo/themes/default/library/category_tree.lbi";i:3;s:63:"E:/code/workspace/php/lantuo/themes/default/library/ur_here.lbi";i:4;s:67:"E:/code/workspace/php/lantuo/themes/default/library/page_footer.lbi";}s:7:"expires";i:1438633375;s:8:"maketime";i:1438629775;}<!DOCTYPE html>
 <html>
 <head>
 <meta name="Generator" content="ECSHOP v2.7.3" />
@@ -11,6 +11,7 @@
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
+ <link href="themes/default/js/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 </head>
 <body>
  
@@ -80,7 +81,8 @@ var process_request = "正在处理您的请求...";
 	})
 </script>
 <script type="text/javascript" src="js/common.js"></script> 
-<script type="text/javascript" src="js/jquery.json.js"></script> <div class="pingce-main">
+<script type="text/javascript" src="js/jquery.json.js"></script><script type="text/javascript" src="themes/default/js/My97DatePicker/WdatePicker.js"></script>
+ <div class="pingce-main">
 		
  	<div class="banner2">
 					<ul class="menu">
@@ -387,7 +389,7 @@ var minute = "分钟";
 var second = "秒";
 var end = "结束";
 var goodsId = 2394;
-var now_time = 1436610741;
+var now_time = 1438629775;
 onload = function(){
   changePrice();
   fixpng();

@@ -13,6 +13,7 @@
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
+ <link href="themes/default/js/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -22,6 +23,7 @@
 <?php echo $this->smarty_insert_scripts(array('files'=>'common.js')); ?>
  
 <?php echo $this->smarty_insert_scripts(array('files'=>'transport.js,utils.js,jquery.json.js')); ?>
+<script type="text/javascript" src="themes/default/js/My97DatePicker/WdatePicker.js"></script>
  <div class="pingce-main">
 		
  	<div class="banner2">
