@@ -12,6 +12,7 @@
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
+ <link href="themes/default/js/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -21,6 +22,7 @@
 {insert_scripts files='common.js'}
  
 {insert_scripts files='transport.js,utils.js,jquery.json.js'}
+<script type="text/javascript" src="themes/default/js/My97DatePicker/WdatePicker.js"></script>
  <div class="pingce-main">
 		<!-- 20140823-分类-start -->
  	<div class="banner2">
