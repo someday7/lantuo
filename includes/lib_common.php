@@ -2263,87 +2263,96 @@ function get_volume_price_list($goods_id, $price_type = '1')
  *
  * @return  商品最终购买价格
  */
-function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $spec = array())
+function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $spec = array(), $start_day = null, $end_day = null)
 {
-    $final_price   = '0'; //商品最终购买价格
-    $volume_price  = '0'; //商品优惠价格
-    $promote_price = '0'; //商品促销价格
-    $user_price    = '0'; //商品会员价格
-
-    //取得商品优惠价格列表
-    $price_list   = get_volume_price_list($goods_id, '1');
-
-    if (!empty($price_list))
-    {
-        foreach ($price_list as $value)
-        {
-            if ($goods_num >= $value['number'])
-            {
-                $volume_price = $value['price'];
-            }
-        }
-    }
-
-    //取得商品促销价格列表
-    /* 取得商品信息 */
-    $sql = "SELECT g.promote_price, g.promote_start_date, g.promote_end_date, ".
-                "IFNULL(mp.user_price, g.shop_price * '" . $_SESSION['discount'] . "') AS shop_price ".
-           " FROM " .$GLOBALS['ecs']->table('goods'). " AS g ".
-           " LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
-                   "ON mp.goods_id = g.goods_id AND mp.user_rank = '" . $_SESSION['user_rank']. "' ".
-           " WHERE g.goods_id = '" . $goods_id . "'" .
-           " AND g.is_delete = 0";
-    $goods = $GLOBALS['db']->getRow($sql);
-
-    /* 计算商品的促销价格 */
-    if ($goods['promote_price'] > 0)
-    {
-        $promote_price = bargain_price($goods['promote_price'], $goods['promote_start_date'], $goods['promote_end_date']);
-    }
-    else
-    {
-        $promote_price = 0;
-    }
-
-    //取得商品会员价格列表
-    $user_price    = $goods['shop_price'];
-
-    //比较商品的促销价格，会员价格，优惠价格
-    if (empty($volume_price) && empty($promote_price))
-    {
-        //如果优惠价格，促销价格都为空则取会员价格
-        $final_price = $user_price;
-    }
-    elseif (!empty($volume_price) && empty($promote_price))
-    {
-        //如果优惠价格为空时不参加这个比较。
-        $final_price = min($volume_price, $user_price);
-    }
-    elseif (empty($volume_price) && !empty($promote_price))
-    {
-        //如果促销价格为空时不参加这个比较。
-        $final_price = min($promote_price, $user_price);
-    }
-    elseif (!empty($volume_price) && !empty($promote_price))
-    {
-        //取促销价格，会员价格，优惠价格最小值
-        $final_price = min($volume_price, $promote_price, $user_price);
-    }
-    else
-    {
-        $final_price = $user_price;
-    }
-
-    //如果需要加入规格价格
-    if ($is_spec_price)
-    {
-        if (!empty($spec))
-        {
-            $spec_price   = spec_price($spec);
-            $final_price += $spec_price;
-        }
-    }
-
+	if(!empty($start_day) && !empty($end_day)) {
+		$goods = get_goods_info($goods_id);
+		$days = round((strtotime($end_day) - strtotime($start_day))/86400)+1;
+		if($days <= $goods['rent_start_day']) {
+			$final_price = $goods['rent_start_price'];
+		} else {
+			$final_price = $goods['rent_start_price'] + ($days - $goods['rent_start_day']) * $goods['rent_add_price'];
+		}
+	} else {
+	    $final_price   = '0'; //商品最终购买价格
+	    $volume_price  = '0'; //商品优惠价格
+	    $promote_price = '0'; //商品促销价格
+	    $user_price    = '0'; //商品会员价格
+	
+	    //取得商品优惠价格列表
+	    $price_list   = get_volume_price_list($goods_id, '1');
+	
+	    if (!empty($price_list))
+	    {
+	        foreach ($price_list as $value)
+	        {
+	            if ($goods_num >= $value['number'])
+	            {
+	                $volume_price = $value['price'];
+	            }
+	        }
+	    }
+	
+	    //取得商品促销价格列表
+	    /* 取得商品信息 */
+	    $sql = "SELECT g.promote_price, g.promote_start_date, g.promote_end_date, ".
+	                "IFNULL(mp.user_price, g.shop_price * '" . $_SESSION['discount'] . "') AS shop_price ".
+	           " FROM " .$GLOBALS['ecs']->table('goods'). " AS g ".
+	           " LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
+	                   "ON mp.goods_id = g.goods_id AND mp.user_rank = '" . $_SESSION['user_rank']. "' ".
+	           " WHERE g.goods_id = '" . $goods_id . "'" .
+	           " AND g.is_delete = 0";
+	    $goods = $GLOBALS['db']->getRow($sql);
+	
+	    /* 计算商品的促销价格 */
+	    if ($goods['promote_price'] > 0)
+	    {
+	        $promote_price = bargain_price($goods['promote_price'], $goods['promote_start_date'], $goods['promote_end_date']);
+	    }
+	    else
+	    {
+	        $promote_price = 0;
+	    }
+	
+	    //取得商品会员价格列表
+	    $user_price    = $goods['shop_price'];
+	
+	    //比较商品的促销价格，会员价格，优惠价格
+	    if (empty($volume_price) && empty($promote_price))
+	    {
+	        //如果优惠价格，促销价格都为空则取会员价格
+	        $final_price = $user_price;
+	    }
+	    elseif (!empty($volume_price) && empty($promote_price))
+	    {
+	        //如果优惠价格为空时不参加这个比较。
+	        $final_price = min($volume_price, $user_price);
+	    }
+	    elseif (empty($volume_price) && !empty($promote_price))
+	    {
+	        //如果促销价格为空时不参加这个比较。
+	        $final_price = min($promote_price, $user_price);
+	    }
+	    elseif (!empty($volume_price) && !empty($promote_price))
+	    {
+	        //取促销价格，会员价格，优惠价格最小值
+	        $final_price = min($volume_price, $promote_price, $user_price);
+	    }
+	    else
+	    {
+	        $final_price = $user_price;
+	    }
+	
+	    //如果需要加入规格价格
+	    if ($is_spec_price)
+	    {
+	        if (!empty($spec))
+	        {
+	            $spec_price   = spec_price($spec);
+	            $final_price += $spec_price;
+	        }
+	    }
+	}
     //返回商品最终购买价格
     return $final_price;
 }

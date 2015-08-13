@@ -30,6 +30,8 @@ function addToCart(goodsId, parentId)
   goods.goods_id = goodsId;
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
+  goods.start_day =  document.forms['ECS_FORMBUY'].elements['d233'].value;
+  goods.end_day  = document.forms['ECS_FORMBUY'].elements['d234'].value;
 
 	Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
 }

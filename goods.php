@@ -44,6 +44,8 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
 
     $attr_id    = isset($_REQUEST['attr']) ? explode(',', $_REQUEST['attr']) : array();
     $number     = (isset($_REQUEST['number'])) ? intval($_REQUEST['number']) : 1;
+    $start_day     = (isset($_REQUEST['start_day'])) ? trim($_REQUEST['start_day']) : '';
+    $end_day     = (isset($_REQUEST['end_day'])) ? trim($_REQUEST['end_day']) : '';
 
     if ($goods_id == 0)
     {
@@ -61,7 +63,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
             $res['qty'] = $number;
         }
 
-        $shop_price  = get_final_price($goods_id, $number, true, $attr_id);
+        $shop_price  = get_final_price($goods_id, $number, true, $attr_id, $start_day, $end_day);
         $res['result'] = price_format($shop_price * $number);
     }
 
@@ -152,7 +154,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id) || true)
 
     /* 获得商品的信息 */
     $goods = get_goods_info($goods_id);
-
+// print_r($goods);exit;
     if ($goods === false)
     {
         /* 如果没有找到任何记录则跳回到首页 */

@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="{$keywords}" />
-<meta name="Description" content="{$description}" />
-<!-- TemplateBeginEditable name="doctitle" -->
-<title>{$page_title}</title>
-<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<meta name="Keywords" content="<?php echo $this->_var['keywords']; ?>" />
+<meta name="Description" content="<?php echo $this->_var['description']; ?>" />
+
+<title><?php echo $this->_var['page_title']; ?></title>
+
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="http://res.vmall.com/20150415/css/notice/main.min.css?20141025" rel="stylesheet" type="text/css">
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
-<link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
 <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
 
-{* 包含脚本文件 *}
-{insert_scripts files='common.js'}
+
+<?php echo $this->smarty_insert_scripts(array('files'=>'common.js')); ?>
 </head>
 <body>
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/page_header.lbi'); ?>
   <div class="pingce-main">
-		<!-- 20140823-分类-start -->
+		
  	<div class="banner2">
-		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		<?php echo $this->fetch('library/category_tree.lbi'); ?>
 	</div>
 
 <div class="main_con">
-    <!--面包屑 -->
+    
 <div class="breadcrumb-area fcn">
  
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  <?php echo $this->fetch('library/ur_here.lbi'); ?>
 
 </div>
 <div class="">
@@ -39,13 +39,13 @@
 
 <div class="">
     <div class="fr u-4-5">
-        <!--新闻-详情 -->
+        
         <div class="news-area">
         	<div class="h">
-            	<h1>{$article.title|escape:html}</h1>
+            	<h1><?php echo htmlspecialchars($this->_var['article']['title']); ?></h1>
                 <div class="news-extra-area clearfix">
-                	<div class="fl">更新时间{$article.add_time}</div>
-			<div class="fr"><!-- Baidu Button BEGIN -->
+                	<div class="fl">更新时间<?php echo $this->_var['article']['add_time']; ?></div>
+			<div class="fr">
 
     <div id="bdshare" class="bdsharebuttonbox bdshare-button-style0-16" data-tag="share_1" data-bd-bind="1431572111080">
 	<a class="bds_more" data-cmd="more" style="padding-top: 0px;">分享到：</a>
@@ -68,15 +68,15 @@
 	
 </script>
 
-<!-- Baidu Button END --></div>
+</div>
                 </div>
             </div>
             <div class="b">
 			
 			
-			 <!-- {if $article.content } -->
-          {$article.content}
-         <!-- {/if} -->
+			 <?php if ($this->_var['article']['content']): ?>
+          <?php echo $this->_var['article']['content']; ?>
+         <?php endif; ?>
 			
 			
 			
@@ -87,12 +87,12 @@
 			</div>
             <div class="f">
             	<ul>
-                    <li>下一篇:<a href="{$prev_article.url}" class="f6">{$prev_article.title}</a></li>
+                    <li>下一篇:<a href="<?php echo $this->_var['prev_article']['url']; ?>" class="f6"><?php echo $this->_var['prev_article']['title']; ?></a></li>
                 </ul>
             </div>
         </div>
     </div>
-	<div class="fl u-1-5"><!--左边菜单 -->
+	<div class="fl u-1-5">
 <div class="news-menu-area">
 	<div class="h">
 	<s></s>
@@ -102,12 +102,16 @@
 	<ul class="clearfix">
 	
 	
-	   <!--{foreach from=$article_categories item=cat}-->
-   <li id="menu-media"> <a href="{$cat.url}">{$cat.name|escape:html}</a></li>
-      <!--{foreach from=$cat.children item=child}-->
-    <li id="menu-media">  <a href="{$child.url}" style="background-image:none;">{$child.name|escape:html}</a></li>
-      <!--{/foreach}-->
-    <!--{/foreach}-->
+	   <?php $_from = $this->_var['article_categories']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');if (count($_from)):
+    foreach ($_from AS $this->_var['cat']):
+?>
+   <li id="menu-media"> <a href="<?php echo $this->_var['cat']['url']; ?>"><?php echo htmlspecialchars($this->_var['cat']['name']); ?></a></li>
+      <?php $_from = $this->_var['cat']['children']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'child');if (count($_from)):
+    foreach ($_from AS $this->_var['child']):
+?>
+    <li id="menu-media">  <a href="<?php echo $this->_var['child']['url']; ?>" style="background-image:none;"><?php echo htmlspecialchars($this->_var['child']['name']); ?></a></li>
+      <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 	
  	
  	 
@@ -124,6 +128,6 @@
 	   </div>
  <div class="hr-20"></div>
 <div class="blank"></div>
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/page_footer.lbi'); ?>
 </body>
 </html>

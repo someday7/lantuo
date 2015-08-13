@@ -63,16 +63,16 @@
 		<div class="section1">
 			<div class="time">
 				<label>收到日期：</label>
-				<input class="Wdate" placeholder="请选择日期" type="text" id="d233" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+				<input class="Wdate" placeholder="请选择日期" type="text" id="d233" name="d233" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'%y-%M-{%d}',maxDate:'#F{$dp.$D(\'d234\',{d:-0});}'})" />
 			</div>
 			<div class="time">
 				<label>寄回日期：</label>
-				<input class="Wdate" placeholder="请选择日期" type="text" id="d233" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+				<input class="Wdate" placeholder="请选择日期" type="text" id="d234" name="d234" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'d233\',{d:-0});}'})" />
 			</div>
 			<div class="calculate">计算租金</div>
 			<div class="section-text">
 				<label>租金：</label>
-				<label class="cost">5天￥330，之后每天45元</label>
+				<label class="cost" id="ECS_GOODS_AMOUNT">{$goods.rent_start_day}天￥{$goods.rent_start_price}，之后每天{$goods.rent_add_price}元</label>
 			</div>
 		</div>
 		<div class="section1">
@@ -81,7 +81,7 @@
 				此处点击鼠标左键，任意划取部分文字信息，即可显示划词分享图标可显示划词分享图
 			</div>
 			<div class="pay-btns">
-				<span class="pay-btn taobao">淘宝交易</span><span class="pay-btn online" onclick="javascript:addToCart({$goods.goods_id})">直接付款</span>
+				<span class="pay-btn taobao"><a href="http://www.taobao.com" target="_blank">淘宝交易</a></span><span class="pay-btn online" onclick="javascript:addToCart({$goods.goods_id})">直接付款</span>
 			</div>
 		</div>
 			<div class="bshare-custom">
@@ -373,6 +373,34 @@ function changePriceResponse(res)
   }
 }
 
+
+function changePrice2()
+{
+  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+  var start_day = document.forms['ECS_FORMBUY'].elements['d233'].value;
+  var end_day = document.forms['ECS_FORMBUY'].elements['d234'].value;
+//alert(attr + start_day + end_day);
+  if(start_day.length>0 && end_day.length>0){
+	qty = 1;
+	Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty + '&start_day=' + start_day + '&end_day=' + end_day, changePriceResponse2, 'GET', 'JSON');
+  }
+}
+
+function changePriceResponse2(res)
+{
+  if (res.err_msg.length > 0)
+  {
+    alert(res.err_msg);
+  }
+  else
+  {
+    //document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
+
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+
 $(function() {
 	$(".ul-con ul").width($(".ul-con ul li").length*97);
 	var currentPage=0;
@@ -432,6 +460,10 @@ $(function() {
 			}
 
 		}
+	});
+	
+	$(".calculate").bind('click', function(){
+		changePrice2();
 	});
 });
 

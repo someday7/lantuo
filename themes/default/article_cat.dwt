@@ -11,34 +11,30 @@
 <!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
 <link href="http://res.vmall.com/20150415/css/notice/main.min.css?20141025" rel="stylesheet" type="text/css">
+<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css
+<link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
+<link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
 <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
 {* 包含脚本文件 *}
 {insert_scripts files='common.js'}
 </head>
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-  <div class="naver-main">
-	<div class="layout">
+  <div class="pingce-main">
 		<!-- 20140823-分类-start -->
-		<div class="category category-index" id="category-block">
-		
- 	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
-		</div>
+ 	<div class="banner2">
+		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
 	</div>
-</div>
-
-<div class="hr-10"></div>
-<div class="g">
+<div class="main_con">
     <!--面包屑 -->
 <div class="breadcrumb-area fcn">
  
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
 
 </div>
-<div class="hr-10"></div>
-<div class="layout">
+<div class="">
 
  
     <div class="fr u-4-5">
@@ -92,7 +88,7 @@
     </div>
 </div>
 <div class="hr-15"></div>
-<div class="ad ad179"><p><a title="G520" href="/product/1064.html" target="_blank"><img src="http://res.vmall.com/pimages//sale/2014-07/20140708110119554.jpg" height="403" width="179"></a></p></div>
+<div class="ad ad179"></div>
 </div>
 </div>
 

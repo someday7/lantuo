@@ -134,7 +134,7 @@ if ($_REQUEST['step'] == 'add_to_cart')
     else
     {
         // 更新：添加到购物车
-        if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent))
+        if (addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent, $goods->start_day, $goods->end_day))
         {
             if ($_CFG['cart_confirm'] > 2)
             {
@@ -2217,7 +2217,7 @@ function flow_update_cart($arr)
         }
 
         //查询：
-        $sql = "SELECT `goods_id`, `goods_attr_id`, `product_id`, `extension_code` FROM" .$GLOBALS['ecs']->table('cart').
+        $sql = "SELECT `goods_id`, `goods_attr_id`, `product_id`, `extension_code`, `start_day`, `end_day` FROM" .$GLOBALS['ecs']->table('cart').
                " WHERE rec_id='$key' AND session_id='" . SESS_ID . "'";
         $goods = $GLOBALS['db']->getRow($sql);
 
@@ -2301,7 +2301,7 @@ function flow_update_cart($arr)
             else
             {
                 $attr_id    = empty($goods['goods_attr_id']) ? array() : explode(',', $goods['goods_attr_id']);
-                $goods_price = get_final_price($goods['goods_id'], $val, true, $attr_id);
+                $goods_price = get_final_price($goods['goods_id'], $val, true, $attr_id, $goods['start_day'], $goods['end_day']);
 
                 //更新购物车中的商品数量
                 $sql = "UPDATE " .$GLOBALS['ecs']->table('cart').

@@ -18,58 +18,13 @@
 
 <?php echo $this->smarty_insert_scripts(array('files'=>'common.js')); ?>
  
- 
 </head>
-<body class="wide sc">
- 
-<div class="shortcut">
-    <div class="layout">
-		<div class="s-sub">
-			<ul>
-				<li class="s-hw"><a href="/" target="_blank">华为官网</a></li>
-			
-		 
-			</ul>
-		</div>
-		<div class="s-main">
-			<ul>
-				<li class="s-login" id="unlogin_status">
-						 <a href="user.php" rel="nofollow">登录</a>
-						&nbsp;&nbsp;&nbsp;<a href="user.php?act=register" rel="nofollow">注册</a>
-				</li>
-			 
-			 
-				<li class="s-hwep hide" id="preferential"></li>
-				<li class="s-mobile"><a href="m/" target="_blank">手机版</a></li>
-				<li class="s-sitemap">
-					<div class="s-dropdown ">
-						<div class="h">
-							<a href="javascript:;">网站导航</a>
-							<s></s>
-						</div>
-						<div class="b">
-							<p><a href="help/index.html">帮助中心</a></p>
-				 
-					 
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-    </div>
-</div>
-
-
-
+<body class="">
+<?php echo $this->fetch('library/page_header.lbi'); ?>
 
 
 <div class="order-header">
 	<div class="g">
-    	<div class="fl">
-            <div class="logo"><a href="index.php"><img src="http://res.vmall.com/images/echannel/newLogo.png"/></a></div>
-        </div>
-      
-
 
   <?php if ($this->_var['step'] == "cart"): ?>
   

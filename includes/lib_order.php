@@ -859,7 +859,7 @@ function get_order_sn()
 function cart_goods($type = CART_GENERAL_GOODS)
 {
     $sql = "SELECT rec_id, user_id, goods_id, goods_name, goods_sn, goods_number, " .
-            "market_price, goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, is_shipping, " .
+            "market_price, goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, is_shipping, start_day, end_day, " .
             "goods_price * goods_number AS subtotal " .
             "FROM " . $GLOBALS['ecs']->table('cart') .
             " WHERE session_id = '" . SESS_ID . "' " .
@@ -1009,7 +1009,7 @@ function cart_weight_price($type = CART_GENERAL_GOODS)
  * @param   integer $parent     基本件
  * @return  boolean
  */
-function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
+function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0, $start_day = null, $end_day = null)
 {
     $GLOBALS['err']->clean();
     $_parent_id = $parent;
@@ -1117,7 +1117,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         'goods_id'      => $goods_id,
         'goods_sn'      => addslashes($goods['goods_sn']),
         'product_id'    => $product_info['product_id'],
-        'goods_name'    => addslashes($goods['goods_name']),
+        'goods_name'    => addslashes($goods['goods_name'].(!empty($start_day)?(" ".$start_day."到".$end_day):(""))),
         'market_price'  => $goods['market_price'],
         'goods_attr'    => addslashes($goods_attr),
         'goods_attr_id' => $goods_attr_id,
@@ -1125,7 +1125,9 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         'extension_code'=> $goods['extension_code'],
         'is_gift'       => 0,
         'is_shipping'   => $goods['is_shipping'],
-        'rec_type'      => CART_GENERAL_GOODS
+        'rec_type'      => CART_GENERAL_GOODS,
+    	'start_day' => $start_day,
+    	'end_day' => $end_day,
     );
 
     /* 如果该配件在添加为基本件的配件时，所设置的“配件价格”比原价低，即此配件在价格上提供了优惠， */
@@ -1238,7 +1240,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
             }
             if ($GLOBALS['_CFG']['use_storage'] == 0 || $num <= $goods_storage)
             {
-                $goods_price = get_final_price($goods_id, $num, true, $spec);
+                $goods_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day);
                 $sql = "UPDATE " . $GLOBALS['ecs']->table('cart') . " SET goods_number = '$num'" .
                        " , goods_price = '$goods_price'".
                        " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
@@ -1256,7 +1258,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         }
         else //购物车没有此物品，则插入
         {
-            $goods_price = get_final_price($goods_id, $num, true, $spec);
+            $goods_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day);
             $parent['goods_price']  = max($goods_price, 0);
             $parent['goods_number'] = $num;
             $parent['parent_id']    = 0;

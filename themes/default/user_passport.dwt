@@ -17,7 +17,7 @@
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,user.js,transport.js'}
 
-<body class="wide">
+<body class="">
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="naver-main">
 	<div class="layout">
