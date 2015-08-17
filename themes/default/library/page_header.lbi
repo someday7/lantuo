@@ -46,8 +46,8 @@ var process_request = "{$lang.process_request}";
 		</ul>
 	</div>
 </div>
-<script src="themes/default/js/jsapi.js?20141025" namespace="ec"></script>
 <script type="text/javascript" src="themes/default/js/jquery-1.9.1.js"></script>
+<script src="themes/default/js/jsapi.js?20141025" namespace="ec"></script>
 <script src="themes/default/js/ec.core.js?20141025"></script> 
 <script src="http://res.vmall.com/20150415/js/common/jsapi.js?20141025" namespace="ec"></script>
 <script src="themes/default/js/ec.business.js?20150420"></script> 

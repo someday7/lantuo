@@ -15,10 +15,10 @@
  <link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
 
-<?php echo $this->smarty_insert_scripts(array('files'=>'common.js,user.js')); ?>
 </head>
 <body class="">
 <?php echo $this->fetch('library/page_header.lbi'); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'common.js,user.js,jquery.json.js')); ?>
   <div class="naver-main">
 	<div class="layout">
 		
