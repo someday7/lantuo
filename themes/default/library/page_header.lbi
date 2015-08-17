@@ -13,16 +13,16 @@ var process_request = "{$lang.process_request}";
 				<a href="user.php?act=order_list">我的交易单</a>
 			</li>
 			<li>
-				<a href=""><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
+				<a href="user.php?act=collection_list"><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
 			</li>
 			<li>
-				<a href="">我的关注</a>
+				<a href="user.php?act=collection_list">我的关注</a>
 			</li>
 			<li>
-				<a href="">我要吐槽<span class="down_arrow"></span></a>
+				<a href="user.php?act=message_list">我要吐槽<span class="down_arrow"></span></a>
 			</li>
 			<li class="last_li">
-				<a href="javascript:;">网站导航</a>
+				<a href="article.php?id=26">网站导航</a>
 				<a href=""><span class="wx_icon"></span></a>
 				<a href=""><span class="sina_icon"></span></a>
 			</li>
@@ -34,10 +34,10 @@ var process_request = "{$lang.process_request}";
 		<ul>
 			<li><span class="logo"></span></li>
 			<li {if $index eq 'index'}class="active"{/if}><a href="index.php">首页</a></li>
-			<li><a href="index.html">租赁</a></li>
-			<li><a href="index.html">评测</a></li>
-			<li><a href="index.html">数据库</a></li>
-			<li><a href="index.html">维修</a></li>
+			<li><a href="article_cat.php?id=11">租赁</a></li>
+			<li><a href="article_cat.php?id=12">评测</a></li>
+			<li><a href="article_cat.php?id=13">数据库</a></li>
+			<li><a href="article_cat.php?id=14">维修</a></li>
 			<li class="input">
 				<form id="searchForm" name="searchForm" method="get" action="http://www.sf-express.com" />
 					<input placeholder="查询顺丰订单号" name="sf_sn" id="sf_sn" /><span class="search" id="searchBtn">搜索</span>

@@ -58,7 +58,8 @@
 	<div class="pd-side">
 		<div class="section1">
 			<label class="label">咨询客服：</label>
-			<span class="contact"></span>
+			<span class="contact"><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=iRentals&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=iRentals&site=cntaobao&s=1&charset=utf-8" alt="点这里给我发消息" /></a></span>
+			
 		</div>
 		<div class="section1">
 			<div class="time">

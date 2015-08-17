@@ -49,11 +49,11 @@
 <!-- #BeginLibraryItem "/library/new_articles.lbi" --><!-- #EndLibraryItem -->
 <div class="index-ul-div">
 		<ul class="carmero-ul">
-			<li class="c-ul-f"><div class="c-text">iRentals-Test</div><div class="c-icon1"></div></li>
-			<li><div class="c-text">机身</div><div class="c-icon2"></div></li>
-			<li><div class="c-text">镜头</div><div class="c-icon3"></div></li>
-			<li><div class="c-text">附件</div><div class="c-icon4"></div></li>
-			<li><div class="c-text">花絮</div><div class="c-icon5"></div></li>
+			<li class="c-ul-f" onclick="window.location.href='article_cat.php?id=16';"><div class="c-text">iRentals-Test</div><div class="c-icon1"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=17';"><div class="c-text">机身</div><div class="c-icon2"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=18';"><div class="c-text">镜头</div><div class="c-icon3"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=19';"><div class="c-text">附件</div><div class="c-icon4"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=20';"><div class="c-text">花絮</div><div class="c-icon5"></div></li>
 		</ul>
 </div>
 <div class="bottom">

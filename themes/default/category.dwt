@@ -77,7 +77,7 @@
 	<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
 		
 	<!-- 20140727-商品列表-end -->
-	<div id="pop-compare" class="pop-compare">
+	<div id="pop-compare" class="pop-compare" style="display:none;">
 		<div class="pop-wrap">
 			<p class="pop-compare-tips">对比栏已满，您可以删除不需要的栏内商品再继续添加哦！</p>
 			<div class="pop-inner" data-widget="tabs">

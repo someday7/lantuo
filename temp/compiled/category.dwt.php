@@ -61,13 +61,13 @@
 		    </div>
 	 		<?php endif; ?>
 	 
-	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_92168400_1439488758');if (count($_from)):
-    foreach ($_from AS $this->_var['filter_attr_0_92168400_1439488758']):
+	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_13219100_1439832667');if (count($_from)):
+    foreach ($_from AS $this->_var['filter_attr_0_13219100_1439832667']):
 ?>
 			 
 		 	<div class="type">
-			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_92168400_1439488758']['filter_attr_name']); ?> ：</label>
-						<?php $_from = $this->_var['filter_attr_0_92168400_1439488758']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
+			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_13219100_1439832667']['filter_attr_name']); ?> ：</label>
+						<?php $_from = $this->_var['filter_attr_0_13219100_1439832667']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
     foreach ($_from AS $this->_var['attr']):
 ?>
 						<?php if ($this->_var['attr']['selected']): ?>
@@ -86,7 +86,7 @@
 	<?php echo $this->fetch('library/goods_list.lbi'); ?>
 		
 	
-	<div id="pop-compare" class="pop-compare">
+	<div id="pop-compare" class="pop-compare" style="display:none;">
 		<div class="pop-wrap">
 			<p class="pop-compare-tips">对比栏已满，您可以删除不需要的栏内商品再继续添加哦！</p>
 			<div class="pop-inner" data-widget="tabs">
