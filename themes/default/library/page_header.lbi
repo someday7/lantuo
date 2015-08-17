@@ -34,10 +34,10 @@ var process_request = "{$lang.process_request}";
 		<ul>
 			<li><span class="logo"></span></li>
 			<li {if $index eq 'index'}class="active"{/if}><a href="index.php">首页</a></li>
-			<li><a href="article_cat.php?id=11">租赁</a></li>
-			<li><a href="article_cat.php?id=12">评测</a></li>
-			<li><a href="article_cat.php?id=13">数据库</a></li>
-			<li><a href="article_cat.php?id=14">维修</a></li>
+			<li {if $cat_id eq 11}class="active"{/if}><a href="article_cat.php?id=11">租赁</a></li>
+			<li {if $cat_id eq 12}class="active"{/if}><a href="article_cat.php?id=12">评测</a></li>
+			<li {if $cat_id eq 13}class="active"{/if}><a href="article_cat.php?id=13">数据库</a></li>
+			<li {if $cat_id eq 14}class="active"{/if}><a href="article_cat.php?id=14">维修</a></li>
 			<li class="input">
 				<form id="searchForm" name="searchForm" method="get" action="http://www.sf-express.com" />
 					<input placeholder="查询顺丰订单号" name="sf_sn" id="sf_sn" /><span class="search" id="searchBtn">搜索</span>
