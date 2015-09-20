@@ -128,7 +128,10 @@ if (!$smarty->is_cached('article_cat.dwt', $cache_id) || true)
 }
 
 $smarty->assign('feed_url',         ($_CFG['rewrite'] == 1) ? "feed-typearticle_cat" . $cat_id . ".xml" : 'feed.php?type=article_cat' . $cat_id); // RSS URL
-
-$smarty->display('article_cat.dwt', $cache_id);
+if($cat_id == 13 || $cat_id == 14) {
+	$smarty->display('article_cat_comming_soon.dwt', $cache_id);
+} else {
+	$smarty->display('article_cat.dwt', $cache_id);
+}
 
 ?>

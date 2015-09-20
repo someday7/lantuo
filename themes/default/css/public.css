@@ -9,7 +9,7 @@
 .spec-scroll{margin-top:5px;width:500px;}
 .spec-scroll .prev{float:left;margin-right:4px;}
 .spec-scroll .next{float:right;}
-.spec-scroll .prev,.spec-scroll .next{display:block;font-family:"宋体";text-align:center;width:10px;height:54px; line-height:54px;border:1px solid #CCC;background:#EBEBEB;cursor:pointer;text-decoration:none;}
+.spec-scroll .prev,.spec-scroll .next{display:block;font-family:"microsoft yahei";text-align:center;width:10px;height:54px; line-height:54px;border:1px solid #CCC;background:#EBEBEB;cursor:pointer;text-decoration:none;}
 .spec-scroll .items{float:left;position:relative;width:322px;height:56px;overflow:hidden;}
 .spec-scroll .items ul{position:absolute;width:999999px;height:56px;}
 .spec-scroll .items ul li{float:left;width:64px;text-align:center;}

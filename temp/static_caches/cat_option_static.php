@@ -16,6 +16,22 @@ $data = array (
     'id' => '9',
     'name' => '索尼',
   ),
+  24 => 
+  array (
+    'cat_id' => '24',
+    'cat_name' => '所有分类',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+    'level' => 0,
+    'id' => '24',
+    'name' => '所有分类',
+  ),
   7 => 
   array (
     'cat_id' => '7',

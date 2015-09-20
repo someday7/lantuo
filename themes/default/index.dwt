@@ -12,7 +12,6 @@
  <link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
 
-
  <!--[if lt IE 9]><script src="themes/default/css/common/html5shiv.js"></script> <![endif]-->
 </head>
   
@@ -27,22 +26,22 @@
 					<h4>便捷安全的租赁体验</h4>
 					<ul>
 						<li>
-							<div class="zulin_1 zulin_img"></div>
-							<div class="zulin_text"><a href="article_cat.php?id=4">租赁流程</a></div>
+							<div class="zulin_1 zulin_img" onclick="window.location.href='article.php?id=27';"></div>
+							<div class="zulin_text"><a href="article.php?id=28" style="color:#FFFFFF;">租赁流程</a></div>
 						</li>
 						<li>
-							<div class="zulin_2 zulin_img"></div>
-							<div class="zulin_text"><a href="article_cat.php?id=3">常见问题</a></div>
+							<div class="zulin_2 zulin_img" onclick="window.location.href='article.php?id=29';"></div>
+							<div class="zulin_text"><a href="article.php?id=30" style="color:#FFFFFF;">常见问题</a></div>
 						</li>
 						<li class="l_li">
-							<div class="zulin_3 zulin_img"></div>
-							<div class="zulin_text "><a href="article_cat.php?id=4">租赁流程</a></div>
+							<div class="zulin_3 zulin_img" onclick="window.location.href='article.php?id=31';"></div>
+							<div class="zulin_text "><a href="article.php?id=32" style="color:#FFFFFF;">租赁协议</a></div>
 						</li>
 					</ul>
 					<div class="register btn" onclick="window.location.href='user.php?act=register';">立即注册</div>
 				</div>
-				<div class="top2"></div>
-				<div class="top3"></div>
+				<div class="top2" style="cusor:pointer;" onclick="window.location.href='article_cat.php?id=13';"></div>
+				<div class="top3" style="cusor:pointer;" onclick="window.location.href='article.php?id=33';"></div>
 			</div>
 	</div>
 </div>	

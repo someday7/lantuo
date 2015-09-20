@@ -23,10 +23,6 @@
 <body>
 <?php echo $this->fetch('library/page_header.lbi'); ?>
   <div class="pingce-main">
-		
- 	<div class="banner2">
-		<?php echo $this->fetch('library/category_tree.lbi'); ?>
-	</div>
 <div class="main_con">
     
 <div class="breadcrumb-area fcn">

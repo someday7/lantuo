@@ -1,19 +1,75 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ad-wx-public .g-bubble {
+    width: 158px;
+    text-align: center;
+    line-height: 1.5;
+    border-color: #caced4;
+    color: #74787c;
+    position: absolute;
+    left: 92%;
+    top: 27px;
+    margin-left: -85px;
+    font-size: 14px;
+	z-index: 9999;
+}
+.ad-wx-public .g-arrow-top {
+    border-bottom-color: #caced4;
+}
+.ad-wx-public .qrcode-detail {
+    overflow: hidden;
+    padding: 20px 0;
+}
+.ad-wx-public .qrcode-detail .img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+}
+/* 微信公众号推广 == end */
+
+.ad-wx-public .g-bubble2 {
+    width: 158px;
+    text-align: center;
+    line-height: 1.5;
+    border-color: #caced4;
+    color: #74787c;
+    position: absolute;
+    left: 95%;
+    top: 27px;
+    margin-left: -85px;
+    font-size: 14px;
+	z-index: 9999;
+}
+.ad-wx-public .g-arrow-top {
+    border-bottom-color: #caced4;
+}
+.ad-wx-public .qrcode-detail {
+    overflow: hidden;
+    padding: 20px 0;
+}
+.ad-wx-public .qrcode-detail .img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+}
+/* 微信公众号推广 == end */
+</style>
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";
 </script>
+<script type="text/javascript" src="themes/default/js/jquery-1.9.1.js"></script>
 <div class="header">
 	<div class="layout">
 		<ul class="fr">
 			<li>
-				{insert_scripts files='transport.js,utils.js'}
+				{insert_scripts files='jquery.json.js,transport.js,utils.js'}
 				<font id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font>
 			</li>
 			<li>
-				<a href="user.php?act=order_list">我的交易单</a>
+				<a href="user.php?act=order_list">我的订单</a>
 			</li>
 			<li>
-				<a href="user.php?act=collection_list"><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
+				<a href="flow.php?step=cart"><span class="photo_icon"></span> 相机信息<span class="down_arrow"></span></a>
 			</li>
 			<li>
 				<a href="user.php?act=collection_list">我的关注</a>
@@ -23,24 +79,48 @@ var process_request = "{$lang.process_request}";
 			</li>
 			<li class="last_li">
 				<a href="article.php?id=26">网站导航</a>
-				<a href=""><span class="wx_icon"></span></a>
-				<a href=""><span class="sina_icon"></span></a>
+				<a href="javascript:void(0);" id="_wx_icon"><span class="wx_icon"></span></a>
+				<a href="javascript:void(0);" id="_wb_icon"><span class="sina_icon"></span></a>
+				
 			</li>
 		</ul>
+	</div>
+	<div class="ad-wx-public">
+		<div id="_wx_img" class="g-bubble" style="display: none;">
+			<div class="qrcode-detail">
+				<div class="img"><img src="/images/wx_img.png" alt="" width="100px" height="100px"></div>
+				<div class="txt">
+					<p style="color:blue;">兰拓科技</p>
+				</div>
+			</div>
+			<span class="g-arrow g-arrow-top" style=""><span class="sub"></span></span>
+		</div>
+	</div>
+	
+	<div class="ad-wx-public">
+		<div id="_wb_img" class="g-bubble2" style="display: none;">
+			<div class="qrcode-detail">
+				<div class="img"><img src="/images/wx_img.png" alt="" width="100px" height="100px"></div>
+				<div class="txt">
+					<p style="color:blue;"><a target="_blank" href="http://weibo.com/p/1006065571803389">兰拓科技</a></p>
+				</div>
+			</div>
+			<span class="g-arrow g-arrow-top" style=""><span class="sub"></span></span>
+		</div>
 	</div>
 </div>
 <div class="nav">
 	<div class="layout">
 		<ul>
-			<li><span class="logo"></span></li>
+			<li><span class="logo" style="cursor:pointer;" onclick="javascript:window.location.href='/';"></span></li>
 			<li {if $index eq 'index'}class="active"{/if}><a href="index.php">首页</a></li>
-			<li {if $cat_id eq 11}class="active"{/if}><a href="article_cat.php?id=11">租赁</a></li>
+			<li {if $cat_id eq 33}class="active"{/if}><a href="category.php?id=33">租赁</a></li>
 			<li {if $cat_id eq 12}class="active"{/if}><a href="article_cat.php?id=12">评测</a></li>
 			<li {if $cat_id eq 13}class="active"{/if}><a href="article_cat.php?id=13">数据库</a></li>
 			<li {if $cat_id eq 14}class="active"{/if}><a href="article_cat.php?id=14">维修</a></li>
 			<li class="input">
-				<form id="searchForm" name="searchForm" method="get" action="http://www.sf-express.com" />
-					<input placeholder="查询顺丰订单号" name="sf_sn" id="sf_sn" /><span class="search" id="searchBtn">搜索</span>
+				<form id="searchForm" name="searchForm" method="get" action="search.php" />
+					<input placeholder="查询顺丰订单号" name="keywords" id="sf_sn" /><span class="search" id="searchBtn">搜索</span>
 				</form>
 			</li>
 		</ul>
@@ -63,7 +143,26 @@ var process_request = "{$lang.process_request}";
 
 	$(document).ready(function(){		
 		$("#searchBtn").click(function(){
+			var sf_sn = $("#sf_sn").val();
+			if(/^[0-9]{12}$/.test(sf_sn)){
+				window.location.href="http://www.sf-express.com/cn/sc/dynamic_functions/waybill/#search/bill-number/" + sf_sn;
+				return false;
+			}
 			$("form#searchForm").submit();
 		});
+		$("#_wx_icon").mouseover(function(){
+			$("div#_wx_img").show();
+		});
+		$("#_wx_icon").mouseout(function(){
+			$("div#_wx_img").hide();
+		});
+		
+		$("#_wb_icon").mouseover(function(){
+			$("div#_wb_img").show();
+		});
+		$("#_wb_icon").mouseout(function(){
+			$("div#_wb_img").hide();
+		});
+		
 	})
 </script>

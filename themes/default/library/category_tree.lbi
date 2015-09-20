@@ -2,10 +2,10 @@
 			<ul class="menu">
 			<!--{foreach from=$categories item=cat}--> 
 				<li>
-					<h3>{$cat.name|escape:html}<span class="tab-icon"></span></h3>
+					<h3><a href="{$cat.url}">{$cat.name|escape:html}</a><span class="tab-icon"></span></h3>
 					<p>{$cat.desc|escape:html}</p>
 					<dl>
-						<dt class="first"><span class="pp_name">{$cat.name|escape:html}</span><span class="pp_text">{$cat.desc|escape:html}</span><a class="fr" href="{$cat.url}">更多<span class="tab-icon"></span></a></dt>
+						<dt class="first"><span class="pp_name"><a href="{$cat.url}">{$cat.name|escape:html}</a></span><span class="pp_text">{$cat.desc|escape:html}</span><a class="fr" href="{$cat.url}">更多<span class="tab-icon"></span></a></dt>
 						<dd>
 						<!--{foreach from=$cat.cat_id item=child key=key name=child}-->
 							{if $smarty.foreach.child.index == 7}

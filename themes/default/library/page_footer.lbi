@@ -30,7 +30,7 @@
 
 <div class="footer">
 	<div class="site-link">
-		<a href="article.php?id=5">关于印象魔方</a><a href="article.php?id=23">相机常识</a><a href="article.php?id=24">大师推荐</a><a href="article.php?id=25">魔方白条</a><a href="article.php?id=4">联系我们</a><a href="article.php?id=1" class="f-last-a">免责声明</a>
+		<a href="article.php?id=5">关于兰拓科技</a><a href="article_cat.php?id=12">器材评测</a><a href="article_cat.php?id=13">器材数据库</a><a href="article.php?id=4">联系我们</a><a href="article_cat.php?id=11" class="f-last-a">租赁协议</a>
 	</div>
-	<div class="copyright">Copyright © 2004-2015 印象魔方 版权所有|投资有风险，购买需谨慎</div>
+	<div class="copyright">Copyright © 2004-2015 兰拓科技 版权所有|最佳影像产品租赁•评测品牌</div>
 </div>

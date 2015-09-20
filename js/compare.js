@@ -130,7 +130,8 @@ Compare = {
   {
     var date = new Date();
     date.setTime(date.getTime() + 99999999);
-    document.setCookie("compareItems", this.data.toJSONString());
+    //document.setCookie("compareItems", this.data.toJSONString());
+	document.setCookie("compareItems", this.data.toJSON());
   },
   lastScrollY : 0
 }

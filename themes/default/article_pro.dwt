@@ -22,10 +22,6 @@
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="pingce-main">
-		<!-- 20140823-分类-start -->
- 	<div class="banner2">
-		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
-	</div>
 <div class="main_con">
     <!--面包屑 -->
 <div class="breadcrumb-area fcn">

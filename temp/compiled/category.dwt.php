@@ -19,9 +19,11 @@
 <?php echo $this->fetch('library/page_header.lbi'); ?>
 <div class="zulin-main">
 	<div class="banner2">
-		<?php echo $this->fetch('library/category_tree.lbi'); ?>
+		<?php echo $this->fetch('library/category_tree.lbi'); ?>		
 	</div>
-	<div class="main_con">
+	
+
+	<div class="main_con" style="margin-left:260px;">
     <?php echo $this->fetch('library/ur_here.lbi'); ?>
 	
 	<div class="slect-nav">
@@ -61,13 +63,13 @@
 		    </div>
 	 		<?php endif; ?>
 	 
-	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_13219100_1439832667');if (count($_from)):
-    foreach ($_from AS $this->_var['filter_attr_0_13219100_1439832667']):
+	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_47684700_1442777413');if (count($_from)):
+    foreach ($_from AS $this->_var['filter_attr_0_47684700_1442777413']):
 ?>
 			 
 		 	<div class="type">
-			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_13219100_1439832667']['filter_attr_name']); ?> ：</label>
-						<?php $_from = $this->_var['filter_attr_0_13219100_1439832667']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
+			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_47684700_1442777413']['filter_attr_name']); ?>：</label>
+						<?php $_from = $this->_var['filter_attr_0_47684700_1442777413']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
     foreach ($_from AS $this->_var['attr']):
 ?>
 						<?php if ($this->_var['attr']['selected']): ?>
@@ -168,8 +170,10 @@
 	
 	</div>
 	<div class="clear"></div>
-</div>
 	
+	
+	
+</div>	
  	
  
 <?php echo $this->fetch('library/page_footer.lbi'); ?>

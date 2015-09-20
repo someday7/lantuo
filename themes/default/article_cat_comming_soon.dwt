@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="http://res.vmall.com/20150415/css/notice/main.min.css?20141025" rel="stylesheet" type="text/css">
+<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css
+<link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
+<link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="pingce-main">
+<div class="main_con">
+ <div style="text-align:center;margin:20px;font-size:large;">COMMING SOON...</div>
+</div>
+<div class="blank5"></div>
+ 
+ 
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+<script type="text/javascript">
+document.getElementById('cur_url').value = window.location.href;
+</script>
+</html>

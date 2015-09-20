@@ -380,7 +380,7 @@ $_LANG['back_retry_answer'] = '返回重试';
 
 /* 登录 注册 */
 $_LANG['label_username'] = '用户名';
-$_LANG['label_email'] = 'email';
+$_LANG['label_email'] = '邮箱';
 $_LANG['label_password'] = '密码';
 $_LANG['label_confirm_password'] = '确认密码';
 $_LANG['label_password_intensity'] = '密码强度';
@@ -390,7 +390,7 @@ $_LANG['other_qq'] = 'QQ';
 $_LANG['other_office_phone'] = '办公电话';
 $_LANG['other_home_phone'] = '家庭电话';
 $_LANG['other_mobile_phone'] = '手机';
-$_LANG['remember'] = '请保存我这次的登录信息。';
+$_LANG['remember'] = '自动登录';
 
 $_LANG['msg_un_blank'] = '用户名不能为空';
 $_LANG['msg_un_length'] = '用户名最长不得超过7个汉字';
@@ -481,8 +481,8 @@ $_LANG['confirm_drop_tag'] = '您确认要删除此标签吗？';
 
 /* user_passport.dwt js语言文件 */
 $_LANG['passport_js']['username_empty'] = '- 用户名不能为空。';
-$_LANG['passport_js']['username_shorter'] = '- 用户名长度不能少于 3 个字符。';
-$_LANG['passport_js']['username_invalid'] = '- 用户名只能是由字母数字以及下划线组成。';
+$_LANG['passport_js']['username_shorter'] = '- 用户名由4-20位字符，支持中文、英文、数字及”-”、”_”。';
+$_LANG['passport_js']['username_invalid'] = '- 用户名由4-20位字符，支持中文、英文、数字及”-”、”_”。';
 $_LANG['passport_js']['password_empty'] = '- 登录密码不能为空。';
 $_LANG['passport_js']['password_shorter'] = '- 登录密码不能少于 6 个字符。';
 $_LANG['passport_js']['confirm_password_invalid'] = '- 两次输入密码不一致';

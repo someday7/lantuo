@@ -18,9 +18,11 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <div class="zulin-main">
 	<div class="banner2">
-		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+		<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->		
 	</div>
-	<div class="main_con">
+	
+
+	<div class="main_con" style="margin-left:260px;">
     <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
 	<!-- 20140726-商品类别-start -->
 	<div class="slect-nav">
@@ -59,7 +61,7 @@
 	 	<!--{foreach from=$filter_attr_list item=filter_attr}-->
 			 
 		 	<div class="type">
-			<label>{$filter_attr.filter_attr_name|escape:html} ：</label>
+			<label>{$filter_attr.filter_attr_name|escape:html}：</label>
 						<!--{foreach from=$filter_attr.attr_list item=attr}-->
 						<!-- {if $attr.selected} -->
 				<a href="{$attr.url}"  class="selected">{$attr.attr_value}</a>
@@ -159,8 +161,10 @@
 	<!-- 20140726-频道-列表-end -->
 	</div>
 	<div class="clear"></div>
-</div>
 	
+	
+	
+</div>	
  	
  
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

@@ -12,6 +12,7 @@
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="http://res.vmall.com/20150415/css/notice/main.min.css?20141025" rel="stylesheet" type="text/css">
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
+<link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
 <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
@@ -22,11 +23,6 @@
 <body>
 <?php echo $this->fetch('library/page_header.lbi'); ?>
   <div class="pingce-main">
-		
- 	<div class="banner2">
-		<?php echo $this->fetch('library/category_tree.lbi'); ?>
-	</div>
-
 <div class="main_con">
     
 <div class="breadcrumb-area fcn">
