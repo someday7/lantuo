@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
-/*.ad-wx-public .g-bubble {
+.ad-wx-public .g-bubble {
     width: 158px;
     text-align: center;
     line-height: 1.5;
@@ -24,9 +24,9 @@
     width: 100px;
     height: 100px;
     margin: 0 auto 10px;
-}*/
+}
 /* 微信公众号推广 == end */
-/*
+
 .ad-wx-public .g-bubble2 {
     width: 158px;
     text-align: center;
@@ -51,59 +51,8 @@
     width: 100px;
     height: 100px;
     margin: 0 auto 10px;
-}*/
+}
 /* 微信公众号推广 == end */
-.social span.no-link{
-	height: 30px;
-	width: 30px;
-	display: inline-block;
-	position: relative;
-	float: left;
-    margin: 0 2px;
-}
-.social span.no-link span{
-	height: 30px;
-	width: 30px;
-	margin: 0;
-	border: 1px solid #F9F9F9;
-	border-top: 0;
-}
-.social span.no-link:hover{
-}
-.social span.no-link:hover span{
-	background-color: #fff;
-    border: 1px solid #dedede;
-	position: absolute;
-    border-bottom: 1px solid #ffffff;
-    z-index: 9999;
-    border-top: 0;
-}
-
-.ad-wx-public,.ad-wb-public{
-	position: absolute;
-    z-index: 111;
-    top: 30px;
-    right: -2px;
-    background-color: #ffffff;
-    padding: 5px;
-    border: 1px solid #dedede;
-    display: none;
-}
-.ad-wb-public .btn{
-	width: 100%;
-	height: 20px;
-	font:  13px/20px "microsoft yahei" ;
-	color: #FFFFFF;
-	background: #A12626;
-	text-align: center;
-	margin-top:5px;
-}
-.social span.no-link a{
-	text-decoration: none;
-}
-.social span.no-link:hover .ad-wx-public,.social span.no-link:hover .ad-wb-public{
-	display: block;
-}
 </style>
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";
@@ -111,19 +60,6 @@ var process_request = "{$lang.process_request}";
 <script type="text/javascript" src="themes/default/js/jquery-1.9.1.js"></script>
 <div class="header">
 	<div class="layout">
-		<div class="fr social">
-			<span href="#" class="no-link"><span class="wx_icon"></span>
-				<div class="ad-wx-public" >
-					<div class="img"><img src="/images/wx_img.png" alt="" ></div>
-				</div>	
-			</span>
-			<span href="#" class="no-link"><span class="sina_icon"></span>
-				<div class="ad-wb-public" >
-					<div class="img"><img src="/images/wb_img.png" alt="" ></div>
-					<a href="http://weibo.com/p/1006065571803389" target="_blank"> <div class="btn">+兰拓科技</div></a>
-				</div>	
-			</span>
-		</div>
 		<ul class="fr">
 			<li>
 				{insert_scripts files='jquery.json.js,transport.js,utils.js'}
@@ -143,7 +79,10 @@ var process_request = "{$lang.process_request}";
 			</li>
 			<li class="last_li">
 				<a href="article.php?id=26">网站导航</a>
-				
+				<a href="javascript:void(0);" id="_wx_icon"><span class="wx_icon"></span>
+				</a>
+				<a href="javascript:void(0);" id="_wb_icon"><span class="sina_icon"></span>
+				</a>
 				
 			</li>
 		</ul>

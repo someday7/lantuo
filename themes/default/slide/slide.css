@@ -1,0 +1,112 @@
+/**
+ * 	@author: 周文博
+ *  @date:   2014-10-31
+ * 	@copyright by myself
+ * 	@email:  steven198911@163.com
+ *  @version: 1.0.0
+ */
+.slide_bg{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.slide_bg img{
+	width: 100%;
+}
+.slide_bg a{
+	width: 100%;
+	height: 100%;
+	display: inline-block;	
+}
+.jq-slide{
+	position: relative;
+	height: 582px;
+	overflow: hidden;
+}
+.slideDiv  ul{
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	white-space: nowrap;
+	z-index: 9999;
+}
+.jq-slide ul li{
+	list-style: none;
+	margin-right: 30px;
+	padding: 0;
+	width: 14px;
+	height: 14px;
+	
+	border-radius:50%;
+	background: #e0e0e0;
+	background:url(dot3.png) no-repeat top center \9;
+	background-size:0 0 \9;
+	cursor: pointer;
+	
+	
+} 
+.slideDiv ul li{
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+}
+.jq-slide ul li.active{
+	background: #0fbdfd;
+	background:url(dot3.png) no-repeat top center \9;
+	background-position:0 -14px \9;
+	border:none \9;
+	
+}	
+.scrollDiv ul{
+	position: absolute;
+	right:10%;
+	top:50%;
+}	
+.scrollDiv ul li{
+	margin: 10px 0 0 0;
+}	
+.scrollDiv-page {
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 500px;
+}
+.scrollDiv{
+	height: 614px;
+	overflow: hidden;
+	position: relative;
+}
+.scrollDiv .scroll{
+	top:0px;
+	position: relative;
+}
+.jq-scroll_arrow{
+	width: 47px;
+	height: 47px;
+	top: 50%;
+	margin-top: -23px;
+	position: absolute;
+	display: none;
+	opacity: 0.6;
+}	
+.jq-scroll_arrow:hover{
+	opacity: 1.0;
+}
+.arrow_left{
+	background: url(arrow_left.png) no-repeat;
+	left: 10%;
+	background: url(arrow_left_d.png) no-repeat \9;
+}
+.arrow_left:hover{
+	background: url(arrow_left.png) no-repeat \9;
+}
+.arrow_right:hover{
+	background: url(arrow_right.png) no-repeat \9;
+}
+.arrow_right{
+	background: url(arrow_right.png) no-repeat;
+	right:10%;
+	background: url(arrow_right_d.png) no-repeat \9;
+}		

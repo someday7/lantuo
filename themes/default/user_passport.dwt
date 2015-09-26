@@ -109,7 +109,7 @@
     <!-- {else} -->
     {insert_scripts files='utils.js'}
 	
-	<div class="reg-area reg-apply-area" style=" padding-left:150px;">
+	<div class="reg-area reg-apply-area" style=" padding-left:150px;height:623px;">
         	<div class="h" style="height:30px">
             	 <span>注册帐号</span> 
             </div>
@@ -135,6 +135,27 @@
             <span id="email_notice" style="color:#FF0000"> *</span>
           </td>
         </tr>
+		<!-- 判断是否启用验证码{if $enabled_captcha} -->
+      <tr>
+      <th>{$lang.comment_captcha}：</th>
+      <td><input type="text" size="8" name="captcha" class="text vam" style="width:100px;" />
+      <img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle; height:30px;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /> </td>
+      </tr>
+      <!--{/if}-->
+		<tr>
+          <th>手机号：</th>
+          <td>
+          <input name="mobile" type="text" size="25" id="mobile" onblur="do_check_mobile(this.value);"  class="text vam"/>
+            <span id="mobile_notice" style="color:#FF0000"> *</span>
+          </td>
+        </tr>
+		<tr>
+      <th>手机验证码：</th>
+      <td><input type="text" size="4" name="mobile_code" class="text vam" style="width:85px;" />
+	 <input type="button" name="btn_mobile" class="button" id="btn_mobile" value="获取验证码" tabindex="5" disabled="" style="vertical-align: middle; height:30px;width:150px;cursor: pointer;" onClick="get_mobile_code();" >
+	<span id="mobile_code_notice" style="color:#FF0000"> *</span>	 
+	  </td>
+      </tr>
         <tr>
           <th>{$lang.label_password}：</th>
           <td>
@@ -162,13 +183,7 @@
           </td>
         </tr>
       
-		  <!-- 判断是否启用验证码{if $enabled_captcha} -->
-      <tr>
-      <th>{$lang.comment_captcha}：</th>
-      <td><input type="text" size="8" name="captcha" class="text vam" style="width:100px;" />
-      <img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle; height:30px;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /> </td>
-      </tr>
-      <!--{/if}-->
+		  
 		
                                
                                     	 

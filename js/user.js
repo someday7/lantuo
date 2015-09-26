@@ -864,3 +864,58 @@ function calResult()
     }
   }
 }
+
+function check_mobile(mobile) {
+	
+	if(/^1[0-9]{10}$/.test(mobile)){
+		return true;
+	}
+	return false;
+}
+
+function do_check_mobile() {
+	var mobile = $("#mobile").val();
+	var submit_disabled = false;
+	if(!check_mobile(mobile)){
+		document.getElementById('mobile_notice').innerHTML = '请输入正确的手机号码';
+		submit_disabled = true;
+	} else {
+		document.getElementById('mobile_notice').innerHTML = '';
+	}
+}
+
+function get_mobile_code() {
+	var submit_disabled = false;
+	var mobile = $("#mobile").val();
+	if(check_mobile(mobile)){
+		$.ajax({
+			type:'get',
+			url:'/mobile.php?mobile='+mobile,
+			dataType:'json',
+			success:function(json){
+				time(document.getElementsByName('btn_mobile'));
+			},
+			error:function(){
+			}
+		});
+	} else {
+		do_check_mobile();
+	}
+}
+
+var wait=60;
+function time(o) {
+	if (wait == 0) {
+		o.removeAttribute("disabled");			
+		o.value="获取验证码";
+		wait = 60;
+	} else {
+		o.setAttribute("disabled", true);
+		o.value="重新发送(" + wait + ")";
+		wait--;
+		setTimeout(function() {
+			time(o)
+		},
+		1000)
+	}
+}

@@ -11,28 +11,12 @@
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
- <link href="themes/default/slide/slide.css" rel="stylesheet" type="text/css">
- 
+
  <!--[if lt IE 9]><script src="themes/default/css/common/html5shiv.js"></script> <![endif]-->
 </head>
   
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<div id="slideDiv">
-
-	<div class="banner-img">
-		
-	</div>
-	<div class="banner-img" style="background: url(http://www.genyard.com/download/257/5ee6a33a95cf89316b7d26b918033a18.jpg) no-repeat center center;">
-		
-	</div>
-	<div class="banner-img" style="background: url(http://i1.tietuku.com/8054880b91afdbcb.jpg) no-repeat center center;">
-		
-	</div>
-	<div class="banner-img" style="background: url(http://www.genyard.com/download/256/1df7352edc4caf877929a4ccb017a4f0.jpg) no-repeat center center;">
-		
-	</div>
-</div>
 <div class="banner">
 	<div class="layout">
 	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
@@ -115,7 +99,6 @@
 </body>
 </html>
 <!--Hit 2015-05-11 14:48:37,1-->
-<script type="text/javascript" src="themes/default/slide/slide.js"></script>
 <script>
 		$(function(){
 //			$('.ul_msg').scrollbox({
@@ -134,7 +117,7 @@
 //				t++;
 //			},3000);
 			
-			$("#slideDiv").slide({view:0,time:5000,animation:0});
+			
 			setInterval(function(){
 				$('.ul_msg ul').animate({"marginTop":-40},"fast",function(){
 					$(".ul_msg ul li:eq(0)").clone().appendTo($(".ul_msg ul"));
