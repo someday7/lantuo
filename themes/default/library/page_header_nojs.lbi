@@ -105,8 +105,6 @@
 	display: block;
 }
 </style>
-<script type="text/javascript" src="themes/default/js/jquery.js"></script>
- <script type="text/javascript" src="/js/jquery.json.js"></script>
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";
 </script>
@@ -127,7 +125,6 @@ var process_request = "{$lang.process_request}";
 		</div>
 		<ul class="fr">
 			<li>
-				{insert_scripts files='transport.js,utils.js'}
 				<font id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font>
 			</li>
 			<li>
@@ -189,13 +186,6 @@ var process_request = "{$lang.process_request}";
 		</ul>
 	</div>
 </div>
-<script src="themes/default/js/jsapi.js?20141025" namespace="ec"></script>
-<script src="themes/default/js/ec.core.js?20141025"></script> 
-<script src="http://res.vmall.com/20150415/js/common/jsapi.js?20141025" namespace="ec"></script>
-<script src="themes/default/js/ec.business.js?20150420"></script> 
-<script type="text/javascript" src="themes/default/js/scrollbox.js" ></script>
-<script type="text/javascript" src="themes/default/js/jquery.jqzoom.js"></script>
- <script type="text/javascript" src="themes/default/js/base.js"></script>
 <script type="text/javascript">
 		$(function() {
 			window.__Object_toJSONString = Object.prototype.toJSONString;

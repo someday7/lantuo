@@ -2267,7 +2267,7 @@ function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $s
 {
 	if(!empty($start_day) && !empty($end_day)) {
 		$goods = get_goods_info($goods_id);
-		$days = round((strtotime($end_day) - strtotime($start_day))/86400)+1;
+		$days = round((strtotime($end_day) - strtotime($start_day))/86400);
 		if($days <= $goods['rent_start_day']) {
 			$final_price = $goods['rent_start_price'];
 		} else {

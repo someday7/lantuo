@@ -13,6 +13,8 @@
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css"> 
+ <script type="text/javascript" src="themes/default/js/jquery.js"></script>
+ <script type="text/javascript" src="/js/jquery.json.js"></script>
 </head>
 <body>
 
@@ -63,13 +65,13 @@
 		    </div>
 	 		<?php endif; ?>
 	 
-	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_47684700_1442777413');if (count($_from)):
-    foreach ($_from AS $this->_var['filter_attr_0_47684700_1442777413']):
+	 	<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_51434700_1443381806');if (count($_from)):
+    foreach ($_from AS $this->_var['filter_attr_0_51434700_1443381806']):
 ?>
 			 
 		 	<div class="type">
-			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_47684700_1442777413']['filter_attr_name']); ?>：</label>
-						<?php $_from = $this->_var['filter_attr_0_47684700_1442777413']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
+			<label><?php echo htmlspecialchars($this->_var['filter_attr_0_51434700_1443381806']['filter_attr_name']); ?>：</label>
+						<?php $_from = $this->_var['filter_attr_0_51434700_1443381806']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
     foreach ($_from AS $this->_var['attr']):
 ?>
 						<?php if ($this->_var['attr']['selected']): ?>
@@ -88,7 +90,7 @@
 	<?php echo $this->fetch('library/goods_list.lbi'); ?>
 		
 	
-	<div id="pop-compare" class="pop-compare" style="display:none;">
+	<div id="pop-compare" class="pop-compare" style="">
 		<div class="pop-wrap">
 			<p class="pop-compare-tips">对比栏已满，您可以删除不需要的栏内商品再继续添加哦！</p>
 			<div class="pop-inner" data-widget="tabs">
@@ -98,56 +100,24 @@
 							<a href="javascript:;">对比栏</a>
 						</li>
 					</ul>
-					<div class="operate"><a href="javascript:;" class="hide-me">隐藏</a>
+					<div class="operate"><a href="javascript:;" onclick="$('#pop-compare').hide();" class="hide-me">隐藏</a>
 					</div>
 				</div>
 				<div class="diff-bd tab-cons">
 					<div class="tab-con" data-widget="tab-content">
 						<div id="diff-items" class="diff-items clearfix">
-							<dl class="hasItem" id="cmp_item_1043507523" fore="0"> 
-								<dt>
-									<a target="_blank" href="">
-										<img src="img/zulin/img1.png" width="48" height="35">
-									</a>  
-								</dt>
-								<dd> 
-									<a target="_blank" class="diff-item-name" href="#">
-										索尼数码相机黑色索尼数码相机黑色索尼数码相机黑色
-									</a> 
-									<span class="p-price"><strong class="J-p-1043507523">￥4999.00</strong>
-										<a class="del-comp-item" skuid="1043507523">删除</a>
-									</span>												
+							<dl class="item-empty"> 
+								<dt>1</dt>
+								<dd>您还可以继续添加								
 								</dd>
 							</dl>
-							<dl class="hasItem" id="cmp_item_1043507523" fore="1"> 
-								<dt>
-									<a target="_blank" href="">
-										<img src="img/zulin/img2.png" width="48" height="35">
-									</a>  
-								</dt>
-								<dd> 
-									<a target="_blank" class="diff-item-name" href="#">
-										索尼数码相机黑色2索尼数码相机黑色2索尼数码相机黑色2
-									</a> 
-									<span class="p-price"><strong class="J-p-1043507523">￥4999.00</strong>
-										<a class="del-comp-item" skuid="1043507523">删除</a>
-									</span>												
-								</dd>
+							<dl class="item-empty">
+								<dt>2</dt>
+								<dd>您还可以继续添加</dd>
 							</dl>
-							<dl class="hasItem" id="cmp_item_1043507523" fore="2"> 
-								<dt>
-									<a target="_blank" href="">
-										<img src="img/zulin/img3.png" width="35" height="48">
-									</a>  
-								</dt>
-								<dd> 
-									<a target="_blank" class="diff-item-name" href="#">
-										卡西欧数码相机1卡西欧数码相机1卡西欧数码相机1
-									</a> 
-									<span class="p-price"><strong class="J-p-1043507523">￥4999.00</strong>
-										<a class="del-comp-item" skuid="1043507523">删除</a>
-									</span>												
-								</dd>
+							<dl class="item-empty">
+								<dt>3</dt>
+								<dd>您还可以继续添加</dd>
 							</dl>
 							<dl class="item-empty">
 								<dt>4</dt>
@@ -155,8 +125,8 @@
 							</dl>
 						</div>
 						<div class="diff-operate">
-							<a target="_blank" id="goto-contrast" href="#" class="btn-compare-b compare-active">对比</a>
-							<a class="del-items">清空对比栏</a>
+							<a target="_blank" id="goto-contrast" href="javascript:viod(0);" class="btn-compare-b compare-active">对比</a>
+							<a class="del-items"></a>
 						</div>
 					</div>
 				</div>

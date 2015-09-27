@@ -23,13 +23,13 @@
 	<div class="banner-img">
 		
 	</div>
-	<div class="banner-img" style="background: url(http://www.genyard.com/download/257/5ee6a33a95cf89316b7d26b918033a18.jpg) no-repeat center center;">
+	<div class="banner-img" style="background: url(/images/slide/1.jpg) no-repeat center center;">
 		
 	</div>
-	<div class="banner-img" style="background: url(http://i1.tietuku.com/8054880b91afdbcb.jpg) no-repeat center center;">
+	<div class="banner-img" style="background: url(/images/slide/2.jpg) no-repeat center center;">
 		
 	</div>
-	<div class="banner-img" style="background: url(http://www.genyard.com/download/256/1df7352edc4caf877929a4ccb017a4f0.jpg) no-repeat center center;">
+	<div class="banner-img" style="background: url(/images/slide/3.jpg) no-repeat center center;">
 		
 	</div>
 </div>

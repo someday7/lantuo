@@ -2,19 +2,6 @@
 $data = array (
   0 => 
   array (
-    'cat_id' => '9',
-    'cat_name' => '索尼',
-    'measure_unit' => '',
-    'parent_id' => '0',
-    'is_show' => '1',
-    'show_in_nav' => '1',
-    'grade' => '6',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  1 => 
-  array (
     'cat_id' => '24',
     'cat_name' => '所有分类',
     'measure_unit' => '',
@@ -26,7 +13,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  2 => 
+  1 => 
   array (
     'cat_id' => '7',
     'cat_name' => '佳能',
@@ -39,7 +26,7 @@ $data = array (
     'has_children' => '5',
     'goods_num' => '1',
   ),
-  3 => 
+  2 => 
   array (
     'cat_id' => '8',
     'cat_name' => '尼康',
@@ -52,20 +39,20 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  4 => 
+  3 => 
   array (
-    'cat_id' => '17',
-    'cat_name' => '专业单反相机',
+    'cat_id' => '9',
+    'cat_name' => '索尼',
     'measure_unit' => '',
     'parent_id' => '0',
-    'is_show' => '0',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '100',
-    'has_children' => '2',
+    'is_show' => '1',
+    'show_in_nav' => '1',
+    'grade' => '6',
+    'sort_order' => '50',
+    'has_children' => '0',
     'goods_num' => 0,
   ),
-  5 => 
+  4 => 
   array (
     'cat_id' => '16',
     'cat_name' => '单反相机',
@@ -78,7 +65,7 @@ $data = array (
     'has_children' => '2',
     'goods_num' => 0,
   ),
-  6 => 
+  5 => 
   array (
     'cat_id' => '18',
     'cat_name' => '镜头组',
@@ -91,20 +78,20 @@ $data = array (
     'has_children' => '2',
     'goods_num' => 0,
   ),
-  7 => 
+  6 => 
   array (
-    'cat_id' => '12',
-    'cat_name' => '微单相机',
+    'cat_id' => '17',
+    'cat_name' => '专业单反相机',
     'measure_unit' => '',
-    'parent_id' => '7',
-    'is_show' => '1',
+    'parent_id' => '0',
+    'is_show' => '0',
     'show_in_nav' => '0',
     'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => '10',
+    'sort_order' => '100',
+    'has_children' => '2',
+    'goods_num' => 0,
   ),
-  8 => 
+  7 => 
   array (
     'cat_id' => '13',
     'cat_name' => '单反相机',
@@ -117,7 +104,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  9 => 
+  8 => 
   array (
     'cat_id' => '10',
     'cat_name' => '数码相机',
@@ -130,7 +117,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '12',
   ),
-  10 => 
+  9 => 
   array (
     'cat_id' => '14',
     'cat_name' => '拍立得',
@@ -143,7 +130,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => '96',
   ),
-  11 => 
+  10 => 
   array (
     'cat_id' => '11',
     'cat_name' => '单电',
@@ -155,6 +142,19 @@ $data = array (
     'sort_order' => '50',
     'has_children' => '0',
     'goods_num' => '3',
+  ),
+  11 => 
+  array (
+    'cat_id' => '12',
+    'cat_name' => '微单相机',
+    'measure_unit' => '',
+    'parent_id' => '7',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '10',
   ),
   12 => 
   array (

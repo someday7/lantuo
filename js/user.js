@@ -879,8 +879,10 @@ function do_check_mobile() {
 	if(!check_mobile(mobile)){
 		document.getElementById('mobile_notice').innerHTML = '请输入正确的手机号码';
 		submit_disabled = true;
+		$("#btn_mobile").attr("disabled", "disabled");
 	} else {
 		document.getElementById('mobile_notice').innerHTML = '';
+		$("#btn_mobile").removeAttr("disabled");
 	}
 }
 
@@ -893,7 +895,13 @@ function get_mobile_code() {
 			url:'/mobile.php?mobile='+mobile,
 			dataType:'json',
 			success:function(json){
-				time(document.getElementsByName('btn_mobile'));
+				if(json.rs == 1){
+					time(document.getElementsByName('btn_mobile')[0]);
+					$("#mobile_code_notice").html("");
+				}
+				 else {
+					$("#mobile_code_notice").html("发送验证码失败,请稍后重试");
+				 }
 			},
 			error:function(){
 			}

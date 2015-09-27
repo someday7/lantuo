@@ -412,6 +412,11 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
     /* 创建 html editor */
     create_html_editor('goods_desc', $goods['goods_desc']);
+    create_html_editor('goods_desc2', $goods['goods_desc2'], 'FCKeditor2');
+    create_html_editor('goods_desc3', $goods['goods_desc3'], 'FCKeditor3');
+    create_html_editor('goods_desc4', $goods['goods_desc4'], 'FCKeditor4');
+    create_html_editor('goods_desc5', $goods['goods_desc5'], 'FCKeditor5');
+    create_html_editor('goods_desc6', $goods['goods_desc6'], 'FCKeditor6');
 
     /* 模板赋值 */
     $smarty->assign('code',    $code);
@@ -828,13 +833,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral, suppliers_id)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, goods_desc2, goods_desc3, goods_desc4, goods_desc5, goods_desc6,add_time, last_update, goods_type, rank_integral, suppliers_id, rent_start_day,rent_start_price,rent_add_price,taobao_url)" .
                 "VALUES ('$_POST[goods_name]','$_POST[goods_name2]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral', '$suppliers_id')";
+                    " '$_POST[goods_desc]', '$_POST[goods_desc2]', '$_POST[goods_desc3]', '$_POST[goods_desc4]', '$_POST[goods_desc5]', '$_POST[goods_desc6]',  '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral', '$suppliers_id','$_POST[rent_start_day]','$_POST[rent_start_price]','$_POST[rent_add_price]','$_POST[taobao_url]')";
         }
         else
         {
@@ -842,13 +847,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, goods_desc2, goods_desc3, goods_desc4, goods_desc5, goods_desc6, add_time, last_update, goods_type, extension_code, rank_integral, rent_start_day,rent_start_price,rent_add_price,taobao_url)" .
                 "VALUES ('$_POST[goods_name]','$_POST[goods_name2]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral')";
+                    " '$_POST[goods_desc]', '$_POST[goods_desc2]', '$_POST[goods_desc3]', '$_POST[goods_desc4]', '$_POST[goods_desc5]', '$_POST[goods_desc6]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$_POST[rent_start_day]','$_POST[rent_start_price]','$_POST[rent_add_price]','$_POST[taobao_url]')";
         }
     }
     else
@@ -913,6 +918,15 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "is_alone_sale = '$is_alone_sale', " .
                 "is_shipping = '$is_shipping', " .
                 "goods_desc = '$_POST[goods_desc]', " .
+                "goods_desc2 = '$_POST[goods_desc2]', " .
+                "goods_desc3 = '$_POST[goods_desc3]', " .
+                "goods_desc4 = '$_POST[goods_desc4]', " .
+                "goods_desc5 = '$_POST[goods_desc5]', " .
+                "goods_desc6 = '$_POST[goods_desc6]', " .
+                "rent_start_day = '$_POST[rent_start_day]', " .
+                "rent_start_price = '$_POST[rent_start_price]', " .
+                "rent_add_price = '$_POST[rent_add_price]', " .
+                "taobao_url = '$_POST[taobao_url]', " .
                 "last_update = '". gmtime() ."', ".
                 "goods_type = '$goods_type' " .
                 "WHERE goods_id = '$_REQUEST[goods_id]' LIMIT 1";

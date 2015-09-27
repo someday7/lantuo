@@ -12,6 +12,8 @@
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css"> 
+ <script type="text/javascript" src="themes/default/js/jquery.js"></script>
+ <script type="text/javascript" src="/js/jquery.json.js"></script>
 </head>
 <body>
 
@@ -79,7 +81,7 @@
 	<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
 		
 	<!-- 20140727-商品列表-end -->
-	<div id="pop-compare" class="pop-compare" style="display:none;">
+	<div id="pop-compare" class="pop-compare" style="">
 		<div class="pop-wrap">
 			<p class="pop-compare-tips">对比栏已满，您可以删除不需要的栏内商品再继续添加哦！</p>
 			<div class="pop-inner" data-widget="tabs">
@@ -89,56 +91,24 @@
 							<a href="javascript:;">对比栏</a>
 						</li>
 					</ul>
-					<div class="operate"><a href="javascript:;" class="hide-me">隐藏</a>
+					<div class="operate"><a href="javascript:;" onclick="$('#pop-compare').hide();" class="hide-me">隐藏</a>
 					</div>
 				</div>
 				<div class="diff-bd tab-cons">
 					<div class="tab-con" data-widget="tab-content">
 						<div id="diff-items" class="diff-items clearfix">
-							<dl class="hasItem" id="cmp_item_1043507523" fore="0"> 
-								<dt>
-									<a target="_blank" href="">
-										<img src="img/zulin/img1.png" width="48" height="35">
-									</a>  
-								</dt>
-								<dd> 
-									<a target="_blank" class="diff-item-name" href="#">
-										索尼数码相机黑色索尼数码相机黑色索尼数码相机黑色
-									</a> 
-									<span class="p-price"><strong class="J-p-1043507523">￥4999.00</strong>
-										<a class="del-comp-item" skuid="1043507523">删除</a>
-									</span>												
+							<dl class="item-empty"> 
+								<dt>1</dt>
+								<dd>您还可以继续添加								
 								</dd>
 							</dl>
-							<dl class="hasItem" id="cmp_item_1043507523" fore="1"> 
-								<dt>
-									<a target="_blank" href="">
-										<img src="img/zulin/img2.png" width="48" height="35">
-									</a>  
-								</dt>
-								<dd> 
-									<a target="_blank" class="diff-item-name" href="#">
-										索尼数码相机黑色2索尼数码相机黑色2索尼数码相机黑色2
-									</a> 
-									<span class="p-price"><strong class="J-p-1043507523">￥4999.00</strong>
-										<a class="del-comp-item" skuid="1043507523">删除</a>
-									</span>												
-								</dd>
+							<dl class="item-empty">
+								<dt>2</dt>
+								<dd>您还可以继续添加</dd>
 							</dl>
-							<dl class="hasItem" id="cmp_item_1043507523" fore="2"> 
-								<dt>
-									<a target="_blank" href="">
-										<img src="img/zulin/img3.png" width="35" height="48">
-									</a>  
-								</dt>
-								<dd> 
-									<a target="_blank" class="diff-item-name" href="#">
-										卡西欧数码相机1卡西欧数码相机1卡西欧数码相机1
-									</a> 
-									<span class="p-price"><strong class="J-p-1043507523">￥4999.00</strong>
-										<a class="del-comp-item" skuid="1043507523">删除</a>
-									</span>												
-								</dd>
+							<dl class="item-empty">
+								<dt>3</dt>
+								<dd>您还可以继续添加</dd>
 							</dl>
 							<dl class="item-empty">
 								<dt>4</dt>
@@ -146,8 +116,8 @@
 							</dl>
 						</div>
 						<div class="diff-operate">
-							<a target="_blank" id="goto-contrast" href="#" class="btn-compare-b compare-active">对比</a>
-							<a class="del-items">清空对比栏</a>
+							<a target="_blank" id="goto-contrast" href="javascript:viod(0);" class="btn-compare-b compare-active">对比</a>
+							<a class="del-items"></a>
 						</div>
 					</div>
 				</div>

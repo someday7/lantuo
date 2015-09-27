@@ -14,11 +14,12 @@
  <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
  <link href="themes/default/js/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+ <script type="text/javascript" src="themes/default/js/jquery-1.4.4.min.js"></script>
 </head>
 <body>
 
  
-<?php echo $this->fetch('library/page_header.lbi'); ?>
+<?php echo $this->fetch('library/page_header_nojs.lbi'); ?>
 
 <?php echo $this->smarty_insert_scripts(array('files'=>'common.js')); ?>
  
@@ -31,7 +32,7 @@
 	</div>
  	  
 
-<div class="main_con"> 
+<div class="main_con" style="margin-left:260px;"> 
 <?php echo $this->fetch('library/ur_here.lbi'); ?>
 	
  <form action="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
@@ -61,7 +62,7 @@
 	<div class="pd-side">
 		<div class="section1">
 			<label class="label">咨询客服：</label>
-			<span class="contact"><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=iRentals&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=iRentals&site=cntaobao&s=1&charset=utf-8" alt="点这里给我发消息" /></a></span>
+			<span class="contact"><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=daisy03156&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=iRentals&site=cntaobao&s=1&charset=utf-8" alt="点这里给我发消息" /></a></span>
 			
 		</div>
 		<div class="section1">
@@ -73,19 +74,25 @@
 				<label>寄回日期：</label>
 				<input class="Wdate" placeholder="请选择日期" type="text" id="d234" name="d234" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'d233\',{d:-0});}'})" />
 			</div>
-			<div class="calculate">计算租金</div>
+			<div class="calculate" style="cursor:pointer;">计算租金</div>
 			<div class="section-text">
 				<label>租金：</label>
 				<label class="cost" id="ECS_GOODS_AMOUNT"><?php echo $this->_var['goods']['rent_start_day']; ?>天￥<?php echo $this->_var['goods']['rent_start_price']; ?>，之后每天<?php echo $this->_var['goods']['rent_add_price']; ?>元</label>
 			</div>
+			<div class="section-text">
+				<label>押金：</label>
+				<label class="cost" id="ECS_GOODS_AMOUNT_2"><?php echo $this->_var['goods']['shop_price']; ?>元</label>
+			</div>
 		</div>
 		<div class="section1">
+			<!--
 			<label class="label">促销信息：</label>
 			<div class="pro-div">
 				此处点击鼠标左键，任意划取部分文字信息，即可显示划词分享图标可显示划词分享图
 			</div>
+			-->
 			<div class="pay-btns">
-				<span class="pay-btn taobao"><a href="http://www.taobao.com" target="_blank">淘宝交易</a></span><span class="pay-btn online" onclick="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)">直接付款</span>
+				<span class="pay-btn taobao"><a href="<?php echo $this->_var['goods']['taobao_url']; ?>" target="_blank" style="color:#FFF;">淘宝交易</a></span><span class="pay-btn online" style="cursor:pointer;" onclick="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)">加入购物车</span>
 			</div>
 		</div>
 			<div class="bshare-custom">
@@ -118,18 +125,19 @@
 				<?php echo $this->_var['goods']['goods_desc']; ?>
 			</div>
 			<div class="pd-page page-1">
-				
+				<?php echo $this->_var['goods']['goods_desc2']; ?>
 			</div>
 			<div class="pd-page page-2">
-				
+				<?php echo $this->_var['goods']['goods_desc3']; ?>
 			</div>
 			<div class="pd-page page-3">
+				<?php echo $this->_var['goods']['goods_desc4']; ?>
 			</div>
 			<div class="pd-page page-4">
-				
+				<?php echo $this->_var['goods']['goods_desc5']; ?>
 			</div>
 			<div class="pd-page page-5">
-				
+				<?php echo $this->_var['goods']['goods_desc6']; ?>
 			</div>
 		</div>
 	

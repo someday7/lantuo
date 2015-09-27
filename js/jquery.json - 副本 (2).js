@@ -25,9 +25,9 @@
     // Yes, it polutes the Date namespace, but we'll allow it here, as
     // it's damned usefull.
     {
-        return this.getUTCFullYear()   + '-' +
-             toIntegersAtLease(this.getUTCMonth()) + '-' +
-             toIntegersAtLease(this.getUTCDate());
+        return date.getUTCFullYear()   + '-' +
+             toIntegersAtLease(date.getUTCMonth() + 1) + '-' +
+             toIntegersAtLease(date.getUTCDate());
     };
 
     var escapeable = /["\\\x00-\x1f\x7f-\x9f]/g;
@@ -39,7 +39,7 @@
             '\r': '\\r',
             '"' : '\\"',
             '\\': '\\\\'
-        };
+        }
         
     $.quoteString = function(string)
     // Places quotes around a string, inteligently.
@@ -58,15 +58,15 @@
                 }
                 c = a.charCodeAt();
                 return '\\u00' + Math.floor(c / 16).toString(16) + (c % 16).toString(16);
-            }) + '"';
+            }) + '"'
         }
         return '"' + string + '"';
-    };
+    }
     
-    $.toJSON = function(o)
+    $.toJSON = function(o, compact)
     {
         var type = typeof(o);
-		
+        
         if (type == "undefined")
             return "undefined";
         else if (type == "number" || type == "boolean")
@@ -82,16 +82,19 @@
         
         // Does it have a .toJSON function?
         if (type == "object" && typeof o.toJSON == "function") 
-            return o.toJSON();
+            return o.toJSON(compact);
         
         // Is it an array?
         if (type != "function" && typeof(o.length) == "number") 
         {
             var ret = [];
             for (var i = 0; i < o.length; i++) {
-                ret.push( $.toJSON(o[i]) );
+                ret.push( $.toJSON(o[i], compact) );
             }
-            return "[" + ret.join(",") + "]";
+            if (compact)
+                return "[" + ret.join(",") + "]";
+            else
+                return "[" + ret.join(", ") + "]";
         }
         
         // If it's a function, we have to warn somebody!
@@ -100,10 +103,10 @@
         }
         
         // It's probably an object, then.
-        var ret = [];
+        ret = [];
         for (var k in o) {
             var name;
-            type = typeof(k);
+            var type = typeof(k);
             
             if (type == "number")
                 name = '"' + k + '"';
@@ -112,27 +115,30 @@
             else
                 continue;  //skip non-string or number keys
             
-            var val = $.toJSON(o[k]);
+            val = $.toJSON(o[k], compact);
             if (typeof(val) != "string") {
                 // skip non-serializable values
                 continue;
             }
             
-            ret.push(name + ":" + val);
+            if (compact)
+                ret.push(name + ":" + val);
+            else
+                ret.push(name + ": " + val);
         }
-        return "{" + ret.join(",") + "}";
-    };
+        return "{" + ret.join(", ") + "}";
+    }
     
     $.compactJSON = function(o)
     {
         return $.toJSON(o, true);
-    };
+    }
     
     $.evalJSON = function(src)
     // Evals JSON that we know to be safe.
     {
         return eval("(" + src + ")");
-    };
+    }
     
     $.secureEvalJSON = function(src)
     // Evals JSON in a way that is *more* secure.
@@ -146,5 +152,5 @@
             return eval("(" + src + ")");
         else
             throw new SyntaxError("Error parsing JSON, source is not valid.");
-    };
+    }
 })(jQuery);

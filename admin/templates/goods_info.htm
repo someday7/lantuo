@@ -23,6 +23,11 @@
         class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>{if $code eq ''}<span
         class="tab-back" id="groupgoods-tab">{$lang.tab_groupgoods}</span>{/if}<span
         class="tab-back" id="article-tab">{$lang.tab_article}</span>
+        <span class="tab-back" id="detail2-tab">详细参数</span>
+        <span class="tab-back" id="detail3-tab">样片</span>
+        <span class="tab-back" id="detail4-tab">租赁标准配件</span>
+        <span class="tab-back" id="detail5-tab">选配配件</span>
+        <span class="tab-back" id="detail6-tab">资源</span>
       </p>
     </div>
 
@@ -148,6 +153,26 @@
             <td class="label">{$lang.lab_market_price}</td>
             <td><input type="text" name="market_price" value="{$goods.market_price}" size="20" />
               <input type="button" value="{$lang.integral_market_price}" onclick="integral_market_price()" />
+            </td>
+          </tr>
+          <tr>
+            <td class="label">起租天数</td>
+            <td><input type="text" name="rent_start_day" value="{$goods.rent_start_day}" size="20" />
+            </td>
+          </tr>
+          <tr>
+            <td class="label">起租价</td>
+            <td><input type="text" name="rent_start_price" value="{$goods.rent_start_price}" size="20" />
+            </td>
+          </tr>
+          <tr>
+            <td class="label">之后每天租金</td>
+            <td><input type="text" name="rent_add_price" value="{$goods.rent_add_price}" size="20" />
+            </td>
+          </tr>
+          <tr>
+            <td class="label">淘宝地址</td>
+            <td><input type="text" name="taobao_url" value="{$goods.taobao_url}" size="50" />
             </td>
           </tr>
           <tr>
@@ -423,6 +448,36 @@
                 {/foreach}
               </select>
             </td>
+          </tr>
+        </table>
+        
+        <table width="90%" id="detail2-table" style="display:none">
+          <tr>
+            <td>{$FCKeditor2}</td>
+          </tr>
+        </table>
+        
+        <table width="90%" id="detail3-table" style="display:none">
+          <tr>
+            <td>{$FCKeditor3}</td>
+          </tr>
+        </table>
+        
+        <table width="90%" id="detail4-table" style="display:none">
+          <tr>
+            <td>{$FCKeditor4}</td>
+          </tr>
+        </table>
+        
+        <table width="90%" id="detail5-table" style="display:none">
+          <tr>
+            <td>{$FCKeditor5}</td>
+          </tr>
+        </table>
+        
+        <table width="90%" id="detail6-table" style="display:none">
+          <tr>
+            <td>{$FCKeditor6}</td>
           </tr>
         </table>
 

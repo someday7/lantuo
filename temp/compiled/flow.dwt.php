@@ -219,11 +219,12 @@ width: 15px;
 			 <input type="button" value="<?php echo $this->_var['lang']['clear_cart']; ?>" class="bnt_blue_1" onclick="location.href='flow.php?step=clear'" />
  			
 			</div>
-			<div class="sc-total-price"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><th>总计金额：</th><td id="sc-cartInfo-totalOriginalPrice">
+			<div class="sc-total-price"><table border="0" cellpadding="0" cellspacing="0"><tbody>
+			<tr><th>总计押金：</th><td id="sc-cartInfo-totalOriginalPrice">
 			         <?php echo $this->_var['shopping_money']; ?>
-        
-		 
-			
+			</td></tr><tr>
+			<tr><th>总计租金：</th><td id="sc-cartInfo-totalOriginalPrice">
+			         <?php echo $this->_var['shopping_money']; ?>
 			</td></tr><tr><th>共节省：</th><td id="sc-cartInfo-minusPrice"> <?php echo $this->_var['your_discount']; ?></td></tr><tr><th><em>合计(不含运费)：<em></em></em></th><td><b id="sc-cartInfo-totalPrice"> <?php echo $this->_var['shopping_money']; ?><b></b></b></td></tr></tbody></table></div></div>
 			
 			<div class="hr-25"></div>
