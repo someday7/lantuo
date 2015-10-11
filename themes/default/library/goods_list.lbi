@@ -47,7 +47,7 @@
 					</span>
 					</div>
 					<div class="desc">{$goods.goods_name}</div>
-					<div class="check-div"><span class="checkbox" onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"html"}','{$goods.type}')"></span><span>选中</span>
+					<div class="check-div"  onClick="Compare.add({$goods.goods_id},'{$goods.goods_name|escape:"html"}','{$goods.type}')"><span class=""></span><span>加入对比</span>
 					</div>
 				</li>
 			 

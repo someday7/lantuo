@@ -889,10 +889,11 @@ function do_check_mobile() {
 function get_mobile_code() {
 	var submit_disabled = false;
 	var mobile = $("#mobile").val();
+	var captcha = $("#captcha").val();
 	if(check_mobile(mobile)){
 		$.ajax({
 			type:'get',
-			url:'/mobile.php?mobile='+mobile,
+			url:'/mobile.php?mobile='+mobile+'&captcha='+captcha,
 			dataType:'json',
 			success:function(json){
 				if(json.rs == 1){
@@ -900,7 +901,8 @@ function get_mobile_code() {
 					$("#mobile_code_notice").html("");
 				}
 				 else {
-					$("#mobile_code_notice").html("发送验证码失败,请稍后重试");
+					//$("#mobile_code_notice").html("发送验证码失败,请稍后重试");
+					$("#mobile_code_notice").html(json.msg);
 				 }
 			},
 			error:function(){

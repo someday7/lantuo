@@ -38,7 +38,7 @@
             </div>
  <div class="b">
    <div class="logtitle"></div>
-  <div class="form-edit-area"  style="float:left; width:480px;margin-left:20px;">
+  <div class="form-edit-area"  style="float:left; width:480px;margin-left:85px;margin-top:48px;">
    <form name="formLogin" action="user.php" method="post" onSubmit="return userLogin()">
  
         <table width="100%" border="0" align="left" cellpadding="3" cellspacing="5">
@@ -78,7 +78,7 @@
   </div>
   
   
-  <div class="usTxt" style="float:left; width:200px;padding-top:0px;padding-left:40px;">
+  <div class="usTxt" style="float:left; width:200px;padding-top:0px;padding-left:0px;">
     <!--<strong>{$lang.user_reg_info[0]}</strong>  <br />-->
     <strong class="f4">{$lang.user_reg_info[1]}：</strong><br />
     <!-- {if $car_off eq 1} -->
@@ -139,7 +139,7 @@
 		<!-- 判断是否启用验证码{if $enabled_captcha} -->
       <tr>
       <th>{$lang.comment_captcha}：</th>
-      <td><input type="text" size="8" name="captcha" class="text vam" style="width:100px;" />
+      <td><input type="text" size="8" name="captcha" id="captcha" class="text vam" style="width:100px;" />
       <img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle; height:30px;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /> </td>
       </tr>
       <!--{/if}-->

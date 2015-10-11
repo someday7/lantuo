@@ -24,7 +24,7 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="pingce-main">
 <div class="main_con">
- <div style="text-align:center;margin:20px;font-size:large;">COMMING SOON...</div>
+ <div style="text-align:center;margin:20px;font-size:large;line-height:960px;height:960px;">COMMING SOON...</div>
 </div>
 <div class="blank5"></div>
  

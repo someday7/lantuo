@@ -43,6 +43,23 @@ $serverPort='8883';
 //REST版本号
 $softVersion='2013-12-26';
 
+/* 验证码检查 */
+if ((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
+{
+	if (empty($_REQUEST['captcha']))
+	{
+		exit(json_encode(array('rs'=>-1, 'msg'=>'图形验证码错误')));
+	}
+
+	/* 检查验证码 */
+	include_once('includes/cls_captcha.php');
+
+	$validator = new captcha();
+	if (!$validator->check_word($_REQUEST['captcha']))
+	{
+		exit(json_encode(array('rs'=>-1, 'msg'=>'图形验证码错误')));
+	}
+}
 
 
 $code = mt_rand(1000,9999);
@@ -51,7 +68,7 @@ $result = send_mobile_code($mobile, $code);
 if($result) {
 	exit(json_encode(array('rs'=>1, 'msg'=>'成功')));
 } else {
-	exit(json_encode(array('rs'=>-1, 'msg'=>'失败')));
+	exit(json_encode(array('rs'=>-1, 'msg'=>'发送短信验证码失败')));
 }
 
 
