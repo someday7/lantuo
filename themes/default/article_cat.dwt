@@ -23,77 +23,47 @@
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="pingce-main">
-<div class="main_con">
-    <!--面包屑 -->
-<div class="breadcrumb-area fcn">
- 
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-
-</div>
-<div class="">
-
- 
-    <div class="fr u-4-5">
-    	<!--栏目 -->
-        <div class="part-area clearfix">
-            <div class="fl">
-                <h3 class="ni-title"><span>ss</span></h3>
-            </div>
-           
-        </div>
-        <div class="hr-2"></div>
-        <!--新闻-列表 -->
-        <div class="news-list" id="news-list-ul">
-            <ul class="clearfix">
-			
-			
-			 <!-- {foreach from=$artciles_list item=article} -->
-			 
-			     <li>
-                	<span class="fl"><a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a></span>
-                    <span class="fr">{$article.add_time}</span>
-                </li>
-				
-       <!-- {/foreach} -->
-	  
-                
-            </ul>
-        </div>
-        <div class="hr-25"></div>
+	<div class="side_bar">
+	<!--{foreach from=$article_categories item=cat}-->
+	<div class="topbar">
+		<a href="{$cat.url}">{$cat.name|escape:html}</a>
+	</div>
+	<div class="top-menu">
+		<ul>
+			<li class="head">
+			<!--{foreach from=$cat.children item=child}-->
+				<div class="tit up"><span class="caret"></span><a href="{$child.url}">{$child.name|escape:html}</a></div>
+			<!--{/foreach}-->
+			</li>
+		</ul>
+	</div>
+	<!--{/foreach}-->
+	</div>
+	
+	<div class="main_con" style="margin-left:260px;">
+			<div class="menu-list">
+				<!-- {foreach from=$artciles_list item=article} -->
+						<div class="one-menu">
+						<div class="img"><a href="{$article.url}"><img src="/{$article.file_url}"/></a></div>
+						<div class="desc-text">
+							<p class="d-title"><a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a> </p>
+							<ul>
+								<li>{$article.title|escape:html}</li>
+								<li>{$article.add_time}</li>
+							</ul>
+						</div>
+					</div>						
+			   <!-- {/foreach} -->				
+			</div>
         <!--分页 -->
-        <div class="pager" id="list-pager"><ul>
-		 
-  <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
-		</ul></div>
-    </div>
-	<div class="fl u-1-5"><!--左边菜单 -->
-<div class="news-menu-area">
-	<div class="h">
-	<s></s>
-	<b></b>
-    </div>
-    <div class="b">
-	<ul class="clearfix">
-			   <!--{foreach from=$article_categories item=cat}-->
-   <li id="menu-media"> <a href="{$cat.url}">{$cat.name|escape:html}</a></li>
-      <!--{foreach from=$cat.children item=child}-->
-    <li id="menu-media">  <a href="{$child.url}" style="background-image:none;">{$child.name|escape:html}</a></li>
-      <!--{/foreach}-->
-    <!--{/foreach}-->
-	</ul>
-    </div>
+        <div id="pagin-btm" class="pagin fr">		 
+			<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+		</div>
+		</div>
+		
+	<div class="clear"></div>
 </div>
-<div class="hr-15"></div>
-<div class="ad ad179"></div>
-</div>
-</div>
-
-
-
-  </div>  
   <!--right end-->
- <div class="hr-20"></div>
-<div class="blank5"></div>
  
  
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

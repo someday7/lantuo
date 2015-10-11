@@ -24,83 +24,53 @@
 <body>
 <?php echo $this->fetch('library/page_header.lbi'); ?>
   <div class="pingce-main">
-<div class="main_con">
-    
-<div class="breadcrumb-area fcn">
- 
-  <?php echo $this->fetch('library/ur_here.lbi'); ?>
-
-</div>
-<div class="">
-
- 
-    <div class="fr u-4-5">
-    	
-        <div class="part-area clearfix">
-            <div class="fl">
-                <h3 class="ni-title"><span>ss</span></h3>
-            </div>
-           
-        </div>
-        <div class="hr-2"></div>
-        
-        <div class="news-list" id="news-list-ul">
-            <ul class="clearfix">
-			
-			
-			 <?php $_from = $this->_var['artciles_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'article');if (count($_from)):
-    foreach ($_from AS $this->_var['article']):
-?>
-			 
-			     <li>
-                	<span class="fl"><a href="<?php echo $this->_var['article']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['article']['title']); ?>"><?php echo $this->_var['article']['short_title']; ?></a></span>
-                    <span class="fr"><?php echo $this->_var['article']['add_time']; ?></span>
-                </li>
-				
-       <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-	  
-                
-            </ul>
-        </div>
-        <div class="hr-25"></div>
-        
-        <div class="pager" id="list-pager"><ul>
-		 
-  <?php echo $this->fetch('library/pages.lbi'); ?>
-		</ul></div>
-    </div>
-	<div class="fl u-1-5">
-<div class="news-menu-area">
-	<div class="h">
-	<s></s>
-	<b></b>
-    </div>
-    <div class="b">
-	<ul class="clearfix">
-			   <?php $_from = $this->_var['article_categories']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');if (count($_from)):
+	<div class="side_bar">
+	<?php $_from = $this->_var['article_categories']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cat');if (count($_from)):
     foreach ($_from AS $this->_var['cat']):
 ?>
-   <li id="menu-media"> <a href="<?php echo $this->_var['cat']['url']; ?>"><?php echo htmlspecialchars($this->_var['cat']['name']); ?></a></li>
-      <?php $_from = $this->_var['cat']['children']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'child');if (count($_from)):
+	<div class="topbar">
+		<a href="<?php echo $this->_var['cat']['url']; ?>"><?php echo htmlspecialchars($this->_var['cat']['name']); ?></a>
+	</div>
+	<div class="top-menu">
+		<ul>
+			<li class="head">
+			<?php $_from = $this->_var['cat']['children']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'child');if (count($_from)):
     foreach ($_from AS $this->_var['child']):
 ?>
-    <li id="menu-media">  <a href="<?php echo $this->_var['child']['url']; ?>" style="background-image:none;"><?php echo htmlspecialchars($this->_var['child']['name']); ?></a></li>
-      <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-	</ul>
-    </div>
+				<div class="tit up"><span class="caret"></span><a href="<?php echo $this->_var['child']['url']; ?>"><?php echo htmlspecialchars($this->_var['child']['name']); ?></a></div>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+			</li>
+		</ul>
+	</div>
+	<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+	</div>
+	
+	<div class="main_con" style="margin-left:260px;">
+			<div class="menu-list">
+				<?php $_from = $this->_var['artciles_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'article');if (count($_from)):
+    foreach ($_from AS $this->_var['article']):
+?>
+						<div class="one-menu">
+						<div class="img"><a href="<?php echo $this->_var['article']['url']; ?>"><img src="/<?php echo $this->_var['article']['file_url']; ?>"/></a></div>
+						<div class="desc-text">
+							<p class="d-title"><a href="<?php echo $this->_var['article']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['article']['title']); ?>"><?php echo $this->_var['article']['short_title']; ?></a> </p>
+							<ul>
+								<li><?php echo htmlspecialchars($this->_var['article']['title']); ?></li>
+								<li><?php echo $this->_var['article']['add_time']; ?></li>
+							</ul>
+						</div>
+					</div>						
+			   <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>				
+			</div>
+        
+        <div id="pagin-btm" class="pagin fr">		 
+			<?php echo $this->fetch('library/pages.lbi'); ?>
+		</div>
+		</div>
+		
+	<div class="clear"></div>
 </div>
-<div class="hr-15"></div>
-<div class="ad ad179"></div>
-</div>
-</div>
-
-
-
-  </div>  
   
- <div class="hr-20"></div>
-<div class="blank5"></div>
  
  
 <?php echo $this->fetch('library/page_footer.lbi'); ?>
