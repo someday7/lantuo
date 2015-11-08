@@ -8,6 +8,8 @@
 <meta name="Keywords" content="{$keywords}" />
 <meta name="author" content="279633518@qq.com" />
 <meta name="Description" content="{$description}" />
+<meta property="qc:admins" content="2012033777612564143636" />
+<meta property="wb:webmaster" content="462db5ec5a4918e2" />
 <link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
  <link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
  <link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
@@ -56,7 +58,7 @@
 					</ul>
 					<div class="register btn" onclick="window.location.href='user.php?act=register';">立即注册</div>
 				</div>
-				<div class="top2" style="cusor:pointer;" onclick="window.location.href='article_cat.php?id=13';"></div>
+				<div class="top2" style="cusor:pointer;" onclick="window.location.href='article_cat.php?id=27';"></div>
 				<div class="top3" style="cusor:pointer;" onclick="window.location.href='article.php?id=33';"></div>
 			</div>
 	</div>
@@ -64,11 +66,11 @@
 <!-- #BeginLibraryItem "/library/new_articles.lbi" --><!-- #EndLibraryItem -->
 <div class="index-ul-div">
 		<ul class="carmero-ul">
-			<li class="c-ul-f" onclick="window.location.href='article_cat.php?id=16';"><div class="c-text">iRentals-Test</div><div class="c-icon1"></div></li>
-			<li onclick="window.location.href='article_cat.php?id=17';"><div class="c-text">机身</div><div class="c-icon2"></div></li>
-			<li onclick="window.location.href='article_cat.php?id=18';"><div class="c-text">镜头</div><div class="c-icon3"></div></li>
-			<li onclick="window.location.href='article_cat.php?id=19';"><div class="c-text">附件</div><div class="c-icon4"></div></li>
-			<li onclick="window.location.href='article_cat.php?id=20';"><div class="c-text">花絮</div><div class="c-icon5"></div></li>
+			<li class="c-ul-f" onclick="window.location.href='article_cat.php?id=12';"><div class="c-text">iRentals-Test</div><div class="c-icon1"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=24';"><div class="c-text">机身</div><div class="c-icon2"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=23';"><div class="c-text">镜头</div><div class="c-icon3"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=25';"><div class="c-text">附件</div><div class="c-icon4"></div></li>
+			<li onclick="window.location.href='article_cat.php?id=26';"><div class="c-text">花絮</div><div class="c-icon5"></div></li>
 		</ul>
 </div>
 <div class="bottom">

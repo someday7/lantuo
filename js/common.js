@@ -32,6 +32,10 @@ function addToCart(goodsId, parentId)
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
   goods.start_day =  document.forms['ECS_FORMBUY'].elements['d233'].value;
   goods.end_day  = document.forms['ECS_FORMBUY'].elements['d234'].value;
+  if(goods.start_day.length<=0 || goods.end_day.length<=0){
+	alert("请选择商品收到日期和寄回日期");
+	return;
+  }
 
 	Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
 }

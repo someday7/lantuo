@@ -71,6 +71,48 @@
             <input type="submit" name="Submit" class="button-reg" id="btnSubmit" value="登录" tabindex="6">
             </td>
           </tr>
+          <tr>
+          <td></td>
+          <td>
+<style>
+.glup {
+    height: 80px;
+    padding-top: 10px;
+    width: 270px;
+}
+.blank10 {
+    clear: both;
+    display: block;
+    font-size: 1px;
+    overflow: hidden;
+    height: 10px;
+}
+.hezuo {
+    font-weight: 400;
+    line-height: 12px;
+}
+.glup div a {
+    float: left;
+    margin-right: 10px;
+    width: 48px;
+    height: 48px;
+}
+.glup div a img {
+    width: 48px;
+    height: 48px;
+}
+</style>
+<div class="glup" style="width:auto;"> <span class="blank10"></span>
+<h2 class="hezuo">您也可以用以下账号登录</h2>
+<span class="blank10"></span>
+<div>
+<a href="user.php?act=oath&amp;type=weibo" title="新浪微博"><img src="/weibo.png"></a>
+<a href="user.php?act=oath&amp;type=qq" title="QQ"><img src="/qq.png"></a>
+</div>
+</div>
+          
+          </td>
+          </tr>
 	  <!--<tr><td></td><td><a href="user.php?act=qpassword_name" class="f3">{$lang.get_password_by_question}</a>&nbsp;&nbsp;&nbsp;<a href="user.php?act=get_password" class="f3">{$lang.get_password_by_mail}</a></td></tr>-->
       </table>
 	
@@ -240,8 +282,8 @@
       var {$key} = "{$item}";
     {/foreach}
     </script>
-<div class="usBox">
-  <div class="usBox_2 clearfix">
+<div class="usBox" style="width:100%;">
+  <div class="usBox_2 clearfix" style="align:center;">
     <form action="user.php" method="post" name="getPassword" onsubmit="return submitPwdInfo();">
         <br />
         <table width="70%" border="0" align="center">

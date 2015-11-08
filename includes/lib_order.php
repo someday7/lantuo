@@ -1240,9 +1240,13 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0, $start_da
             }
             if ($GLOBALS['_CFG']['use_storage'] == 0 || $num <= $goods_storage)
             {
-                $goods_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day);
+                $goods_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day,1);
+				$goods_rent_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day,3);
+				$goods_sale_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day,2);
                 $sql = "UPDATE " . $GLOBALS['ecs']->table('cart') . " SET goods_number = '$num'" .
                        " , goods_price = '$goods_price'".
+					   " , goods_rent_price = '$goods_rent_price'".
+					   " , goods_sale_price = '$goods_sale_price'".
                        " WHERE session_id = '" .SESS_ID. "' AND goods_id = '$goods_id' ".
                        " AND parent_id = 0 AND goods_attr = '" .get_goods_attr_info($spec). "' " .
                        " AND extension_code <> 'package_buy' " .
@@ -1258,8 +1262,12 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0, $start_da
         }
         else //购物车没有此物品，则插入
         {
-            $goods_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day);
+            $goods_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day,1);
+			$goods_rent_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day,3);
+			$goods_sale_price = get_final_price($goods_id, $num, true, $spec, $start_day, $end_day,2);
             $parent['goods_price']  = max($goods_price, 0);
+			$parent['goods_rent_price']  = max($goods_rent_price, 0);
+			$parent['goods_sale_price']  = max($goods_sale_price, 0);
             $parent['goods_number'] = $num;
             $parent['parent_id']    = 0;
             $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('cart'), $parent, 'INSERT');
@@ -1589,6 +1597,8 @@ function get_cart_goods()
     $goods_list = array();
     $total = array(
         'goods_price'  => 0, // 本店售价合计（有格式）
+		'goods_rent_price'  => 0, // 本店售价合计（有格式）
+		'goods_sale_price'  => 0, // 本店售价合计（有格式）
         'market_price' => 0, // 市场售价合计（有格式）
         'saving'       => 0, // 节省金额（有格式）
         'save_rate'    => 0, // 节省百分比
@@ -1609,6 +1619,8 @@ function get_cart_goods()
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
         $total['goods_price']  += $row['goods_price'] * $row['goods_number'];
+		$total['goods_rent_price']  += $row['goods_rent_price'] * $row['goods_number'];
+		$total['goods_sale_price']  += $row['goods_sale_price'] * $row['goods_number'];
         $total['market_price'] += $row['market_price'] * $row['goods_number'];
 
         $row['subtotal']     = price_format($row['goods_price'] * $row['goods_number'], false);
@@ -1656,6 +1668,8 @@ function get_cart_goods()
         100 / $total['market_price']).'%' : 0;
     }
     $total['goods_price']  = price_format($total['goods_price'], false);
+	$total['goods_rent_price']  = price_format($total['goods_rent_price'], false);
+	$total['goods_sale_price']  = price_format($total['goods_sale_price'], false);
     $total['market_price'] = price_format($total['market_price'], false);
     $total['real_goods_count']    = $real_goods_count;
     $total['virtual_goods_count'] = $virtual_goods_count;

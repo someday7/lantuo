@@ -72,7 +72,8 @@ class integrate
     var $need_sync = true;
 
     var $error          = 0;
-
+	var $field_avatar = '';
+	
     /*------------------------------------------------------ */
     //-- PRIVATE ATTRIBUTEs
     /*------------------------------------------------------ */
@@ -312,7 +313,11 @@ class integrate
         {
             $values[] = $this->field_bday . "='" . $cfg['bday'] . "'";
         }
-
+//会员头像 by neo
+if ((!empty($cfg['avatar'])) && $this->field_avatar != 'NULL')
+{
+    $values[] = $this->field_avatar . "='" . $cfg['avatar'] . "'";
+}
         if ($values)
         {
             $sql = "UPDATE " . $this->table($this->user_table).
@@ -564,6 +569,7 @@ class integrate
      */
     function set_cookie($username='', $remember= null )
     {
+		
         if (empty($username))
         {
             /* 摧毁cookie */

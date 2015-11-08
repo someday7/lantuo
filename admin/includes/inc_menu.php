@@ -79,6 +79,7 @@ $modules['07_content']['03_article_list']           = 'article.php?act=list';
 $modules['07_content']['02_articlecat_list']        = 'articlecat.php?act=list';
 $modules['07_content']['vote_list']                 = 'vote.php?act=list';
 $modules['07_content']['article_auto']              = 'article_auto.php?act=list';
+$modules['07_content']['article_reply']              = 'reply.php?act=list';
 //$modules['07_content']['shop_help']                 = 'shophelp.php?act=list_cat';
 //$modules['07_content']['shop_info']                 = 'shopinfo.php?act=list';
 

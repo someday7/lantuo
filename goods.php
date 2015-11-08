@@ -65,6 +65,8 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
 
         $shop_price  = get_final_price($goods_id, $number, true, $attr_id, $start_day, $end_day);
         $res['result'] = price_format($shop_price * $number);
+		$days = round((strtotime($end_day) - strtotime($start_day))/86400)-1;
+		$res['days'] =  $days;
     }
 
     die($json->encode($res));

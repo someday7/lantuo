@@ -16,7 +16,9 @@
 define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
-
+include_once(ROOT_PATH . '/includes/cls_image.php');//会员头像 by neo
+$image = new cls_image($_CFG['bgcolor']);//会员头像 by neo
+$allow_suffix = array('gif', 'jpg', 'png', 'jpeg', 'bmp');//会员头像 by neo
 /* 载入语言文件 */
 require_once(ROOT_PATH . 'languages/' .$_CFG['lang']. '/user.php');
 
@@ -30,7 +32,7 @@ $back_act='';
 
 // 不需要登录的操作或自己验证是否登录（如ajax处理）的act
 $not_login_arr =
-array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer');
+array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer','oath' , 'oath_login', 'other_login');
 
 /* 显示页面的action列表 */
 $ui_arr = array('register', 'login', 'profile', 'order_list', 'order_detail', 'address_list', 'collection_list',
@@ -106,6 +108,134 @@ if ($action == 'default')
     $smarty->assign('user_notice', $_CFG['user_notice']);
     $smarty->assign('prompt',      get_user_prompt($user_id));
     $smarty->display('user_clips.dwt');
+}
+//  第三方登录接口
+elseif($action == 'oath')
+{
+	$type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
+	
+	if($type == "taobao"){
+		header("location:includes/website/tb_index.php");exit;
+	}
+	
+	include_once(ROOT_PATH . 'includes/website/jntoo.php');
+
+	$c = &website($type);
+	if($c)
+	{
+		if (empty($_REQUEST['callblock']))
+		{
+			if (empty($_REQUEST['callblock']) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
+			{
+				$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? 'index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+			}
+			else
+			{
+				$back_act = 'index.php';
+			}
+		}
+		else
+		{
+			$back_act = trim($_REQUEST['callblock']);
+		}
+
+		if($back_act[4] != ':') $back_act = $ecs->url().$back_act;
+		$open = empty($_REQUEST['open']) ? 0 : intval($_REQUEST['open']);
+
+		$url = $c->login($ecs->url().'user.php?act=oath_login&type='.$type.'&callblock='.urlencode($back_act).'&open='.$open);
+		if(!$url)
+		{
+			show_message( $c->get_error() , '首页', $ecs->url() , 'error');
+		}
+		header('Location: '.$url);
+	}
+	else
+	{
+		show_message('服务器尚未注册该插件！' , '首页',$ecs->url() , 'error');
+	}
+}
+
+
+
+//  处理第三方登录接口
+elseif($action == 'oath_login')
+{
+	$type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
+	
+	include_once(ROOT_PATH . 'includes/website/jntoo.php');
+	$c = &website($type);
+	if($c)
+	{
+		$access = $c->getAccessToken();
+		if(!$access)
+		{
+			show_message( $c->get_error() , '首页', $ecs->url() , 'error');
+		}
+		$c->setAccessToken($access);
+		$info = $c->getMessage();
+		if(!$info)
+		{
+			show_message($c->get_error() , '首页' , $ecs->url() , 'error' , false);
+		}
+		if(!$info['user_id'])
+			show_message($c->get_error() , '首页' , $ecs->url() , 'error' , false);
+
+
+		$info_user_id = $type .'_'.$info['user_id']; //  加个标识！！！防止 其他的标识 一样  // 以后的ID 标识 将以这种形式 辨认
+		$info['name'] = str_replace("'" , "" , $info['name']); // 过滤掉 逗号 不然出错  很难处理   不想去  搞什么编码的了
+		if(!$info['user_id'])
+			show_message($c->get_error() , '首页' , $ecs->url() , 'error' , false);
+
+
+		$sql = 'SELECT user_name,password,aite_id FROM '.$ecs->table('users').' WHERE aite_id = \''.$info_user_id.'\' OR aite_id=\''.$info['user_id'].'\'';
+
+		$count = $db->getRow($sql);
+		if(!$count)   // 没有当前数据
+		{
+			if($user->check_user($info['name']))  // 重名处理
+			{
+				$info['name'] = $info['name'].'_'.$type.(rand(10000,99999));
+			}
+			$user_pass = $user->compile_password(array('password'=>$info['user_id']));
+			$sql = 'INSERT INTO '.$ecs->table('users').'(user_name , password, aite_id , sex , reg_time , user_rank , is_validated) VALUES '.
+					"('$info[name]' , '$user_pass' , '$info_user_id' , '$info[sex]' , '".gmtime()."' , '$info[rank_id]' , '1')" ;
+			$db->query($sql);
+		}
+		else
+		{
+			$sql = '';
+			if($count['aite_id'] == $info['user_id'])
+			{
+				$sql = 'UPDATE '.$ecs->table('users')." SET aite_id = '$info_user_id' WHERE aite_id = '$count[aite_id]'";
+				$db->query($sql);
+			}
+			if($info['name'] != $count['user_name'])   // 这段可删除
+			{
+				if($user->check_user($info['name']))  // 重名处理
+				{
+					$info['name'] = $info['name'].'_'.$type.(rand()*1000);
+				}
+				$sql = 'UPDATE '.$ecs->table('users')." SET user_name = '$info[name]' WHERE aite_id = '$info_user_id'";
+				$db->query($sql);
+			}
+		}
+		$user->set_session($info['name']);
+		$user->set_cookie($info['name']);
+		update_user_info();
+		recalculate_price();
+
+		if(!empty($_REQUEST['open']))
+		{
+			die('<script>window.opener.window.location.reload(); window.close();</script>');
+		}
+		else
+		{
+			ecs_header('Location: '.$_REQUEST['callblock']);
+
+		}
+
+	}
+
 }
 
 /* 显示会员注册界面 */
@@ -507,7 +637,7 @@ elseif ($action == 'act_edit_profile')
     $other['mobile_phone'] = $mobile_phone = isset($_POST['extend_field5']) ? trim($_POST['extend_field5']) : '';
     $sel_question = empty($_POST['sel_question']) ? '' : $_POST['sel_question'];
     $passwd_answer = isset($_POST['passwd_answer']) ? trim($_POST['passwd_answer']) : '';
-
+$avatar = isset($_POST['avatar']) ? $_POST['avatar'] : '';//会员头像 by neo
     /* 更新用户扩展字段的数据 */
     $sql = 'SELECT id FROM ' . $ecs->table('reg_fields') . ' WHERE type = 0 AND display = 1 ORDER BY dis_order, id';   //读出所有扩展字段的id
     $fields_arr = $db->getAll($sql);
@@ -546,6 +676,76 @@ elseif ($action == 'act_edit_profile')
     {
          show_message($_LANG['passport_js']['home_phone_invalid']);
     }
+	
+	
+	/* 检查图片：如果有错误，检查尺寸是否超过最大值；否则，检查文件类型 */
+    if (isset($_FILES['avatar']['error'])) // php 4.2 版本才支持 error
+    {
+        // 最大上传文件大小
+        $php_maxsize = ini_get('upload_max_filesize');
+        $htm_maxsize = '1M';
+       
+        // 会员头像
+        if ($_FILES['avatar']['error'] == 0)
+        {
+            if (!$image->check_img_type($_FILES['avatar']['type']))
+            {
+                show_message("图片格式不正确！");
+            }
+        }
+        elseif ($_FILES['avatar']['error'] == 1)
+        {
+            show_message(sprintf('图片文件太大了(最大值：1M)，无法上传。', $php_maxsize), $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
+        }
+        elseif ($_FILES['avatar']['error'] == 2)
+        {
+            show_message(sprintf('图片文件太大了(最大值：1M)，无法上传。', $htm_maxsize), $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
+        }
+       
+    }
+    /* 4.1版本 */
+    else
+    {
+        // 会员头像
+        if ($_FILES['avatar']['tmp_name'] != 'none')
+        {
+            if (!$image->check_img_type($_FILES['avatar']['type']))
+            {
+                show_message("图片格式不正确！");
+            }
+        }
+    }
+           
+    //会员头像 by neo
+    if (!empty($_FILES['avatar']['name']))
+    {
+        /* 更新会员头像之前先删除旧的头像 */
+        $sql = "SELECT avatar " .
+                " FROM " . $GLOBALS['ecs']->table('users') .
+                " WHERE user_id = '$user_id'";
+       
+        $row = $GLOBALS['db']->getRow($sql);
+       
+        if ($row['avatar'] != '')
+        {
+            @unlink($row['avatar']);
+        }
+               
+        $img_name = $user_id . '.' . end(explode('.', $_FILES['avatar']['name']));
+       
+        $target = ROOT_PATH . DATA_DIR . '/avatar/';
+               
+        $original_img = $image->upload_image($_FILES['avatar'], 'avatar', $img_name); // 原始图片
+       
+        $avatar = $image->make_thumb($original_img, 55, 55, $target);
+       
+        if ($avatar === false)
+        {
+            show_message("图片保存出错！");
+        }
+    }
+	
+	
     if (!is_email($email))
     {
         show_message($_LANG['msg_email_format']);
@@ -569,6 +769,7 @@ elseif ($action == 'act_edit_profile')
         'email'    => isset($_POST['email']) ? trim($_POST['email']) : '',
         'sex'      => isset($_POST['sex'])   ? intval($_POST['sex']) : 0,
         'birthday' => $birthday,
+		'avatar'   => $avatar,//会员头像 by neo
         'other'    => isset($other) ? $other : array()
         );
 

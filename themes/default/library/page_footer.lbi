@@ -30,7 +30,7 @@
 
 <div class="footer">
 	<div class="site-link">
-		<a href="article.php?id=5">关于兰拓科技</a><a href="article_cat.php?id=12">器材评测</a><a href="article_cat.php?id=13">器材数据库</a><a href="article.php?id=4">联系我们</a><a href="article_cat.php?id=11" class="f-last-a">租赁协议</a>
+		<a href="article.php?id=5">关于兰拓科技</a><a href="article_cat.php?id=12">器材评测</a><a href="article_cat.php?id=13">器材数据库</a><a href="article.php?id=4">联系我们</a><a href="article.php?id=32" class="f-last-a">租赁协议</a>
 	</div>
 	<div class="copyright">Copyright © 2004-2015 兰拓科技 版权所有(粤ICP备15043431)|最佳影像产品租赁•评测品牌</div>
 </div>

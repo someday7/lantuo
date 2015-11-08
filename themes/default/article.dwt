@@ -22,25 +22,33 @@
 <body>
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="pingce-main">
-<div class="main_con">
-    <!--面包屑 -->
-<div class="breadcrumb-area fcn">
- 
-  <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-
-</div>
-<div class="">
-
-
-<div class="">
-    <div class="fr u-4-5">
+  <div class="side_bar">
+	<!--{foreach from=$article_categories item=cat}-->
+	<div class="topbar">
+		<a href="{$cat.url}">{$cat.name|escape:html}</a>
+	</div>
+	<div class="top-menu">
+		<ul>
+			<li class="head">
+			<!--{foreach from=$cat.children item=child}-->
+				<div class="tit up"><span class="caret"></span><a href="{$child.url}">{$child.name|escape:html}</a></div>
+			<!--{/foreach}-->
+			</li>
+		</ul>
+	</div>
+	<!--{/foreach}-->
+	</div>
+<div class="main_con" style="margin-left:260px;">
+    <div class="fr u-4-5" style="width:940px;">
         <!--新闻-详情 -->
-        <div class="news-area">
+        <div class="news-area" style="">
         	<div class="h">
             	<h1>{$article.title|escape:html}</h1>
-                <div class="news-extra-area clearfix">
-                	<div class="fl">更新时间{$article.add_time}</div>
-			<div class="fr"><!-- Baidu Button BEGIN -->
+                <div class="news-extra-area clearfix" style="text-align:center;">
+                	<span style="width:auto; margin-right:10px;">更新时间：{$article.add_time}</span>
+                	<span style="width:auto; margin-right:10px;">阅读：{$viewnum}</span>
+                	<span style="width:auto; margin-right:10px;">评论：{$count}</span>
+			<!--<div class="fr"><!-- Baidu Button BEGIN -->
 
     <div id="bdshare" class="bdsharebuttonbox bdshare-button-style0-16" data-tag="share_1" data-bd-bind="1431572111080">
 	<a class="bds_more" data-cmd="more" style="padding-top: 0px;">分享到：</a>
@@ -63,7 +71,7 @@
 	
 </script>
 
-<!-- Baidu Button END --></div>
+<!-- Baidu Button END --></div>-->
                 </div>
             </div>
             <div class="b">
@@ -75,7 +83,12 @@
 			
 			
 			
-			
+<!-- {if $page_nav}-->
+<style>
+.pagin a, .pagin span{float:none}
+</style>
+    <div id="pagin-btm" class="pagin fr" style=" margin-bottom:0px; width:100%; text-align:center;">{$page_nav}</div>
+<!-- {/if} -->
 			
 			
 			
@@ -85,40 +98,36 @@
                     <li>下一篇:<a href="{$prev_article.url}" class="f6">{$prev_article.title}</a></li>
                 </ul>
             </div>
+            
+        <div id="commentHolder">
+        	
         </div>
-    </div>
-	<div class="fl u-1-5"><!--左边菜单 -->
-<div class="news-menu-area">
-	<div class="h">
-	<s></s>
-	<b></b>
-    </div>
-    <div class="b">
-	<ul class="clearfix">
-	
-	
-	   <!--{foreach from=$article_categories item=cat}-->
-   <li id="menu-media"> <a href="{$cat.url}">{$cat.name|escape:html}</a></li>
-      <!--{foreach from=$cat.children item=child}-->
-    <li id="menu-media">  <a href="{$child.url}" style="background-image:none;">{$child.name|escape:html}</a></li>
-      <!--{/foreach}-->
-    <!--{/foreach}-->
-	
- 	
- 	 
-	</ul>
+            
+        </div>
+        
+        
+        
+<script type="text/javascript">
+//window.CommentNS ={ pageUrl : 'http://mobile.pconline.com.cn/708/7087298.html','cmtTitle':'又到自拍增粉时刻!ZenFone Selfie评测','baseUrl':'http://localhost:86/'};
+{insert name='member_info1'}
+window.CommentNS ={ 'avatar':avatar,pageUrl : '{$article.article_id}','cmtTitle':'{$article.title|escape:html}','username':username,'baseUrl':'http://www.irentals.cn'};
+</script>
+<script src="/css/cmt.min.js"></script>
+<script type="text/javascript">
+if(document.getElementById('commentHolder') && CommentNS.pageUrl != ''){
+new Comment({
+el: document.getElementById('commentHolder')
+})
+}
+</script>
+        
+        
+        
     </div>
 </div>
-<div class="hr-15"></div>
-<div class="ad ad179"><!--<p><a title="G520" href="/product/1064.html" target="_blank"><img src="http://res.vmall.com/pimages//sale/2014-07/20140708110119554.jpg" height="403" width="179"></a></p>--></div>
- </div>
-  </div>
-	
-	
-	  </div>
-	   </div>
- <div class="hr-20"></div>
-<div class="blank"></div>
+	   
+<div class="clear"></div>
+</div>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 </body>
 </html>

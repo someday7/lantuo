@@ -214,11 +214,13 @@ width: 15px;
 			</div>
 			<div class="sc-total-price"><table border="0" cellpadding="0" cellspacing="0"><tbody>
 			<tr><th>总计押金：</th><td id="sc-cartInfo-totalOriginalPrice">
-			         {$shopping_money}
+			         {$shopping_money_sale}
 			</td></tr><tr>
 			<tr><th>总计租金：</th><td id="sc-cartInfo-totalOriginalPrice">
-			         {$shopping_money}
-			</td></tr><tr><th>共节省：</th><td id="sc-cartInfo-minusPrice"> {$your_discount}</td></tr><tr><th><em>合计(不含运费)：<em></em></em></th><td><b id="sc-cartInfo-totalPrice"> {$shopping_money}<b></b></b></td></tr></tbody></table></div></div>
+			         {$shopping_money_rent}
+			</td></tr>
+			<!--<tr><th>共节省：</th><td id="sc-cartInfo-minusPrice"> {$your_discount}</td></tr>-->
+			<tr><th><em>合计(不含运费)：<em></em></em></th><td><b id="sc-cartInfo-totalPrice"> {$shopping_money}<b></b></b></td></tr></tbody></table></div></div>
 			
 			<div class="hr-25"></div>
 			
@@ -1029,6 +1031,7 @@ width: 15px;
               </td>
             <td valign="top" bgcolor="#ffffff">
             <h6><span>用户注册：</span></h6>
+			<!--
             <form action="flow.php?step=login" method="post" name="formUser" id="registerForm" onsubmit="return checkSignupForm(this)">
                <table width="98%" border="0" cellpadding="8" cellspacing="1" bgcolor="#B0D8FF" class="table">
                   <tr>
@@ -1051,13 +1054,17 @@ width: 15px;
                     <td bgcolor="#ffffff"><input name="confirm_password" class="inputBg" type="password" id="confirm_password" onblur="check_conform_password(this.value);" /><br />
             <span style="color:#FF0000" id="conform_password_notice"></span></td>
                   </tr>
+				  -->
                   <!-- 判断是否启用验证码{if $enabled_register_captcha} -->
+				  <!--
                   <tr>
                     <td bgcolor="#ffffff" align="right"><strong>{$lang.comment_captcha}:</strong></td>
                     <td bgcolor="#ffffff"><input type="text" size="8" name="captcha" class="inputBg" />
                     <img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /> </td>
                   </tr>
+				  -->
                   <!--{/if}-->
+				  <!--
                   <tr>
                     <td colspan="2" bgcolor="#ffffff" align="center">
                         <input type="submit" name="Submit" class="bnt_blue_1" value="{$lang.forthwith_register}" />
@@ -1067,6 +1074,9 @@ width: 15px;
                 </table>
               </form>
               </td>
+			  -->
+			  
+			  <div align="center"><button style="margin:70px 100px;" class="bnt_blue" onclick="window.location.href='user.php?act=register';" value="点击注册">点击注册</button></div>
           </tr>
           {if $need_rechoose_gift}
           <tr>

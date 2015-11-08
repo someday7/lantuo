@@ -27,15 +27,7 @@ p a{color:#006acd; text-decoration:underline;}
 </head>
 <body class="">
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-  <div class="naver-main">
-	<div class="layout">
-		<!-- 20140823-分类-start -->
-		<div class="category category-index" id="category-block">
-		
- 	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
-		</div>
-	</div>
-</div>
+  <div class="pingce-main">
 
 <div class="hr-10"></div>
 <div class="g">
@@ -68,6 +60,7 @@ p a{color:#006acd; text-decoration:underline;}
 <div class="blank5"></div>
 
  </div></div>
+ </div>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 </body>
 </html>

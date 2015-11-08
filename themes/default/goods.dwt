@@ -59,7 +59,10 @@
 	<div class="pd-side">
 		<div class="section1">
 			<label class="label">咨询客服：</label>
-			<span class="contact"><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=daisy03156&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=iRentals&site=cntaobao&s=1&charset=utf-8" alt="点这里给我发消息" /></a></span>
+			<span class="contact">
+			<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=daisy03156&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid=iRentals&site=cntaobao&s=1&charset=utf-8" alt="点这里给我发消息" /></a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3334164882&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3334164882:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+			</span>
 			
 		</div>
 		<div class="section1">
@@ -72,6 +75,10 @@
 				<input class="Wdate" placeholder="请选择日期" type="text" id="d234" name="d234" onFocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'d233\',{d:-0});}'})" />
 			</div>
 			<div class="calculate" style="cursor:pointer;">计算租金</div>
+			<div class="section-text">
+				<label>租赁天数：</label>
+				<label class="cost" id="ECS_GOODS_DAY">天</label>
+			</div>
 			<div class="section-text">
 				<label>租金：</label>
 				<label class="cost" id="ECS_GOODS_AMOUNT">{$goods.rent_start_day}天￥{$goods.rent_start_price|string_format:"%d"}，之后每天{$goods.rent_add_price|string_format:"%d"}元</label>
@@ -405,8 +412,12 @@ function changePriceResponse2(res)
   {
     //document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
 
-    if (document.getElementById('ECS_GOODS_AMOUNT'))
+    if (document.getElementById('ECS_GOODS_AMOUNT')){
       document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+	}
+	if (document.getElementById('ECS_GOODS_DAY')){
+      document.getElementById('ECS_GOODS_DAY').innerHTML = res.days+'天';
+	}
   }
 }
 

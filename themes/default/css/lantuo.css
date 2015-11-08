@@ -1808,4 +1808,10 @@ img {
 	background: #F7F7F7 url(../images/img/compare/shouqi.png) no-repeat 10px 50%;
 	cursor: pointer;
 }
+.zulin-list ul li div.desc{
+	width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 

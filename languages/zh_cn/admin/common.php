@@ -173,6 +173,7 @@ $_LANG['51_virtual_card_add'] = '添加虚拟商品';
 $_LANG['52_virtual_card_change'] = '更改加密串';
 $_LANG['goods_auto'] = '商品自动上下架';
 $_LANG['article_auto'] = '文章自动发布';
+$_LANG['article_reply'] = '评论列表';
 $_LANG['navigator'] = '自定义导航栏';
 
 /* 促销管理 */

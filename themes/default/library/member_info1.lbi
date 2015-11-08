@@ -1,0 +1,7 @@
+{if $user_info}
+var username='{$user_info.username}';
+var avatar='{$user_info.avatar}';
+{else}
+var username='';
+var avatar='';
+{/if}

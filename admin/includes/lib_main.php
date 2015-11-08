@@ -314,7 +314,7 @@ function create_html_editor($input_name, $input_value = '', $fckeditor_var = 'FC
 
     $editor = new FCKeditor($input_name);
     $editor->BasePath   = '../includes/fckeditor/';
-    $editor->ToolbarSet = 'Normal';
+    $editor->ToolbarSet = 'Default';
     $editor->Width      = '100%';
     $editor->Height     = '320';
     $editor->Value      = $input_value;

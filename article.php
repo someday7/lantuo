@@ -37,13 +37,13 @@ if(isset($_REQUEST['cat_id']) && $_REQUEST['cat_id'] < 0)
 //-- PROCESSOR
 /*------------------------------------------------------ */
 
-$cache_id = sprintf('%X', crc32($_REQUEST['id'] . '-' . $_CFG['lang']));
+$page=isset($_REQUEST['page']) ? trim($_REQUEST['page']) : 1;
+$cache_id = sprintf('%X', crc32($_REQUEST['id'] . '-' .$page.'-'. $_CFG['lang']));
 
-if (!$smarty->is_cached('article.dwt', $cache_id) || true)
+if (!$smarty->is_cached('article.dwt', $cache_id) || false)
 {
     /* 文章详情 */
     $article = get_article_info($article_id);
-
     if (empty($article))
     {
         ecs_header("Location: ./\n");
@@ -77,7 +77,29 @@ if (!$smarty->is_cached('article.dwt', $cache_id) || true)
         $smarty->assign('enabled_captcha', 1);
         $smarty->assign('rand',            mt_rand());
     }
-
+	if($page!='all'){
+	$article_arr=explode('<div style="page-break-after: always;"><span style="DISPLAY:none">&nbsp;</span></div>',$article['content']);
+	$page_cnt=count($article_arr);        
+	if($page){
+		if($page > $page_cnt) $page = $page_cnt;
+		if($page < 1) $page = 1;
+		$article["content"]=$article_arr[$page-1];
+	}else{
+		$article["content"]=$article_arr[0];
+	}
+	//echo $article["content"];exit;
+	if($page_cnt>1){
+		for($i=1;$i<=$page_cnt;$i++){
+			if($page==$i) $page_nav .="<a href='javascript:;' class='current'>{$i}</a>";
+			else{
+				$url = $_SERVER['SCRIPT_NAME'].'?id='.$article_id.'&page='.$i;
+				$page_nav .="<a href=\"{$url}\">{$i}</a>";
+			}
+		}
+	}
+	$page_nav.='<a href="'.$_SERVER['SCRIPT_NAME'].'?id='.$article_id.'&page=all">在本页浏览全文</a>';
+	$smarty->assign('page_nav',$page_nav);
+	}
     $smarty->assign('article',      $article);
     $smarty->assign('keywords',     htmlspecialchars($article['keywords']));
     $smarty->assign('description', htmlspecialchars($article['description']));
@@ -120,6 +142,11 @@ if (!$smarty->is_cached('article.dwt', $cache_id) || true)
 
     assign_dynamic('article');
 }
+$db->query("update " . $ecs->table('article') . " set viewnum=viewnum+1 WHERE article_id = $article_id");
+$count = $db->getOne("SELECT count(id) FROM " . $ecs->table('replys') . " WHERE article_id = $article_id");
+$viewnum = $db->getOne("SELECT viewnum FROM " . $ecs->table('article') . " WHERE article_id = $article_id");
+$smarty->assign('viewnum', $viewnum);
+$smarty->assign('count', $count);
 if(isset($article) && $article['cat_id'] > 2)
 {
     $smarty->display('article.dwt', $cache_id);

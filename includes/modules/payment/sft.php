@@ -114,7 +114,8 @@ class sft
 		$signmsg    = $version . $amount . $orderid . $merid. $meruesr. $paychannel. $postbackurl. $notifyurl . $backurl. $ordertime . $curtype. $notifytype . $signtype. $prono. $prodesc. $remark1 . $remark2 . $bankcode . $defaultchannel . $producturl ;    //签名字符串 不可空
 		$signmsg    =md5($signmsg.$key);
  
-		$def_url  = '<div style="text-align:center"><form name="paymentSubmit" style="text-align:center;" method="post" action="http://netpay.sdo.com/paygate/default.aspx" target="_blank">';
+		//$def_url  = '<div style="text-align:center"><form name="paymentSubmit" style="text-align:center;" method="post" action="http://netpay.sdo.com/paygate/default.aspx" target="_blank">';
+		$def_url  = '<div style="text-align:center"><form name="paymentSubmit" style="text-align:center;" method="post" action="https://mas.shengpay.com/web-acquire-channel/cashier30.htm" target="_blank">';		
 		$def_url .= "
 		<input type='hidden' name='Version' value='".htmlspecialchars($version)."' />";
 		$def_url .= "

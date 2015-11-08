@@ -49,7 +49,7 @@
 							<p class="d-title"><a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a> </p>
 							<ul>
 								<li>{$article.title|escape:html}</li>
-								<li>{$article.add_time}</li>
+								<li>更新时间:{$article.add_time}&nbsp;&nbsp;阅读：{$article.viewnum}&nbsp;&nbsp;评论：{$article.pnum}</li>
 							</ul>
 						</div>
 					</div>						

@@ -262,7 +262,7 @@ class cls_image
         if (function_exists('imagejpeg'))
         {
             $filename .= '.jpg';
-            imagejpeg($img_thumb, $dir . $filename);
+            imagejpeg($img_thumb, $dir . $filename, 96);
         }
         elseif (function_exists('imagegif'))
         {

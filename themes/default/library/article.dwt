@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="http://res.vmall.com/20150415/css/notice/main.min.css?20141025" rel="stylesheet" type="text/css">
+<link href="themes/default/css/ec.core.min.css?20150213" rel="stylesheet" type="text/css">
+<link href="themes/default/css/index.min.css?20141025" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/main.2.css" rel="stylesheet" type="text/css">
+ <link href="themes/default/css/public.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/css/lantuo.css" rel="stylesheet" type="text/css">
+
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <div class="pingce-main">
+  <div class="side_bar">
+	<!--{foreach from=$article_categories item=cat}-->
+	<div class="topbar">
+		<a href="{$cat.url}">{$cat.name|escape:html}</a>
+	</div>
+	<div class="top-menu">
+		<ul>
+			<li class="head">
+			<!--{foreach from=$cat.children item=child}-->
+				<div class="tit up"><span class="caret"></span><a href="{$child.url}">{$child.name|escape:html}</a></div>
+			<!--{/foreach}-->
+			</li>
+		</ul>
+	</div>
+	<!--{/foreach}-->
+	</div>
+<div class="main_con" style="margin-left:260px;">
+    <div class="fr u-4-5" style="width:940px;">
+        <!--新闻-详情 -->
+        <div class="news-area" style="">
+        	<div class="h">
+            	<h1>{$article.title|escape:html}</h1>
+                <div class="news-extra-area clearfix">
+                	<div class="fl">更新时间{$article.add_time}</div>
+			<!--<div class="fr"><!-- Baidu Button BEGIN -->
+
+    <div id="bdshare" class="bdsharebuttonbox bdshare-button-style0-16" data-tag="share_1" data-bd-bind="1431572111080">
+	<a class="bds_more" data-cmd="more" style="padding-top: 0px;">分享到：</a>
+	<a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+	<a class="bds_count" data-cmd="count" title="累计分享0次">0</a>
+    </div>
+<script type="text/javascript">
+	window._bd_share_config = {
+		common : {
+			bdText : '#华为商城#商务人士首选设备华为手环B2双管齐下'
+		},
+		share : [{
+			"bdSize" : 16
+		}]
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+	
+</script>
+
+<!-- Baidu Button END --></div>-->
+                </div>
+            </div>
+            <div class="b">
+			
+			
+			 <!-- {if $article.content } -->
+          {$article.content}
+         <!-- {/if} -->
+			
+			
+			
+			
+			
+			
+			
+			</div>
+            <div class="f">
+            	<ul>
+                    <li>下一篇:<a href="{$prev_article.url}" class="f6">{$prev_article.title}</a></li>
+                </ul>
+            </div>
+            
+        <div id="commentHolder">
+        	
+        </div>
+            
+        </div>
+        
+        
+        
+<script type="text/javascript">
+//window.CommentNS ={ pageUrl : 'http://mobile.pconline.com.cn/708/7087298.html','cmtTitle':'又到自拍增粉时刻!ZenFone Selfie评测','baseUrl':'http://localhost:86/'};
+{insert name='member_info1'}
+window.CommentNS ={ pageUrl : '{$article.article_id}','cmtTitle':'{$article.title|escape:html}','username':username,'baseUrl':'http://www.irentals.cn'};
+</script>
+<script src="/css/cmt.min.js"></script>
+<script type="text/javascript">
+if(document.getElementById('commentHolder') && CommentNS.pageUrl != ''){
+new Comment({
+el: document.getElementById('commentHolder')
+})
+}
+</script>
+        
+        
+        
+    </div>
+</div>
+	   
+<div class="clear"></div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

@@ -66,7 +66,8 @@
         </script>
       <h5><span>{$lang.profile}</span></h5>
       <div class="blank"></div>
-     <form name="formEdit" action="user.php" method="post" onSubmit="return userEdit()">
+     <form name="formEdit" action="user.php" method="post" onSubmit="return userEdit()" enctype="multipart/form-data">
+     <input type="hidden" name="MAX_FILE_SIZE" value="1097152" /><!-- 1M图片上传大小设置 -->
       <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
                 <tr>
                   <td width="28%" align="right" bgcolor="#FFFFFF">{$lang.birthday}： </td>
@@ -111,11 +112,27 @@
 		</tr>
 		<!-- {/if} -->
 		{/foreach}
+        
+        
+        <tr>
+    <td width="28%" align="right" bgcolor="#FFFFFF">会员头像：</td>
+    <td width="72%" align="left" bgcolor="#FFFFFF">
+    <div style="width:50%;float:left;">
+        <input id="avatar" type="file" size="40" value="" name="avatar">
+        <br/>
+        <span style="color:#FF0000"> 图片像素最佳为55px * 55px，<br/>大小不得超过1M</span>
+    </div>
+    <div style="width:50%;float:left;">
+        <img src="{if $profile.avatar}{$profile.avatar}{else}css/s.jpg{/if}" alt="" width="55" height="55">
+    </div>
+    </td>
+</tr>
                 <tr>
                   <td colspan="2" align="center" bgcolor="#FFFFFF"><input name="act" type="hidden" value="act_edit_profile" />
                     <input name="submit" type="submit" value="{$lang.confirm_edit}" class="bnt_blue_1" style="border:none;" />
                   </td>
                 </tr>
+                
        </table>
     </form>
      <form name="formPassword" action="user.php" method="post" onSubmit="return editPassword()" >
@@ -836,7 +853,7 @@
                   {$lang.require_field} </td>
                   <td align="right" bgcolor="#ffffff">{$lang.email_address}：</td>
                   <td align="left" bgcolor="#ffffff"><input name="email" type="text" class="inputBg" id="email_{$sn}" value="{$consignee.email|escape}" />
-                  {$lang.require_field}</td>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.detailed_address}：</td>
@@ -846,18 +863,29 @@
                   <td align="left" bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg" id="zipcode_{$sn}" value="{$consignee.zipcode|escape}" /></td>
                 </tr>
                 <tr>
+				<!--
                   <td align="right" bgcolor="#ffffff">{$lang.phone}：</td>
                   <td align="left" bgcolor="#ffffff"><input name="tel" type="text" class="inputBg" id="tel_{$sn}" value="{$consignee.tel|escape}" />
                   {$lang.require_field}</td>
+				 -->
+				
                   <td align="right" bgcolor="#ffffff">{$lang.backup_phone}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_{$sn}" value="{$consignee.mobile|escape}" /></td>
+                  <td align="left" bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_{$sn}" value="{$consignee.mobile|escape}" />{$lang.require_field}</td>
                 </tr>
                 <tr>
+                  <td align="right" bgcolor="#ffffff">备注：</td>
+                  <td align="left" bgcolor="#ffffff"><input name="sign_building" type="text" class="inputBg" id="sign_building_{$sn}" value="{$consignee.sign_building|escape}" /></td>
+                  <td align="right" bgcolor="#ffffff"></td>
+                  <td align="left" bgcolor="#ffffff"></td>
+                </tr>
+				<!--
+				<tr>
                   <td align="right" bgcolor="#ffffff">{$lang.sign_building}：</td>
                   <td align="left" bgcolor="#ffffff"><input name="sign_building" type="text" class="inputBg" id="sign_building_{$sn}" value="{$consignee.sign_building|escape}" /></td>
                   <td align="right" bgcolor="#ffffff">{$lang.deliver_goods_time}：</td>
                   <td align="left" bgcolor="#ffffff"><input name="best_time" type="text"  class="inputBg" id="best_time_{$sn}" value="{$consignee.best_time|escape}" /></td>
                 </tr>
+				-->
                 <tr>
                   <td align="right" bgcolor="#ffffff">&nbsp;</td>
                   <td colspan="3" align="center" bgcolor="#ffffff"><!-- {if $consignee.consignee && $consignee.email} -->

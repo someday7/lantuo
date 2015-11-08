@@ -2263,15 +2263,26 @@ function get_volume_price_list($goods_id, $price_type = '1')
  *
  * @return  商品最终购买价格
  */
-function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $spec = array(), $start_day = null, $end_day = null)
+function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $spec = array(), $start_day = null, $end_day = null, $type = 3)
 {
 	if(!empty($start_day) && !empty($end_day)) {
 		$goods = get_goods_info($goods_id);
-		$days = round((strtotime($end_day) - strtotime($start_day))/86400);
-		if($days <= $goods['rent_start_day']) {
-			$final_price = $goods['rent_start_price'];
-		} else {
-			$final_price = $goods['rent_start_price'] + ($days - $goods['rent_start_day']) * $goods['rent_add_price'];
+		$days = round((strtotime($end_day) - strtotime($start_day))/86400)-1;
+		if($type == 3){
+			if($days <= $goods['rent_start_day']) {
+				$final_price = $goods['rent_start_price'];
+			} else {
+				$final_price = $goods['rent_start_price'] + ($days - $goods['rent_start_day']) * $goods['rent_add_price'];
+			}
+		} elseif($type == 2){
+			$final_price = $goods['shop_price'];
+		} elseif($type == 1){
+			if($days <= $goods['rent_start_day']) {
+				$final_price = $goods['rent_start_price'];
+			} else {
+				$final_price = $goods['rent_start_price'] + ($days - $goods['rent_start_day']) * $goods['rent_add_price'];
+			}
+			$final_price += $goods['shop_price'];
 		}
 	} else {
 	    $final_price   = '0'; //商品最终购买价格

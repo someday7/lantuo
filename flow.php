@@ -2124,6 +2124,8 @@ else
 
     //购物车的描述的格式化
     $smarty->assign('shopping_money',         sprintf($_LANG['shopping_money'], $cart_goods['total']['goods_price']));
+	$smarty->assign('shopping_money_sale',         sprintf($_LANG['shopping_money'], $cart_goods['total']['goods_sale_price']));
+	$smarty->assign('shopping_money_rent',         sprintf($_LANG['shopping_money'], $cart_goods['total']['goods_rent_price']));
     $smarty->assign('market_price_desc',      sprintf($_LANG['than_market_price'],
         $cart_goods['total']['market_price'], $cart_goods['total']['saving'], $cart_goods['total']['save_rate']));
 
@@ -2301,7 +2303,7 @@ function flow_update_cart($arr)
             else
             {
                 $attr_id    = empty($goods['goods_attr_id']) ? array() : explode(',', $goods['goods_attr_id']);
-                $goods_price = get_final_price($goods['goods_id'], $val, true, $attr_id, $goods['start_day'], $goods['end_day']);
+                $goods_price = get_final_price($goods['goods_id'], $val, true, $attr_id, $goods['start_day'], $goods['end_day'],1);
 
                 //更新购物车中的商品数量
                 $sql = "UPDATE " .$GLOBALS['ecs']->table('cart').

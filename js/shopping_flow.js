@@ -600,13 +600,13 @@ function checkConsignee(frm)
     err = true;
     msg.push(consignee_not_null);
   }
-
+/*
   if ( ! Utils.isEmail(frm.elements['email'].value))
   {
     err = true;
     msg.push(invalid_email);
   }
-
+*/
   if (frm.elements['address'] && Utils.isEmpty(frm.elements['address'].value))
   {
     err = true;
@@ -619,6 +619,7 @@ function checkConsignee(frm)
     msg.push(zip_not_num);
   }
 
+  /*
   if (Utils.isEmpty(frm.elements['tel'].value))
   {
     err = true;
@@ -632,13 +633,19 @@ function checkConsignee(frm)
       msg.push(tele_invaild);
     }
   }
-
+  */
+  if (!Utils.isMobile(frm.elements['mobile'].value))
+	{
+	  err = true;
+	  msg.push(mobile_invaild);
+	}
+/*
   if (frm.elements['mobile'] && frm.elements['mobile'].value.length > 0 && (!Utils.isTel(frm.elements['mobile'].value)))
   {
     err = true;
     msg.push(mobile_invaild);
   }
-
+*/
   if (err)
   {
     message = msg.join("\n");

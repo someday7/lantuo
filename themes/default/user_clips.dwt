@@ -58,6 +58,18 @@
       <div class="userCenterBox boxCenterList clearfix" style="_height:1%;">
          <!-- *用户中心默认显示页面 start-->
          <!-- {if $action eq 'default'} -->
+         
+<style>
+.Left .img{border:1px solid #d0d0d0;margin-bottom:5px}
+.Left .img,.Left .img img{width:120px;height:120px}
+</style>
+<div class="Left avtar" style="float:left;width:122px;text-align:center;">
+	<div onmouseout="this.className='img'" onmouseover="this.className='img hover'" class="img">
+		<a title="修改我的头像" href="user.php?act=profile" class="red">
+		<img src="{if $info.avatar}{$info.avatar}{else}/css/s.jpg{/if}"></a>
+	</div>
+</div>
+<div style="float:left;width:500px;text-align:left; padding-left:10px;">
           <font class="f5"><b class="f4">{$info.username}</b> {$lang.welcome_to} {$info.shop_name}！</font><br />
           <div class="blank"></div>
           {$lang.last_time}: {$info.last_time}<br />
@@ -67,9 +79,13 @@
            <!--{if $info.is_validate eq 0} -->
           {$lang.not_validated} <a href="javascript:sendHashMail()" style="color:#006bd0;">{$lang.resend_hash_mail}</a><br />
            <!--{/if} -->
+</div>         
+          <div style="clear:both"></div> 
            <div style="margin:5px 0; border:1px solid #a1675a;padding:10px 20px; background-color:#e8d1c9;">
            <img src="images/note.gif" alt="note" />&nbsp;{$user_notice}
            </div>
+           
+           
            <br /><br />
           <div class="f_l" style="width:350px;">
           <h5><span>{$lang.your_account}</span></h5>
